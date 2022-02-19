@@ -23,15 +23,15 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sat, 19 Feb 2022 13:33:05 &#43;0800</lastBuildDate>
+        <lastBuildDate>Sat, 19 Feb 2022 15:41:17 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://marin-man.github.io/rss.xml" />
         
         
             <item>
                 <title>Redis 事务</title>
-                <link>https://marin-man.github.io/post/redis-transtation/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/post/redis-transtation/</guid>
+                <link>https://marin-man.github.io/posts/redis-transtation/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-transtation/</guid>
                 <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
                 
                     <author>marin-man@163.com (慢慢)</author>
@@ -56,6 +56,18 @@
 </description>
                 
                 
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
                 
                 
                 
@@ -85,8 +97,8 @@
         
             <item>
                 <title>Redis 基础</title>
-                <link>https://marin-man.github.io/post/redis-based/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/post/redis-based/</guid>
+                <link>https://marin-man.github.io/posts/redis-based/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-based/</guid>
                 <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
                 
                     <author>marin-man@163.com (慢慢)</author>
@@ -137,6 +149,18 @@
                 
                 
                 
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
                 
                 
                     
@@ -165,8 +189,8 @@
         
             <item>
                 <title>Redis 存储</title>
-                <link>https://marin-man.github.io/post/redis-store/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/post/redis-store/</guid>
+                <link>https://marin-man.github.io/posts/redis-store/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-store/</guid>
                 <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
                 
                     <author>marin-man@163.com (慢慢)</author>
@@ -210,6 +234,18 @@
                 
                 
                 
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
                 
                 
                     
@@ -238,15 +274,16 @@
         
             <item>
                 <title>Redis 数据过期</title>
-                <link>https://marin-man.github.io/post/redis-data-died/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/post/redis-data-died/</guid>
+                <link>https://marin-man.github.io/posts/redis-data-died/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-data-died/</guid>
                 <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
                 
                     <author>marin-man@163.com (慢慢)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description>&lt;h3 id=&#34;redis-如果设置键过期&#34;&gt;Redis 如果设置键过期？&lt;/h3&gt;
+                    <description>&lt;p&gt;&lt;img src=&#34;https://marin-man.github.io/images/header-bg.jpg&#34; alt=&#34;header-bg.jpg&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;redis-如果设置键过期&#34;&gt;Redis 如果设置键过期？&lt;/h3&gt;
 &lt;p&gt;可以通过 expire 或 pexpire 命令，客户端可以以秒或毫秒的精度为数据库中的某个键设置生存时间。&lt;/p&gt;
 &lt;p&gt;与 expire 和 pexpire 命令类似，客户端通过 expireat 和 pexpireat 命令，以秒或毫秒精度给数据库中的某个键设置过期时间。&lt;/p&gt;
 &lt;h3 id=&#34;redis-有哪些过期删除策略&#34;&gt;Redis 有哪些过期删除策略？&lt;/h3&gt;
@@ -259,6 +296,18 @@
 </description>
                 
                 
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
                 
                 
                 
@@ -288,8 +337,8 @@
         
             <item>
                 <title>Redis 高性能</title>
-                <link>https://marin-man.github.io/post/redis-x/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/post/redis-x/</guid>
+                <link>https://marin-man.github.io/posts/redis-x/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-x/</guid>
                 <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
                 
                     <author>marin-man@163.com (慢慢)</author>
@@ -315,6 +364,18 @@
 </description>
                 
                 
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
                 
                 
                 
@@ -344,8 +405,8 @@
         
             <item>
                 <title>Spring Bean 生命周期</title>
-                <link>https://marin-man.github.io/post/spring-bean-life/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/post/spring-bean-life/</guid>
+                <link>https://marin-man.github.io/posts/spring-bean-life/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/spring-bean-life/</guid>
                 <pubDate>Sat, 19 Feb 2022 01:09:28 &#43;0800</pubDate>
                 
                     <author>marin-man@163.com (慢慢)</author>
@@ -422,6 +483,18 @@
                 
                 
                 
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
                 
                 
                     
@@ -443,35 +516,6 @@
                                     <category domain="https://marin-man.github.io/tags/spring/">Spring</category>
                                 
                             
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title></title>
-                <link>https://marin-man.github.io/post/poetry/poetry/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/post/poetry/poetry/</guid>
-                <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-                
-                    <author>marin-man@163.com (慢慢)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;p&gt;暗夜中&lt;/p&gt;
-&lt;p&gt;渴望一束光的关怀&lt;/p&gt;
-&lt;p&gt;在白天&lt;/p&gt;
-&lt;p&gt;却更渴望黑洞的吞噬&lt;/p&gt;
-&lt;p&gt;因为好奇心，想看看黑暗中有什么&lt;/p&gt;
-</description>
-                
-                
-                
-                
-                
-                    
-                        
-                    
                         
                     
                 

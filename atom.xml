@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">慢慢的个人博客</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2022-02-19T13:33:05&#43;08:00</updated>
+    <updated>2022-02-19T15:41:17&#43;08:00</updated>
     <id>https://marin-man.github.io/</id>
     <link rel="alternate" type="text/html" href="https://marin-man.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://marin-man.github.io/atom.xml" />
@@ -18,8 +18,8 @@
     <generator uri="https://gohugo.io/" version="0.92.2">Hugo</generator>
         <entry>
             <title type="text">Redis 事务</title>
-            <link rel="alternate" type="text/html" href="https://marin-man.github.io/post/redis-transtation/" />
-            <id>https://marin-man.github.io/post/redis-transtation/</id>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/redis-transtation/" />
+            <id>https://marin-man.github.io/posts/redis-transtation/</id>
             <updated>2022-02-19T03:35:12&#43;08:00</updated>
             <published>2022-02-19T01:12:52&#43;08:00</published>
             <author>
@@ -27,7 +27,7 @@
                     <uri>https://marin-man.github.io/blog</uri>
                     <email>marin-man@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">什么是事务？ 事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。事务有四个非常重要的特点：ACID。 A(原子性)：原子性是指……</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">什么是事务？ 事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。事务有四个非常重要的……</summary>
             
                 <content type="html">&lt;h3 id=&#34;什么是事务&#34;&gt;什么是事务？&lt;/h3&gt;
 &lt;p&gt;事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。事务有四个非常重要的特点：ACID。&lt;/p&gt;
@@ -47,6 +47,18 @@
 </content>
             
             
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
+                        
+                    
+                
             
             
             
@@ -76,8 +88,8 @@
     
         <entry>
             <title type="text">Redis 基础</title>
-            <link rel="alternate" type="text/html" href="https://marin-man.github.io/post/redis-based/" />
-            <id>https://marin-man.github.io/post/redis-based/</id>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/redis-based/" />
+            <id>https://marin-man.github.io/posts/redis-based/</id>
             <updated>2022-02-19T03:18:24&#43;08:00</updated>
             <published>2022-02-19T01:12:52&#43;08:00</published>
             <author>
@@ -85,7 +97,7 @@
                     <uri>https://marin-man.github.io/blog</uri>
                     <email>marin-man@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">什么是 Redis？ Redis (Remote Dictionary Server 远程字典服务) 是一个开源的使用 ANSI C 语言编写，支持网络，可基于内存亦可持久化的日志型，key-value 数据库，提供多种语言的 API。 Redis 有哪些常用功能？ 数据缓存 数据持久化 支持事……</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">什么是 Redis？ Redis (Remote Dictionary Server 远程字典服务) 是一个开源的使用 ANSI C 语言编写，支持网络，可基于内存亦可持久化的日志型，key-value 数据库，提供多种语言的 API。 Redis……</summary>
             
                 <content type="html">&lt;h3 id=&#34;什么是-redis&#34;&gt;什么是 Redis？&lt;/h3&gt;
 &lt;p&gt;Redis (Remote Dictionary Server 远程字典服务) 是一个开源的使用 ANSI C 语言编写，支持网络，可基于内存亦可持久化的日志型，key-value 数据库，提供多种语言的 API。&lt;/p&gt;
@@ -131,6 +143,18 @@
             
             
             
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
+                        
+                    
+                
+            
             
             
                 
@@ -159,8 +183,8 @@
     
         <entry>
             <title type="text">Redis 存储</title>
-            <link rel="alternate" type="text/html" href="https://marin-man.github.io/post/redis-store/" />
-            <id>https://marin-man.github.io/post/redis-store/</id>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/redis-store/" />
+            <id>https://marin-man.github.io/posts/redis-store/</id>
             <updated>2022-02-19T03:25:35&#43;08:00</updated>
             <published>2022-02-19T01:12:52&#43;08:00</published>
             <author>
@@ -168,7 +192,7 @@
                     <uri>https://marin-man.github.io/blog</uri>
                     <email>marin-man@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Redis 是如何持久化的？ Redis 有两种持久化方式： AOF：独立日志文件（主流方式），优先级较高，其是通过将命令写入缓存区，缓冲区再根据策略同步到硬盘，并且还会定期通过 fork() 子进程对 AOF 进行重写，优化存储空间。 RDB：采……</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Redis 是如何持久化的？ Redis 有两种持久化方式： AOF：独立日志文件（主流方式），优先级较高，其是通过将命令写入缓存区，缓冲区再根据策略同步到硬盘，并且还会定期通过 fork() 子进……</summary>
             
                 <content type="html">&lt;h3 id=&#34;redis-是如何持久化的&#34;&gt;Redis 是如何持久化的？&lt;/h3&gt;
 &lt;p&gt;Redis 有两种持久化方式：&lt;/p&gt;
@@ -207,6 +231,18 @@
             
             
             
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
+                        
+                    
+                
+            
             
             
                 
@@ -235,18 +271,19 @@
     
         <entry>
             <title type="text">Redis 数据过期</title>
-            <link rel="alternate" type="text/html" href="https://marin-man.github.io/post/redis-data-died/" />
-            <id>https://marin-man.github.io/post/redis-data-died/</id>
-            <updated>2022-02-19T03:36:53&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/redis-data-died/" />
+            <id>https://marin-man.github.io/posts/redis-data-died/</id>
+            <updated>2022-02-19T15:00:57&#43;08:00</updated>
             <published>2022-02-19T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
                     <uri>https://marin-man.github.io/blog</uri>
                     <email>marin-man@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Redis 如果设置键过期？ 可以通过 expire 或 pexpire 命令，客户端可以以秒或毫秒的精度为数据库中的某个键设置生存时间。 与 expire 和 pexpire 命令类似，客户端通过 expireat 和 pexpireat 命令，以秒或毫秒精度给数据库中的某个键设置过期时间。 Redis 有哪些过期删除策……</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Redis 如果设置键过期？ 可以通过 expire 或 pexpire 命令，客户端可以以秒或毫秒的精度为数据库中的某个键设置生存时间。 与 expire 和 pexpire 命令类似，客户端通过 expireat 和 pexpireat 命令，以秒或毫秒精度给数据库中……</summary>
             
-                <content type="html">&lt;h3 id=&#34;redis-如果设置键过期&#34;&gt;Redis 如果设置键过期？&lt;/h3&gt;
+                <content type="html">&lt;p&gt;&lt;img src=&#34;https://marin-man.github.io/images/header-bg.jpg&#34; alt=&#34;header-bg.jpg&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;redis-如果设置键过期&#34;&gt;Redis 如果设置键过期？&lt;/h3&gt;
 &lt;p&gt;可以通过 expire 或 pexpire 命令，客户端可以以秒或毫秒的精度为数据库中的某个键设置生存时间。&lt;/p&gt;
 &lt;p&gt;与 expire 和 pexpire 命令类似，客户端通过 expireat 和 pexpireat 命令，以秒或毫秒精度给数据库中的某个键设置过期时间。&lt;/p&gt;
 &lt;h3 id=&#34;redis-有哪些过期删除策略&#34;&gt;Redis 有哪些过期删除策略？&lt;/h3&gt;
@@ -259,6 +296,18 @@
 </content>
             
             
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
+                        
+                    
+                
             
             
             
@@ -288,8 +337,8 @@
     
         <entry>
             <title type="text">Redis 高性能</title>
-            <link rel="alternate" type="text/html" href="https://marin-man.github.io/post/redis-x/" />
-            <id>https://marin-man.github.io/post/redis-x/</id>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/redis-x/" />
+            <id>https://marin-man.github.io/posts/redis-x/</id>
             <updated>2022-02-19T03:23:29&#43;08:00</updated>
             <published>2022-02-19T01:12:52&#43;08:00</published>
             <author>
@@ -297,7 +346,7 @@
                     <uri>https://marin-man.github.io/blog</uri>
                     <email>marin-man@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Redis 有多快？ Redis 每秒读达到了 106 级别，写也达到了 8*105 级别。 Redis 快的原因？ Redis 是基于内存的，以键值对的形式，通过单线程模型和多路复用，并且还使用 pipeline 的管道机制。 什么是多路复用？ Redis 的底层通信也是基于 TCP/IP 协议的。所以每当客……</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Redis 有多快？ Redis 每秒读达到了 106 级别，写也达到了 8*105 级别。 Redis 快的原因？ Redis 是基于内存的，以键值对的形式，通过单线程模型和多路复用，并且还使用 pipeline 的管道机制。 什么是多路复用？……</summary>
             
                 <content type="html">&lt;h3 id=&#34;redis-有多快&#34;&gt;Redis 有多快？&lt;/h3&gt;
 &lt;p&gt;Redis 每秒读达到了 10&lt;sup&gt;6&lt;/sup&gt; 级别，写也达到了 8*10&lt;sup&gt;5&lt;/sup&gt; 级别。&lt;/p&gt;
@@ -318,6 +367,18 @@
 </content>
             
             
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
+                        
+                    
+                
             
             
             
@@ -347,8 +408,8 @@
     
         <entry>
             <title type="text">Spring Bean 生命周期</title>
-            <link rel="alternate" type="text/html" href="https://marin-man.github.io/post/spring-bean-life/" />
-            <id>https://marin-man.github.io/post/spring-bean-life/</id>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/spring-bean-life/" />
+            <id>https://marin-man.github.io/posts/spring-bean-life/</id>
             <updated>2022-02-19T03:08:36&#43;08:00</updated>
             <published>2022-02-19T01:09:28&#43;08:00</published>
             <author>
@@ -356,7 +417,7 @@
                     <uri>https://marin-man.github.io/blog</uri>
                     <email>marin-man@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">背景 spring 使用了 IOC 模型，让对象存储在了容器中，每当使用时我们可以通过依赖注入的方式获取 bean 对象。 而因为 bean 对象是交由容器来管理的，故就有了生命周期的概念。 先讲下 spring 的容器有哪些。 spring 的容器 spring 有 BeanFacotr……</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">背景 spring 使用了 IOC 模型，让对象存储在了容器中，每当使用时我们可以通过依赖注入的方式获取 bean 对象。 而因为 bean 对象是交由容器来管理的，故就有了生命周期的概念。 先讲下 spring 的容器……</summary>
             
                 <content type="html">&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 &lt;p&gt;spring 使用了 IOC 模型，让对象存储在了容器中，每当使用时我们可以通过依赖注入的方式获取 bean 对象。&lt;/p&gt;
@@ -428,6 +489,18 @@
             
             
             
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
+                        
+                    
+                
+            
             
             
                 
@@ -449,38 +522,6 @@
                                 <category scheme="https://marin-man.github.io/tags/spring/" term="Spring" label="Spring" />
                             
                         
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text"></title>
-            <link rel="alternate" type="text/html" href="https://marin-man.github.io/post/poetry/poetry/" />
-            <id>https://marin-man.github.io/post/poetry/poetry/</id>
-            <updated>2022-02-19T12:51:08&#43;08:00</updated>
-            <published>0001-01-01T00:00:00&#43;00:00</published>
-            <author>
-                    <name>慢慢</name>
-                    <uri>https://marin-man.github.io/blog</uri>
-                    <email>marin-man@163.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">暗夜中 渴望一束光的关怀 在白天 却更渴望黑洞的吞噬 因为好奇心，想看看黑暗中有什么</summary>
-            
-                <content type="html">&lt;p&gt;暗夜中&lt;/p&gt;
-&lt;p&gt;渴望一束光的关怀&lt;/p&gt;
-&lt;p&gt;在白天&lt;/p&gt;
-&lt;p&gt;却更渴望黑洞的吞噬&lt;/p&gt;
-&lt;p&gt;因为好奇心，想看看黑暗中有什么&lt;/p&gt;
-</content>
-            
-            
-            
-            
-            
-                
-                    
-                
                     
                 
             
