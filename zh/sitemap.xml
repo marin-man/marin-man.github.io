@@ -3,16 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://marin-man.github.io/categories/2022/</loc>
-    <lastmod>2022-02-19T15:00:57+08:00</lastmod>
+    <lastmod>2022-02-19T17:48:31+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/categories/</loc>
-    <lastmod>2022-02-19T15:00:57+08:00</lastmod>
+    <lastmod>2022-02-19T17:48:31+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/posts/</loc>
-    <lastmod>2022-02-19T15:00:57+08:00</lastmod>
+    <lastmod>2022-02-19T17:48:31+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/tags/redis/</loc>
-    <lastmod>2022-02-19T15:00:57+08:00</lastmod>
+    <lastmod>2022-02-19T17:48:31+08:00</lastmod>
+  </url><url>
+    <loc>https://marin-man.github.io/posts/redis-master/</loc>
+    <lastmod>2022-02-19T17:48:31+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/posts/redis-transtation/</loc>
     <lastmod>2022-02-19T03:35:12+08:00</lastmod>
@@ -23,6 +26,9 @@
     <loc>https://marin-man.github.io/posts/redis-store/</loc>
     <lastmod>2022-02-19T03:25:35+08:00</lastmod>
   </url><url>
+    <loc>https://marin-man.github.io/posts/redis-data-type/</loc>
+    <lastmod>2022-02-19T17:37:19+08:00</lastmod>
+  </url><url>
     <loc>https://marin-man.github.io/posts/redis-data-died/</loc>
     <lastmod>2022-02-19T15:00:57+08:00</lastmod>
   </url><url>
@@ -30,10 +36,10 @@
     <lastmod>2022-02-19T03:23:29+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/tags/</loc>
-    <lastmod>2022-02-19T15:00:57+08:00</lastmod>
+    <lastmod>2022-02-19T17:48:31+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/</loc>
-    <lastmod>2022-02-19T15:00:57+08:00</lastmod>
+    <lastmod>2022-02-19T17:48:31+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"

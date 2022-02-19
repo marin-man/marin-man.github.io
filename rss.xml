@@ -23,10 +23,135 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sat, 19 Feb 2022 15:41:17 &#43;0800</lastBuildDate>
+        <lastBuildDate>Sat, 19 Feb 2022 17:49:50 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://marin-man.github.io/rss.xml" />
         
+        
+            <item>
+                <title>Redis 主从集群</title>
+                <link>https://marin-man.github.io/posts/redis-master/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-master/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是集群&#34;&gt;什么是集群&lt;/h3&gt;
+&lt;p&gt;为了系统的可靠性或扩大系统资源，我们一般会通过多台机器来共享资源、分担费用、共用信道设备及服务等。&lt;/p&gt;
+&lt;h3 id=&#34;redis-有哪几种集群模式&#34;&gt;Redis 有哪几种集群模式&lt;/h3&gt;
+&lt;p&gt;Redis 场景的集群模式有：主从模式，哨兵模式，cluster 模式。&lt;/p&gt;
+&lt;h3 id=&#34;什么是主从集群&#34;&gt;什么是主从集群&lt;/h3&gt;
+&lt;p&gt;通过搭建多台 redis 主机，两者间存储相同的数据，从而分散单主机下的请求压力。&lt;/p&gt;
+&lt;p&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;高可靠性：一方面采用主从机架构，当主机宕机时，能手动将从机顶替主机，防止系统崩溃。另一方面，多台机器都会进行相应的数据持久化操作，从而备份多份数据。&lt;/li&gt;
+&lt;li&gt;读写分离策略：从节点可以扩展主库节点的读能力，有效应对大并发量的读操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;故障恢复发杂：因为没有哨兵去检测主机从机之间的状态并处理故障转移，所以我们得要去开发监控程序，当主机宕机时能及时通知我们并手动去切换主从节点。&lt;/li&gt;
+&lt;li&gt;主库的写能力收到单机的限制。&lt;/li&gt;
+&lt;li&gt;系统的存储能力收到单机的限制。&lt;/li&gt;
+&lt;li&gt;主从同步时是通过网络进行传输，难免会出现一些错误，即使有了很多的检错手段，但还是会出现个节点间数据不一致的问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;怎么实现主从复制&#34;&gt;怎么实现主从复制&lt;/h3&gt;
+&lt;h4 id=&#34;理论部分&#34;&gt;理论部分&lt;/h4&gt;
+&lt;p&gt;主从复制有两个阶段：初始化阶段和运行阶段。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;初始化阶段：
+&lt;ul&gt;
+&lt;li&gt;从服务器启动；&lt;/li&gt;
+&lt;li&gt;从服务器连接到主机，发送 SYNC 命令；&lt;/li&gt;
+&lt;li&gt;主服务器收到 SYNC 命令后，开始执行 BGSAVE 命令，保持当前快照并生成 RDB 文件，同时在此过程中用缓存区记录下这段时间的执行命令，防止数据丢失；&lt;/li&gt;
+&lt;li&gt;主服务器执行完 BGSAVE 后，向从服务器发送快照文件，并且也在缓存区记录下这个时期执行的命令；&lt;/li&gt;
+&lt;li&gt;从服务器收到快照文件后，丢失所有旧数据，重写载入收到的快照；&lt;/li&gt;
+&lt;li&gt;主服务器快照发送完毕后旧向从服务器发送缓存区里记录下的命令；&lt;/li&gt;
+&lt;li&gt;从服务器完成快照的输入，开始接收命令请求，执行来自主服务器缓冲区的写命令。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;运行阶段：
+&lt;ul&gt;
+&lt;li&gt;主服务器每执行一个命令，就会向从服务器发送相同的命令，这个也叫做增量更新。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;实操部分&#34;&gt;实操部分&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span class=&#34;l&#34;&gt;// 主机 `redis.conf` 文件&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;role&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;master    // 角色&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;connected_slaves&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;     &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;// 从服务器的个数 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span class=&#34;l&#34;&gt;// 从机 `redis.conf` 文件&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;role&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;slave&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;replicaof 主机ip 主机port&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;如果传输的过程中数据丢失了redis-会怎样保证数据的可靠性&#34;&gt;如果传输的过程中数据丢失了，Redis 会怎样保证数据的可靠性？&lt;/h3&gt;
+&lt;p&gt;从 Redis2.8 开始，就支持了主从复制的断点续传。master 和 slave 都保存一个 replica offset，里面记录了当前数据的偏移量。slave 会定期的向 master 发送此偏移量，并和自己的偏移量比较，从而知道了 slave 是否还差一些数据，并将数据发送过去。&lt;/p&gt;
+&lt;p&gt;同理，当传输过程中数据丢失时，slave 也只保存了丢失前的偏移量，等一段时间后会自动跟 master 比较当前的偏移量。&lt;/p&gt;
+&lt;h3 id=&#34;在主从模式下明明一个键过期了为什么还可能会读到&#34;&gt;在主从模式下，明明一个键过期了，为什么还可能会读到？&lt;/h3&gt;
+&lt;p&gt;因为 Redis 的从库是无法主从区删除已过期的 key。它的实现策略是通过主库去判断该 key 是否过期，若过期，则删除并且向 Slave 发出删除 key 的指令。又由于 Redis 的主库键过期是采用惰性删除的策略（前文有讲），所以，当读从库时，并不会触发过期判断的策略，从而不删除键。&lt;/p&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;p&gt;编写一段程序，定期通过 Scan 扫库。扫库的作用是访问 master 里所有的 key，这样就会触发所有 key 的过期检测，从而删除过期的 key。但这样也会极大降低性能。
+使用 Redis3.2 以上的版本，因为其新增了一个特性来解决这个问题。增加了 key 是否过期以及对主从库的判断，如果 key 已过期，当前访问的Master则返回 null；当前访问的是从库，且执行的是只读命令也返回 null。源码如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8zMTMzMjA5LTQ3YTNmMzI0NWI5Y2VkMzM_aW1hZ2VNb2dyMi9hdXRvLW9yaWVudC9zdHJpcHxpbWFnZVZpZXcyLzIvdy82NDAvZm9ybWF0L3dlYnA?x-oss-process=image/format,png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Redis 事务</title>
@@ -231,6 +356,151 @@
 &lt;li&gt;网络爬虫 Url 去重：BitSet + hash，Bloom Filter&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Redis 数据类型</title>
+                <link>https://marin-man.github.io/posts/redis-data-type/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-data-type/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h2 id=&#34;redis-有哪些数据类型&#34;&gt;Redis 有哪些数据类型&lt;/h2&gt;
+&lt;p&gt;        Redis 有 String、List、Hash、Set、ZSet、Bitmap、Hyperloglog 等，下面来详细说下这几种类型的底层实现。&lt;/p&gt;
+&lt;h3 id=&#34;1-string&#34;&gt;1. String&lt;/h3&gt;
+&lt;p&gt;String 底层实现分为两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;整数：长度小于 21 且能够转化为整数的字符串&lt;/li&gt;
+&lt;li&gt;SDS (Simple Dynamic String 简单动态字符串)：len 长度 + free 剩余未使用空间 + buf 字符数组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;SDS 的好处：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以根据 len 快速获取字符串长度&lt;/li&gt;
+&lt;li&gt;当修改字符串长度时可以减少内存分配次数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;使用场景：缓存，限流，计数器，分布式锁，分布式 Session&lt;/p&gt;
+&lt;p&gt;基本命令：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-redis&#34; data-lang=&#34;redis&#34;&gt;SET key value                           GET key
+MSET key value [key value]              MGET [key1 key2]
+INCR key                                DECR key
+SETEX key second value                  SETNX key value
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;2-list&#34;&gt;2. List&lt;/h3&gt;
+&lt;p&gt;List 在 Reids 中主要用于实现队列或栈，在不同版本有不同的实现方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;旧版本：
+&lt;ul&gt;
+&lt;li&gt;数据量小时：ZipList 压缩链表&lt;/li&gt;
+&lt;li&gt;数据量大时：LinkedList 双向链表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;新版本：
+&lt;ul&gt;
+&lt;li&gt;数据量小时：ZipList 压缩链表&lt;/li&gt;
+&lt;li&gt;数据量大时：QuickList 快速链表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ZipList：压缩链表，由一系列特殊编码的连续内存块组成的顺序存储结构，其不固定长度数组，每个元素大小通过元素头的 len 来确定。&lt;/p&gt;
+&lt;p&gt;QuickList：也是一个链表结构，只不过链表节点维护一个 ZipList，从而压缩内存空间。&lt;/p&gt;
+&lt;p&gt;使用场景：微博关注人时间轴列表，简单队列&lt;/p&gt;
+&lt;p&gt;基本命令&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;LPOP # key 移除第一个元素    RPOP # 移除最后一个元素
+LPUSH                   RPUSH
+LSET key index value   # 通过索引设置列表元素的值
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;3-hash&#34;&gt;3. Hash&lt;/h3&gt;
+&lt;p&gt;Hash 是一个类似 Map 的映射结构，其底层有两种实现：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据量小时：ZipList&lt;/li&gt;
+&lt;li&gt;数据量大时：HashTable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用场景：存储用户信息，用户主页访问量，文章点赞数据&lt;/p&gt;
+&lt;p&gt;基本命令&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;HGET key field          HGETALL key         HMGET key field1 field2
+HSET key field value    HMSET key field1 value1 field2 value2
+HSETNX key field value
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;4-set&#34;&gt;4. Set&lt;/h3&gt;
+&lt;p&gt;Set 是一个用于去重的数据结构，底层实现：HashTable 的 Key 部分&lt;/p&gt;
+&lt;p&gt;使用场景：点赞，踩，标签，好友关系&lt;/p&gt;
+&lt;p&gt;基本命令&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;SADD key member1 member2
+SDIFF key1 key2  # 返回第一个集合与其他集合的差异
+SINTER key1 key2  # 返回交集
+SREM key member1
+SPOP key  # 移除集合的一个随机元素
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;5-zset&#34;&gt;5. ZSet&lt;/h4&gt;
+&lt;p&gt;ZSet 是一个排序，去重的数据结构框架，其底层有两种实现：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据量小时：ZipList&lt;/li&gt;
+&lt;li&gt;数据量大时：SkipList&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;采用 ZipList 的原因：由于数据量少，O(n) 复杂度的查询和 O(logN) 的查询时间相差不大，同时，ZipList 能很好的压缩内存，节约空间。&lt;/p&gt;
+&lt;p&gt;SkipList：跳跃表，其根据数据量会分为多层结构，当查询时从上层往下找，复杂度为 O(logN)，当插入时，会先找到插入的位置，同时生成一个随机数，来表示此节点要生成多少层。SkipList 相较于二叉搜索树的好处是其不用严格的按照左右节点，通过随机数的大小来判断此节点的层数。&lt;/p&gt;
+&lt;p&gt;使用场景：排行榜，分页数据&lt;/p&gt;
+&lt;p&gt;基本命令：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ZADD key score1 member1 score2 member2
+ZCOUNT key min max  # 范围内的成员数
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;6-bitmap&#34;&gt;6. BitMap&lt;/h3&gt;
+&lt;p&gt;BitMap 通过每一个来记录一些数据的状态，达到压缩内存的效果。&lt;/p&gt;
+&lt;p&gt;使用场景：用户签到，火车座位在不同站点时的状态&lt;/p&gt;
+&lt;p&gt;基本命令：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;setbit name 1 1
+getbit name 1    # 1
+setbit name 3 1
+bitcount bittest 0 0  # 表示第一个字节（8位）0 的个数
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;7-hyperloglog&#34;&gt;7. HyperLogLog&lt;/h3&gt;
+&lt;p&gt;HyperLogLog 用于基数统计，每个 HyperLogLog 只需要花费 12K 内存，就可以计算接近 2^16 个不同元素的基数，且错误率在 0.82%，这和 set （元素越多内存越大）形成对比。但是 HyperLogLog 只会根据输入元素来计算基数，不会存储元素本身，所以 HyperLogLog 不能输出各个元素。但其也能作为交集，返回元素个数。&lt;/p&gt;
+&lt;p&gt;基数：在数组中出现过的值，例如：{1, 3, 5, 7, 5, 7, 8} 的基数集为 {1, 3, 5, 7, 8}&lt;/p&gt;
+&lt;p&gt;底层原理：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;假设一个人抛硬币，每轮可以抛任意次，但抛到正面就要结束掉。若它抛到为 &lt;code&gt;001&lt;/code&gt;，因为 &lt;code&gt;001&lt;/code&gt; 出现的概率为 1/8，于是我们可以断定抛了 8 次。&lt;/li&gt;
+&lt;li&gt;同理，我们可以根据数组中的数据的二进制位 1 出现的位置，来大概估计这组数据中基数的个数，同时设置多个槽，再根据加权平均值得出最终的结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基本命令：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PFADD key element1 element2
+PFCOUNT key1 key2  # 查找基数的个数，若多个 key，交集
+&lt;/code&gt;&lt;/pre&gt;</description>
                 
                 
                 
