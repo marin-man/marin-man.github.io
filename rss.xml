@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>慢慢的个人博客</title>
+        <link>https://marin-man.github.io/</link>
+        <description>MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</description>
+        <generator>Hugo 0.92.2 https://gohugo.io/</generator>
+        
+            <language>zh-CN</language>
+        
+        
+            <managingEditor>marin-man@163.com (慢慢)</managingEditor>
+        
+        
+            <webMaster>marin-man@163.com (慢慢)</webMaster>
+        
+        
+            <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+        
+        <lastBuildDate>Sat, 19 Feb 2022 13:33:05 &#43;0800</lastBuildDate>
+        
+            <atom:link rel="self" type="application/rss&#43;xml" href="https://marin-man.github.io/rss.xml" />
+        
+        
+            <item>
+                <title>Redis 事务</title>
+                <link>https://marin-man.github.io/post/redis-transtation/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/post/redis-transtation/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是事务&#34;&gt;什么是事务？&lt;/h3&gt;
+&lt;p&gt;事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。事务有四个非常重要的特点：ACID。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A(原子性)：原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。&lt;/li&gt;
+&lt;li&gt;C(一致性)：事务前后数据的完整性必须保持一致。&lt;/li&gt;
+&lt;li&gt;I(隔离性)：多个事务并发执行时，一个事务的执行不应影响其他事务的执行。&lt;/li&gt;
+&lt;li&gt;D(持久性)：持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;reids-事务的概念&#34;&gt;Reids 事务的概念&lt;/h3&gt;
+&lt;p&gt;Redis 事务的本质是通过 MULTI, EXEC, WATCH 等一组命令的集合。Redis 事务的执行过程为：开启事务 -&amp;gt; 命令队列 -&amp;gt; 序列化 -&amp;gt; 串行执行。&lt;/p&gt;
+&lt;p&gt;串行执行即若出错，则后面停止，前面的并没有进行回滚。所以 Redis 默认是不支持事务（没有原子性）操作的。&lt;/p&gt;
+&lt;h3 id=&#34;如何让-redis-支持事务&#34;&gt;如何让 Redis 支持事务？&lt;/h3&gt;
+&lt;p&gt;Redis 提供了 Watch 命令，使用它我们能够去监视变量，当事务执行出现错误时，其能够去反向执行执行过的操作，从而达到回滚的效果。&lt;/p&gt;
+&lt;h3 id=&#34;redis-能保证隔离性吗&#34;&gt;Redis 能保证隔离性吗？&lt;/h3&gt;
+&lt;p&gt;慢慢：由于 Redis 是单进程程序，并且它保证在执行事务时不会对事务进行终端，所以不会产生别的线程干扰事务执行的情况，所以保证隔离性。&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Redis 基础</title>
+                <link>https://marin-man.github.io/post/redis-based/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/post/redis-based/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是-redis&#34;&gt;什么是 Redis？&lt;/h3&gt;
+&lt;p&gt;Redis (Remote Dictionary Server 远程字典服务) 是一个开源的使用 ANSI C 语言编写，支持网络，可基于内存亦可持久化的日志型，key-value 数据库，提供多种语言的 API。&lt;/p&gt;
+&lt;h3 id=&#34;redis-有哪些常用功能&#34;&gt;Redis 有哪些常用功能？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;数据缓存&lt;/li&gt;
+&lt;li&gt;数据持久化&lt;/li&gt;
+&lt;li&gt;支持事务&lt;/li&gt;
+&lt;li&gt;消息队列&lt;/li&gt;
+&lt;li&gt;分布式锁&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;小qredis-有哪些数据类型&#34;&gt;小Q：Redis 有哪些数据类型？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;String：Redis 最基础的数据结构。&lt;/li&gt;
+&lt;li&gt;Hash：一种键值对的结构，其相对于字符串序列化结构更加直观，并且在更新操作上更加便捷。（底层是 ziplist 或 hashtable）&lt;/li&gt;
+&lt;li&gt;List：基于双向链表，可以充当栈和队列的角色。（底层是 ziplist 或 linkedlist）&lt;/li&gt;
+&lt;li&gt;Set：用来保证集合中不能有重复元素。（底层是 intset 或 hashtable）&lt;/li&gt;
+&lt;li&gt;zset：有序集合，类似于 treeSet，它保留了 set 不能有重复元素外，还将集合里的元素进行排序。（底层是 skiplist）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;小q什么是-ziplist&#34;&gt;小Q：什么是 ziplist？&lt;/h3&gt;
+&lt;p&gt;慢慢：ziplist 是由一系列特殊编码的，连续内存快组成的顺序存储结构，类似于数组。ziplist 在内存中是连续的，所以每次插入时，都会重新 malloc 空间，保证其连续性。一般情况下在数据量小的时候使用。&lt;/p&gt;
+&lt;h3 id=&#34;小qredis-有哪些使用场景&#34;&gt;小Q：Redis 有哪些使用场景？&lt;/h3&gt;
+&lt;p&gt;慢慢：redis 的应用很广泛。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;缓存：减轻 MYSQL 的查询压力，提升系统性能；&lt;/li&gt;
+&lt;li&gt;排行榜：利用 Redis 的 zset 实现；&lt;/li&gt;
+&lt;li&gt;计算器/限速器：利用 redis 中原子性的自增操作，我们可以统计类似用户点赞、用户访问数等。这类操作如果用 MYSQL，频繁的读写会带来相当大的压力，限速器比较典型的使用场景是限制某个用户访问某个 API 的频率，常用的有抢购时，防止用户疯狂点击开来不必要的压力；&lt;/li&gt;
+&lt;li&gt;好友关系：利用集合的一些命令，如交集，并集，差集等，可以方便实现一些共同好友，共同爱好之类的功能；&lt;/li&gt;
+&lt;li&gt;消息队列：除了 Redis 自身的发布/订阅模式，我们也可以利用 List 来实现一个队列机制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;小qredis-如何解决-hash-冲突&#34;&gt;小Q：Redis 如何解决 hash 冲突？&lt;/h3&gt;
+&lt;p&gt;慢慢：Redis 采用链地址法解决 hash 冲突。即一个桶里面的元素使用链表保持。但当链表过长时就会导致性能变差。Redis 为了追求快，使用了两个全局哈希表，用于 rehash 操作。&lt;/p&gt;
+&lt;h3 id=&#34;小qrehash扩容-的具体操作&#34;&gt;小Q：rehash(扩容) 的具体操作&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;开始时默认使用 hash table1 保持键值对数据，hash table2 没有分配空间。&lt;/li&gt;
+&lt;li&gt;当数据越来越多，就会触发 rehash 操作。&lt;/li&gt;
+&lt;li&gt;给 hash table2 分配 hash table1 多一倍的空间。&lt;/li&gt;
+&lt;li&gt;将 hash1 的数据重映射到 hash2 中&lt;/li&gt;
+&lt;li&gt;释放 hash1 的空间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;重映射的过长不是一次性的，因为这也会造成 redis 长时间阻塞，无法提供服务。它采用渐进式 rehash，每次处理客户端请求的时候，会先从 hash table1 中找到对应的桶，将桶里面的数据移动到 hash table2 中，这样就将 rehash 操作分散到多次请求中，避免耗时阻塞。&lt;/strong&gt;&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Redis 存储</title>
+                <link>https://marin-man.github.io/post/redis-store/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/post/redis-store/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;redis-是如何持久化的&#34;&gt;Redis 是如何持久化的？&lt;/h3&gt;
+&lt;p&gt;Redis 有两种持久化方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AOF：独立日志文件（主流方式），优先级较高，其是通过将命令写入缓存区，缓冲区再根据策略同步到硬盘，并且还会定期通过 fork() 子进程对 AOF 进行重写，优化存储空间。&lt;/li&gt;
+&lt;li&gt;RDB：采用数据快照的存储方式。通过 fork() 子进程，根据内存生成的临时快照，再存储到硬盘或对原有文件进行原子替换。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;AOF 和 RDB 的区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AOF 文件比 RDB 更新频率高，优先使用 AOF 还原数据；&lt;/li&gt;
+&lt;li&gt;AOF 比 RDB 更安全也更大；&lt;/li&gt;
+&lt;li&gt;RDB 性能比 AOF 好；&lt;/li&gt;
+&lt;li&gt;如果两个都配置了，优先加载 AOF。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;什么是缓存击穿&#34;&gt;什么是缓存击穿？&lt;/h3&gt;
+&lt;p&gt;当缓存中的 key 失效时，且同时有很多请求打在 key 上，这个时候的这些请求都会访问到数据库，造成数据库压力变大。&lt;/p&gt;
+&lt;p&gt;解决方案：设置热点数据不过时，或采用锁（必要时是分布式锁）保证每个 key 只有一个线程去查询数据库。&lt;/p&gt;
+&lt;h3 id=&#34;什么是缓存穿透&#34;&gt;什么是缓存穿透？&lt;/h3&gt;
+&lt;p&gt;当很多请求都请求到一个更不不存在的数据时，由于缓存中也肯定没有此数据，所以所有请求都访问到了数据库。&lt;/p&gt;
+&lt;p&gt;解决方案：用空对象替代，或者采用布隆过滤器，记录下能找不到的值，下次请求时，如果没有就能直接得到。&lt;/p&gt;
+&lt;h3 id=&#34;什么是缓存雪崩&#34;&gt;什么是缓存雪崩？&lt;/h3&gt;
+&lt;p&gt;当缓存中大量的值同时失效，并且有很多请求都要请求这些值时，所有请求都会访问到数据库。&lt;/p&gt;
+&lt;p&gt;解决方案：通过缓存预热，搭建数据库集群分散压力，服务降级：直接不查数据库，返回默认值。&lt;/p&gt;
+&lt;h3 id=&#34;什么是布隆过滤器&#34;&gt;什么是布隆过滤器？&lt;/h3&gt;
+&lt;p&gt;布隆过滤器：用于大数据的排重，将每条数据不同 Hash 计算得到不同的指纹，将指纹映射到一个大的按位存储的空间。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：空间和时间效率都很高。&lt;/li&gt;
+&lt;li&gt;缺点：随着存入的元素增加，误算率随之增大。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用范围：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;大数据去重：bitmap，Bloom Fiter&lt;/li&gt;
+&lt;li&gt;网络爬虫 Url 去重：BitSet + hash，Bloom Filter&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Redis 数据过期</title>
+                <link>https://marin-man.github.io/post/redis-data-died/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/post/redis-data-died/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;redis-如果设置键过期&#34;&gt;Redis 如果设置键过期？&lt;/h3&gt;
+&lt;p&gt;可以通过 expire 或 pexpire 命令，客户端可以以秒或毫秒的精度为数据库中的某个键设置生存时间。&lt;/p&gt;
+&lt;p&gt;与 expire 和 pexpire 命令类似，客户端通过 expireat 和 pexpireat 命令，以秒或毫秒精度给数据库中的某个键设置过期时间。&lt;/p&gt;
+&lt;h3 id=&#34;redis-有哪些过期删除策略&#34;&gt;Redis 有哪些过期删除策略？&lt;/h3&gt;
+&lt;p&gt;过期策略主要有三种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定时过期：每个设置过期时间的 key 都需要创建一个定时器，到过期时间就会立即清除。该策略可以立即清除过期的数据，对内存很友好，但会大量占用 CPU 资源，影响 Redis 的响应速度和吞吐量。&lt;/li&gt;
+&lt;li&gt;惰性删除：只有当访问一个 key 时，才去判断该 key 是否已经过期，过期则清除。此策略最大化地节省 CPU 资源，但对内存非常不友好。极端情况下可能出现大量过期的 key 没有被再次访问，从而不被清除，占用大量内存。&lt;/li&gt;
+&lt;li&gt;定期过期：对惰性删除进行优化，每个一段时间，会扫描 Redis 中所有的 key，相当于都访问一遍，访问时就会去判断此 key 是否过期。该策略是前两者的一个折中方案，通过调整定时扫描的时间间隔和每次扫描的耗时，可以在不同情况下使得 CPU 和内存资源达到最优的平衡效果。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Redis 高性能</title>
+                <link>https://marin-man.github.io/post/redis-x/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/post/redis-x/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;redis-有多快&#34;&gt;Redis 有多快？&lt;/h3&gt;
+&lt;p&gt;Redis 每秒读达到了 10&lt;sup&gt;6&lt;/sup&gt; 级别，写也达到了 8*10&lt;sup&gt;5&lt;/sup&gt; 级别。&lt;/p&gt;
+&lt;h3 id=&#34;redis-快的原因&#34;&gt;Redis 快的原因？&lt;/h3&gt;
+&lt;p&gt;Redis 是基于内存的，以键值对的形式，通过单线程模型和多路复用，并且还使用 pipeline 的管道机制。&lt;/p&gt;
+&lt;h3 id=&#34;什么是多路复用&#34;&gt;什么是多路复用？&lt;/h3&gt;
+&lt;p&gt;Redis 的底层通信也是基于 TCP/IP 协议的。所以每当客户端向服务端发起读/写请求，都必须建立连接。而当连接建立完后，Redis 并不是开启一个线程去处理客户端的请求，而是将其挂载文件符表上，然后使用 epoll 机制，每当有数据传到客户端时，都会通知主线程来进行处理，从而避免了线程创建、切换的开销，并且更简便的实现同步机制。&lt;/p&gt;
+&lt;h3 id=&#34;什么是-pipe-管道&#34;&gt;什么是 PIPE 管道？&lt;/h3&gt;
+&lt;p&gt;众所周知，Redis 是 C/S 架构，即客户端/服务器模型。&lt;/p&gt;
+&lt;p&gt;Redis 的执行命令过程为：发送命令 -&amp;gt; 命令在网络传输 -&amp;gt; 命令在服务器排队 -&amp;gt; 命令执行 -&amp;gt; 返回结果。&lt;/p&gt;
+&lt;p&gt;我们知道，CPU 的速度比网络的速度快得多，所以影响 Redis 性能的最大因素是网络。于是 Redis 为了减少网络传输的次数，会采用 pipeline 的批量处理机制，将多个无关命令打包一起，再发送出去，而不是一条条发送。&lt;/p&gt;
+&lt;h3 id=&#34;如何做内存上的优化&#34;&gt;如何做内存上的优化？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;控制 key 的数量&lt;/li&gt;
+&lt;li&gt;缩减简直对象，降低 redis 内存使用最直接的方式就是缩减键和值的长度&lt;/li&gt;
+&lt;li&gt;编码优化，使用更好的数据类型&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Spring Bean 生命周期</title>
+                <link>https://marin-man.github.io/post/spring-bean-life/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/post/spring-bean-life/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:09:28 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
+&lt;p&gt;spring 使用了 IOC 模型，让对象存储在了容器中，每当使用时我们可以通过依赖注入的方式获取 bean 对象。&lt;/p&gt;
+&lt;p&gt;而因为 bean 对象是交由容器来管理的，故就有了生命周期的概念。&lt;/p&gt;
+&lt;p&gt;先讲下 spring 的容器有哪些。&lt;/p&gt;
+&lt;h2 id=&#34;spring-的容器&#34;&gt;spring 的容器&lt;/h2&gt;
+&lt;p&gt;spring 有 BeanFacotry（bean 工厂） 和 ApplicationContext （应用上下文）&lt;/p&gt;
+&lt;p&gt;区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;beanfactory 只提供了基础的 bean 存储功能和依赖注入功能，版本控制功能。&lt;/li&gt;
+&lt;li&gt;applicationcontext 继承了 beanfactory 的特性，还提供了大量扩展，能根据配置文件 xml 来实现国际化，事件传播，资源加载等，也支持 J2EE 的一些特性。&lt;/li&gt;
+&lt;li&gt;BeanFactory 的 bean 是延时加载，ApplicationContext 是非延时加载。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bean-生命周期&#34;&gt;bean 生命周期&lt;/h2&gt;
+&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
+&lt;p&gt;实例化 spring 容器&lt;/p&gt;
+&lt;p&gt;beandifinition bean 定义：通过@compomentscan 来扫描 bean 对象&lt;/p&gt;
+&lt;p&gt;解析扫描的对象，从而获取 bean 类的信息，例如抽象类，懒加载等。&lt;/p&gt;
+&lt;p&gt;创建 beanDefinition 图纸，将 bean 的信写吸入 map 中&lt;/p&gt;
+&lt;p&gt;BeanFactoryPostProcessor 类可以干预原先的类定义，即干预图纸。&lt;/p&gt;
+&lt;p&gt;遍历图纸，根据图纸造对象 preInstantiateSingletons() 遍历所有的 bean定义，判断这个类不是抽象的，不是单例的，不是懒加载的，再去创建。&lt;/p&gt;
+&lt;p&gt;实例化对象 反射（还没注入到容器）&lt;/p&gt;
+&lt;p&gt;缓存注解信息，解析合并后的 beandifinition 对象&lt;/p&gt;
+&lt;p&gt;提前暴露一个对象工程 - 循环依赖&lt;/p&gt;
+&lt;p&gt;判断实例化的对象里面的属性是否要注入依赖 - 默认需要注入&lt;/p&gt;
+&lt;p&gt;回调部分 aware 接口，因为 spring 内置了很多 aware，调用的时机是不同，这里只调用部分。&lt;/p&gt;
+&lt;p&gt;执行部分 aware，调用生命周期初始化回调方法&lt;/p&gt;
+&lt;p&gt;执行生命周期初始化回调的接口行驶的方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有容器生命周期和bean 生命周期，这部分是bean 生命周期。&lt;/li&gt;
+&lt;li&gt;有注解版，配置文件版，接口版&lt;/li&gt;
+&lt;li&gt;@PostConstruct 注解的方法是 bean 初始化方法&lt;/li&gt;
+&lt;li&gt;@PostDestory 注解的方法是 bean 销毁的方法。&lt;/li&gt;
+&lt;li&gt;多个版本可以同时存在。先执行接口版，再执行注解版，最后执行配置文件版。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;完成代理 - aop，事件分发，发布监听&lt;/p&gt;
+&lt;p&gt;put 单例池容器&lt;/p&gt;
+&lt;p&gt;销毁整个容器对象&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;实例化 spring 容器，创建 beanFactory&lt;/li&gt;
+&lt;li&gt;扫描符合 springbean 规则（@bean）的 class  -- 集合&lt;/li&gt;
+&lt;li&gt;遍历集合当中的类，封装成一个 beanDefinitionMap 对象&lt;/li&gt;
+&lt;li&gt;遍历 beanDefinitionMap 对象&lt;/li&gt;
+&lt;li&gt;解析 -- validate&lt;/li&gt;
+&lt;li&gt;通过 beanDefinitionMap 获取 类的信息&lt;/li&gt;
+&lt;li&gt;得到构造方法 -- 通过算法推断出合理的构造方法&lt;/li&gt;
+&lt;li&gt;通过这个合理的构造方法反射实例化一个对象。&lt;/li&gt;
+&lt;li&gt;提前暴露工厂  -- 循环依赖&lt;/li&gt;
+&lt;li&gt;注入属性 -- 判断是否需要完成属性填充：自动注入&lt;/li&gt;
+&lt;li&gt;执行部分的 aware 接口（beannameAware，BeanClassLoaderAware，BeanFactoryAware）&lt;/li&gt;
+&lt;li&gt;执行部分 aware 接口和 lifecycle callback 注解版&lt;/li&gt;
+&lt;li&gt;若 bean 关联了 BeanPostProcessor 接口，将会调用 postProcessBefforeInitialization 方法，主要对 bean 内容进行更改。&lt;/li&gt;
+&lt;li&gt;执行初始化方法 init-method。&lt;/li&gt;
+&lt;li&gt;若 bean 关联了 BeanPostProcessor 接口，这时还会调用 postProcessAfterInitialization 方法。&lt;/li&gt;
+&lt;li&gt;aop 动态代理，事件分发，发布监听等。&lt;/li&gt;
+&lt;li&gt;put singletonobjects 放入单例池&lt;/li&gt;
+&lt;li&gt;destroy() 销毁方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;代码：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;invokeBeanFactoryPostProcessors(Factory)
+&lt;ul&gt;
+&lt;li&gt;扫描，拆改那就 BeanDefinition&lt;/li&gt;
+&lt;li&gt;执行 beanFactoryPostProcessors&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/spring/">Spring</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title></title>
+                <link>https://marin-man.github.io/post/poetry/poetry/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/post/poetry/poetry/</guid>
+                <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;p&gt;暗夜中&lt;/p&gt;
+&lt;p&gt;渴望一束光的关怀&lt;/p&gt;
+&lt;p&gt;在白天&lt;/p&gt;
+&lt;p&gt;却更渴望黑洞的吞噬&lt;/p&gt;
+&lt;p&gt;因为好奇心，想看看黑暗中有什么&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+    </channel>
+</rss>
