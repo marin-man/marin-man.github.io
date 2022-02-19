@@ -23,10 +23,183 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sat, 19 Feb 2022 17:49:50 &#43;0800</lastBuildDate>
+        <lastBuildDate>Sat, 19 Feb 2022 18:34:09 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://marin-man.github.io/rss.xml" />
         
+        
+            <item>
+                <title>CAP 理论</title>
+                <link>https://marin-man.github.io/posts/distribute-cap/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/distribute-cap/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是-cap-理论&#34;&gt;什么是 CAP 理论&lt;/h3&gt;
+&lt;p&gt;CAP 原则指的是一个分布式系统中，Consistency(一致性)，Avaliablity(可用性)，Partition tolerance(分区容错性)，三者不可兼得。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一致性：在分布式环境下，一致性是指数据在多个副本之间能否保持一致的特性。&lt;/li&gt;
+&lt;li&gt;可用性：可用性是指系统提供的服务必须一直处于可用的状态，对于用户的每一个操作请求总是能够在有限的时间内返回结果。&lt;/li&gt;
+&lt;li&gt;分区容错性：分区容错性约束了一个分布式系统具有如下特性：分布式系统在遇到任何网络分区故障的时候，仍然需要能够保证对外提供满足一致性和可用性的服务，除非是整个网络环境都发生了故障。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;为什么三者不能同时满足&#34;&gt;为什么三者不能同时满足&lt;/h3&gt;
+&lt;p&gt;假设现在有两台服务器，一台跑 A 服务和数据库 V1，一台跑服务 B 和数据库 V2，V1 和 V2 是同步的。在满足分区容错性下，A 或 B 一台宕机都不会影响到其他服务的执行。但当 V1 和 V2 的通信断开时，数据库就不能同步。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;牺牲一致性：A 用 v1 的数据库，B 用 v2 的数据库，两者都没有同步&lt;/li&gt;
+&lt;li&gt;牺牲可用性：禁止 A 和 B 正常服务，直到两种能同步才开启服务。&lt;/li&gt;
+&lt;li&gt;牺牲分区容错性：如果不用分区容错性，则整个系统可以不用分布式来搭建，能保证强一致性和可用性，但如果机器挂了，整个服务也崩了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;什么是-base-理论&#34;&gt;什么是 BASE 理论&lt;/h3&gt;
+&lt;p&gt;BASE 就是 Basically Available(基本可用)，Soft state(软状态)，Eventually consistent(最终一致性)，是对 CAP 中一致性和可用性权衡的结果。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本可用：指分布式在出现不可预知故障的时候，允许损失部分可用性。
+&lt;ul&gt;
+&lt;li&gt;响应时间上的损失：一个在线搜索引擎需要 0.5s 内返回给用户相应的查询结果，但由于出现异常（比如系统部分机房发送端点或断网故障）查询结果的响应时间增加到了 1~2s&lt;/li&gt;
+&lt;li&gt;功能上的损失：在购物高峰时，为了保证购物系统的稳定性，部分消费者可能会被引导到一个降级页面。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;软状态：指允许系统中的数据存在中间状态，并认为该中间状态的存在不会影响系统的整体可用性。
+最终一致性：系统中的所有数据副本，在经过一段时间的同步后，最终能够到达一个一致的状态。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Redis Cluster 集群</title>
+                <link>https://marin-man.github.io/posts/redis-cluster/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-cluster/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是-cluster-集群&#34;&gt;什么是 Cluster 集群？&lt;/h3&gt;
+&lt;p&gt;Cluster 集群是通过搭建多个主从节点，每对主从节点存储不同的数据，从而扩大存储容量，解决单线程写的瓶颈，增大吞吐量。&lt;/p&gt;
+&lt;p&gt;在不考虑哨兵的情况下，Cluster 至少需要三个 master 节点，每个 master 节点至少需要一个 slave。&lt;/p&gt;
+&lt;h3 id=&#34;cluster-的优缺点有哪些&#34;&gt;Cluster 的优缺点有哪些？&lt;/h3&gt;
+&lt;p&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无中心架构；&lt;/li&gt;
+&lt;li&gt;数据按照 slot 存储分布在多个节点，节点间数据共享，可动态调整数据分布；&lt;/li&gt;
+&lt;li&gt;可扩展：可线性扩展，动态删除节点。&lt;/li&gt;
+&lt;li&gt;高可用：部分节点不可用时，集群仍然可用，并可以通过增加 slave，哨兵等做为数据副本，实现故障自动转移；&lt;/li&gt;
+&lt;li&gt;降低运维成本，提高系统的扩展性和可用性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可能不支持多个 key 的混合计算。例如两个 key 分布在不同节点上，就很难只用 redis 对其求交集等。&lt;/li&gt;
+&lt;li&gt;分库扩容可能比较复杂。&lt;/li&gt;
+&lt;li&gt;client 实现复杂，需要实现 smart client，先得到 key 的具体位置，并且也要定时更新。
+数据通过异步复制，不保证数据的强一致性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;如何搭建-cluster-集群&#34;&gt;如何搭建 Cluster 集群？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;所有的节点的 redis.conf 文件都添加 &lt;code&gt;cluster-enabled yes&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;启动所有节点，同时选择一个节点输入命令 &lt;code&gt;redis-cli --cluster create 节点1IP:端口 节点2IP:端口 …… --cluster-replicas 1&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;如何去得知-key-存储在哪个节点分区&#34;&gt;如何去得知 Key 存储在哪个节点（分区）？&lt;/h3&gt;
+&lt;p&gt;现在有三种常用的分区方法：节点取余分区，一致性哈希分区，虚拟槽分区。&lt;/p&gt;
+&lt;h4 id=&#34;1-节点取余分区&#34;&gt;1. 节点取余分区&lt;/h4&gt;
+&lt;p&gt;对每个 key 进行取余，并根据余数放到不同的分区中。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：计算简单&lt;/li&gt;
+&lt;li&gt;缺点：当要扩容时，需要把所有数据重新取余一遍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-一致性哈希分区&#34;&gt;2. 一致性哈希分区&lt;/h4&gt;
+&lt;p&gt;运用哈希环（创建一个大小为 2&lt;sup&gt;32&lt;/sup&gt;-1 的环形数组），每个节点都选择数组中的一个点。当添加 key 时，把 key 也放到数组上面，同时根据顺时针的方式，找到离得最近的节点，存到这个节点里。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：增加或减少节点很容易：当增加节点时，在数组中选择一个位置，并且逆时针将与上一个节点之间的数据都转移到此节点上。&lt;/li&gt;
+&lt;li&gt;缺点：数组初始时需要很大，也可以采用链地址法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-虚拟槽分区&#34;&gt;3. 虚拟槽分区&lt;/h4&gt;
+&lt;p&gt;预设虚拟槽，槽的大小比节点的大小小得多（即一个节点上有多个虚拟槽），将数据映射到虚拟槽上，将虚拟槽映射到节点上。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：这是 redis 默认的分区方式，扩容或缩容时是以槽为单位，可以自身控制扩容、缩容需要的代价&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Redis 主从集群</title>
@@ -174,10 +347,124 @@
 &lt;h3 id=&#34;reids-事务的概念&#34;&gt;Reids 事务的概念&lt;/h3&gt;
 &lt;p&gt;Redis 事务的本质是通过 MULTI, EXEC, WATCH 等一组命令的集合。Redis 事务的执行过程为：开启事务 -&amp;gt; 命令队列 -&amp;gt; 序列化 -&amp;gt; 串行执行。&lt;/p&gt;
 &lt;p&gt;串行执行即若出错，则后面停止，前面的并没有进行回滚。所以 Redis 默认是不支持事务（没有原子性）操作的。&lt;/p&gt;
-&lt;h3 id=&#34;如何让-redis-支持事务&#34;&gt;如何让 Redis 支持事务？&lt;/h3&gt;
-&lt;p&gt;Redis 提供了 Watch 命令，使用它我们能够去监视变量，当事务执行出现错误时，其能够去反向执行执行过的操作，从而达到回滚的效果。&lt;/p&gt;
+&lt;h3 id=&#34;为什么-redis-不支持回滚操作呢&#34;&gt;为什么 Redis 不支持回滚操作呢？&lt;/h3&gt;
+&lt;p&gt;Redis 运行指令是单线程的，同时 Redis 保证了一个事务的所有指令有序执行，即不会插入其他的语句，保证了事务的原子性。所以不会出现不同进行同时修改的问题，所以在程序员不写错代码的情况下是不会出错的，不需要回滚机制。&lt;/p&gt;
 &lt;h3 id=&#34;redis-能保证隔离性吗&#34;&gt;Redis 能保证隔离性吗？&lt;/h3&gt;
 &lt;p&gt;慢慢：由于 Redis 是单进程程序，并且它保证在执行事务时不会对事务进行终端，所以不会产生别的线程干扰事务执行的情况，所以保证隔离性。&lt;/p&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Redis 哨兵集群</title>
+                <link>https://marin-man.github.io/posts/redis-sentinel/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-sentinel/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是哨兵&#34;&gt;什么是哨兵？&lt;/h3&gt;
+&lt;p&gt;我们知道，在主从集群的基础上，如果主机宕机的话，我们就得要手动去将从机升级为主机，使系统正常运行。而哨兵就是为了代替我们人的存在，它也是一个独立的进程，不做任何具体的业务，只是来监视主从机的运行状况，并在出现故障时自动处理。&lt;/p&gt;
+&lt;h3 id=&#34;为什么要有哨兵集群呢&#34;&gt;为什么要有哨兵集群呢？&lt;/h3&gt;
+&lt;p&gt;一个哨兵的情况下，如果哨兵和主机都挂了，那么整个系统就不可用了。为了系统更加高可用，避免出现哨兵宕机，主节点同时宕机而使系统崩溃的情况。&lt;/p&gt;
+&lt;h3 id=&#34;哨兵是怎么工作的&#34;&gt;哨兵是怎么工作的？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;每个哨兵都会定时向它所知的 master，slave 以及其他的哨兵发送一条 ping 命令；&lt;/li&gt;
+&lt;li&gt;每个节点收到 ping 命令后都会回复 pong；&lt;/li&gt;
+&lt;li&gt;如果一个节点距离最后一次回复 pong 的时间超过了 down-after-milliseconds 所规定的值，那么这个实例就会被当前的哨兵标记为主观下线；&lt;/li&gt;
+&lt;li&gt;如果一个 master 被标记为主观下线，则哨兵就会以更加短的时间发送信息给 master 以确保真正下线；&lt;/li&gt;
+&lt;li&gt;当有了足够数量的哨兵在指定的时间范围内确认 master 的确进入了主观下线状态，则 master 就会转为客观下线状态；&lt;/li&gt;
+&lt;li&gt;当 Master 被所有哨兵标记为客观下线，哨兵向所有的 Slave 发送 INFO 命令，重新选举新的 master；&lt;/li&gt;
+&lt;li&gt;如果没有足够数量的哨兵同意 master 已下线，并且 master 重新向哨兵发送 ping 回复命令，master 的主观下线状态就会被移除。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哨兵集群部署简单；&lt;/li&gt;
+&lt;li&gt;能够解决 redis 主从模式下的高可用切换问题；&lt;/li&gt;
+&lt;li&gt;方便实现 redis 数据节点的线性扩展，轻松突破 reids 单线程瓶颈；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;相对于主从模式要更复杂；&lt;/li&gt;
+&lt;li&gt;开启进程会消耗一定的资源；&lt;/li&gt;
+&lt;li&gt;哨兵主要针对 redis 主节点的高可用切换，对 redis 的数据节点做失败判断，分为主观下线和客观线性，并不执行故障转移；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;redis-是如何选举主节点的&#34;&gt;Redis 是如何选举主节点的？&lt;/h3&gt;
+&lt;p&gt;Redis 选举主节点需要两个步骤，第一个步从哨兵节点中选择一个 Leader，第二步是让这个 leader 在执行故障转移操作。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;选举 Leader：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哨兵发现 master 节点下线，便把他标记为主观下线，并通知其他节点也对此 master 进行检查。&lt;/li&gt;
+&lt;li&gt;哨兵多次判断此 master 为主观下线后，就向其他哨兵广播一条信息，请求同意自己作为 Leader。其他节点收到信息后，如果在此之前没有发送过同意，就能够发送同意（即每个哨兵只能同意一个节点）。&lt;/li&gt;
+&lt;li&gt;当某个节点收到的同意数量超过一半时，就升级为 leader，否则再进行一轮选举。（这种选举算法为 Raft 算法）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;故障转移&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Leader 选举完成后就执行故障转移操作：每个 slave 节点都将自己的优先级，offest，runid 发送给 Leader，Leader 根据这三者的顺序选举出最大的节点，将其升级为 master 节点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;具体实践&#34;&gt;具体实践&lt;/h3&gt;
+&lt;p&gt;在配置好主从的情况下，配置哨兵节点：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;// sentinel.conf
+sentinel monitor 主机名称 主机ip 主机端口 监听个数
+sentinel auth-pass 主机名称 主机密码
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;虽然我们在 sentinel 的配置文件中只配置了主节点，没有配置从节点，但哨兵会去主节点中获取从节点的信息，从而实现整个 Redis 的监控。&lt;/p&gt;
+&lt;h3 id=&#34;为什么哨兵集群必须部署两个以上的节点呢&#34;&gt;为什么哨兵集群必须部署两个以上的节点呢？&lt;/h3&gt;
+&lt;p&gt;假设只有两个哨兵节点，如果 Master 和哨兵1 都宕机了，此时哨兵2知道 Master 宕机，对其进行主观下线，并且想升级为 Leader，但没有其他节点响应，所以 Master 就一直不被切换。&lt;/p&gt;
+&lt;h3 id=&#34;在哨兵模式下还会不会出现数据丢失的问题&#34;&gt;在哨兵模式下，还会不会出现数据丢失的问题？&lt;/h3&gt;
+&lt;p&gt;哨兵只是为了保证在 Master 挂掉的时候能快速选举出新的 Master，从而保证服务的高可用；并不会处理数据同步间出现的问题。&lt;/p&gt;
+&lt;p&gt;数据丢失主要有两方面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;异步复制导致数据丢失：由于 Master -&amp;gt; Slave 的复制是异步的，如果 Master 还没复制数据到 Slave 就宕机了，并且哨兵把 Slave 选举为 Master，那么这部分数据就丢失了。&lt;/li&gt;
+&lt;li&gt;脑裂导致数据丢失：当某个 Master 突然脱离了正常网络（不是宕机，可能是部分网络瘫痪），并且哨兵集群认为它宕机了，重新选举 Master。但这个时候旧 Master 还能顺利的接收客户端发送的数据，而哨兵此时维护新 Master。当旧 Master 网络回复后，则会同步新 Master 的数据，导致数据丢失。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;脑裂的解决方法：通过配置文件设置如果 Master 和 Slave 节点超过一定的时间无法联系，则 Master 拒绝写请求。&lt;/p&gt;
+&lt;h3 id=&#34;有什么方式可以实现数据一致呢&#34;&gt;有什么方式可以实现数据一致呢？&lt;/h3&gt;
+&lt;p&gt;由 CAP 理论得知，一致性和可用性并不能同时成立。为了达到数据的强一致性，我们必须先暂停下服务，等数据同步完再开启服务。以 RedLock （获取分布式锁）为例：一开始有 5 台 Master 节点（都是作为主节点），每当要获取锁时，需要通过轮询的方式从 5 台 Master 节点中获取锁（短暂的服务停顿，等数据同步），保证超过 1/2 的节点都能获取锁后才能继续执行，否则就会超时，获取锁失败。&lt;/p&gt;
 </description>
                 
                 
@@ -544,8 +831,8 @@ PFCOUNT key1 key2  # 查找基数的个数，若多个 key，交集
         
             <item>
                 <title>Redis 数据过期</title>
-                <link>https://marin-man.github.io/posts/redis-data-died/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-data-died/</guid>
+                <link>https://marin-man.github.io/posts/redis-data-exceed/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-data-exceed/</guid>
                 <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
                 
                     <author>marin-man@163.com (慢慢)</author>
@@ -607,8 +894,8 @@ PFCOUNT key1 key2  # 查找基数的个数，若多个 key，交集
         
             <item>
                 <title>Redis 高性能</title>
-                <link>https://marin-man.github.io/posts/redis-x/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-x/</guid>
+                <link>https://marin-man.github.io/posts/redis-ha/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-ha/</guid>
                 <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
                 
                     <author>marin-man@163.com (慢慢)</author>
@@ -666,124 +953,6 @@ PFCOUNT key1 key2  # 查找基数的个数，若多个 key，交集
                                 
                                 
                                     <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>Spring Bean 生命周期</title>
-                <link>https://marin-man.github.io/posts/spring-bean-life/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/posts/spring-bean-life/</guid>
-                <pubDate>Sat, 19 Feb 2022 01:09:28 &#43;0800</pubDate>
-                
-                    <author>marin-man@163.com (慢慢)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
-&lt;p&gt;spring 使用了 IOC 模型，让对象存储在了容器中，每当使用时我们可以通过依赖注入的方式获取 bean 对象。&lt;/p&gt;
-&lt;p&gt;而因为 bean 对象是交由容器来管理的，故就有了生命周期的概念。&lt;/p&gt;
-&lt;p&gt;先讲下 spring 的容器有哪些。&lt;/p&gt;
-&lt;h2 id=&#34;spring-的容器&#34;&gt;spring 的容器&lt;/h2&gt;
-&lt;p&gt;spring 有 BeanFacotry（bean 工厂） 和 ApplicationContext （应用上下文）&lt;/p&gt;
-&lt;p&gt;区别：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;beanfactory 只提供了基础的 bean 存储功能和依赖注入功能，版本控制功能。&lt;/li&gt;
-&lt;li&gt;applicationcontext 继承了 beanfactory 的特性，还提供了大量扩展，能根据配置文件 xml 来实现国际化，事件传播，资源加载等，也支持 J2EE 的一些特性。&lt;/li&gt;
-&lt;li&gt;BeanFactory 的 bean 是延时加载，ApplicationContext 是非延时加载。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;bean-生命周期&#34;&gt;bean 生命周期&lt;/h2&gt;
-&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
-&lt;p&gt;实例化 spring 容器&lt;/p&gt;
-&lt;p&gt;beandifinition bean 定义：通过@compomentscan 来扫描 bean 对象&lt;/p&gt;
-&lt;p&gt;解析扫描的对象，从而获取 bean 类的信息，例如抽象类，懒加载等。&lt;/p&gt;
-&lt;p&gt;创建 beanDefinition 图纸，将 bean 的信写吸入 map 中&lt;/p&gt;
-&lt;p&gt;BeanFactoryPostProcessor 类可以干预原先的类定义，即干预图纸。&lt;/p&gt;
-&lt;p&gt;遍历图纸，根据图纸造对象 preInstantiateSingletons() 遍历所有的 bean定义，判断这个类不是抽象的，不是单例的，不是懒加载的，再去创建。&lt;/p&gt;
-&lt;p&gt;实例化对象 反射（还没注入到容器）&lt;/p&gt;
-&lt;p&gt;缓存注解信息，解析合并后的 beandifinition 对象&lt;/p&gt;
-&lt;p&gt;提前暴露一个对象工程 - 循环依赖&lt;/p&gt;
-&lt;p&gt;判断实例化的对象里面的属性是否要注入依赖 - 默认需要注入&lt;/p&gt;
-&lt;p&gt;回调部分 aware 接口，因为 spring 内置了很多 aware，调用的时机是不同，这里只调用部分。&lt;/p&gt;
-&lt;p&gt;执行部分 aware，调用生命周期初始化回调方法&lt;/p&gt;
-&lt;p&gt;执行生命周期初始化回调的接口行驶的方法&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;有容器生命周期和bean 生命周期，这部分是bean 生命周期。&lt;/li&gt;
-&lt;li&gt;有注解版，配置文件版，接口版&lt;/li&gt;
-&lt;li&gt;@PostConstruct 注解的方法是 bean 初始化方法&lt;/li&gt;
-&lt;li&gt;@PostDestory 注解的方法是 bean 销毁的方法。&lt;/li&gt;
-&lt;li&gt;多个版本可以同时存在。先执行接口版，再执行注解版，最后执行配置文件版。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;完成代理 - aop，事件分发，发布监听&lt;/p&gt;
-&lt;p&gt;put 单例池容器&lt;/p&gt;
-&lt;p&gt;销毁整个容器对象&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;实例化 spring 容器，创建 beanFactory&lt;/li&gt;
-&lt;li&gt;扫描符合 springbean 规则（@bean）的 class  -- 集合&lt;/li&gt;
-&lt;li&gt;遍历集合当中的类，封装成一个 beanDefinitionMap 对象&lt;/li&gt;
-&lt;li&gt;遍历 beanDefinitionMap 对象&lt;/li&gt;
-&lt;li&gt;解析 -- validate&lt;/li&gt;
-&lt;li&gt;通过 beanDefinitionMap 获取 类的信息&lt;/li&gt;
-&lt;li&gt;得到构造方法 -- 通过算法推断出合理的构造方法&lt;/li&gt;
-&lt;li&gt;通过这个合理的构造方法反射实例化一个对象。&lt;/li&gt;
-&lt;li&gt;提前暴露工厂  -- 循环依赖&lt;/li&gt;
-&lt;li&gt;注入属性 -- 判断是否需要完成属性填充：自动注入&lt;/li&gt;
-&lt;li&gt;执行部分的 aware 接口（beannameAware，BeanClassLoaderAware，BeanFactoryAware）&lt;/li&gt;
-&lt;li&gt;执行部分 aware 接口和 lifecycle callback 注解版&lt;/li&gt;
-&lt;li&gt;若 bean 关联了 BeanPostProcessor 接口，将会调用 postProcessBefforeInitialization 方法，主要对 bean 内容进行更改。&lt;/li&gt;
-&lt;li&gt;执行初始化方法 init-method。&lt;/li&gt;
-&lt;li&gt;若 bean 关联了 BeanPostProcessor 接口，这时还会调用 postProcessAfterInitialization 方法。&lt;/li&gt;
-&lt;li&gt;aop 动态代理，事件分发，发布监听等。&lt;/li&gt;
-&lt;li&gt;put singletonobjects 放入单例池&lt;/li&gt;
-&lt;li&gt;destroy() 销毁方法&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;代码：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;invokeBeanFactoryPostProcessors(Factory)
-&lt;ul&gt;
-&lt;li&gt;扫描，拆改那就 BeanDefinition&lt;/li&gt;
-&lt;li&gt;执行 beanFactoryPostProcessors&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-                
-                
-                
-                    
-                    
-                    
-                        
-                        
-                        
-                            
-                                <category domain="https://marin-man.github.io/posts/">posts\</category>
-                            
-                        
-                    
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/tags/spring/">Spring</category>
                                 
                             
                         
