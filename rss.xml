@@ -23,10 +23,151 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sat, 19 Feb 2022 18:45:41 &#43;0800</lastBuildDate>
+        <lastBuildDate>Sun, 20 Feb 2022 20:28:20 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://marin-man.github.io/rss.xml" />
         
+        
+            <item>
+                <title>数据链路层</title>
+                <link>https://marin-man.github.io/posts/network-link-layer/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/network-link-layer/</guid>
+                <pubDate>Sun, 20 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是数据链路层的基本特征&#34;&gt;什么是数据链路层的基本特征&lt;/h3&gt;
+&lt;p&gt;数据链路层的基本特征为：封装成帧，透明传输，差错检测。&lt;/p&gt;
+&lt;h3 id=&#34;什么是封装成帧&#34;&gt;什么是封装成帧&lt;/h3&gt;
+&lt;p&gt;慢慢：封装成帧就是在一段数据的前后分别添加首部和尾部，从而构成一个帧。所有互联网上传送的数据都是以分组（IP 数据报）为传送单位，网络层的 IP 数据报传送到数据链路层就成为帧的数据部分，再添加首部和尾部，构成一个完整的帧。&lt;/p&gt;
+&lt;h3 id=&#34;什么是透明传输&#34;&gt;什么是透明传输&lt;/h3&gt;
+&lt;p&gt;由于帧的开始和结束的标记使用专门的控制字符。但如果数据中出现了开始或结束字符，我们应当想方法让他们保持原意，于是就得要通过转移字符。让数据链路层看不到妨碍数据传输的东西，就叫做透明传输。&lt;/p&gt;
+&lt;h3 id=&#34;什么是差错检测&#34;&gt;什么是差错检测&lt;/h3&gt;
+&lt;p&gt;现实中的通信链路都不会是理想的，也就是说比特在传输中可能会出现差错。数据链路层采用循环冗余法（CRC）来检测传输过来的数据是否有差错，如果有，则直接抛弃。&lt;/p&gt;
+&lt;h3 id=&#34;什么是-csmacd-协议&#34;&gt;什么是 CSMA/CD 协议&lt;/h3&gt;
+&lt;p&gt;CSMA/CD (Carrier Sense Multiple Access with Collision Detection)，即载波监听，多点接入，碰撞检测。&lt;/p&gt;
+&lt;p&gt;以前的以太网是使用总线的形式来传输数据，这样就避免不了总线上的不同点同时发送数据的情况。&lt;/p&gt;
+&lt;p&gt;多点接入：许多计算机以多点的方式连接在一条总线上。
+载波监听：用电子技术检测总线上有没有其他计算机也在发送。不管在发送前还是在发送中，每个站都必须不同地检测信道。在发送前检测信道是为了判断信道没有人发送，获得发送权。在发送中检测信道是为了即使发现有没有其他站地发送和本站发送的碰撞。
+碰撞检测：虽然在发送前需要检测信道为空才能发送信息，但也有一种情况发生：两个站都没有检测到信道被占用，并几乎同时发送信息，就像两个小朋友同时举手发言。当发现碰撞检测时，两个站都会取消发送，同时发出人为干扰信号，通知其他点也不要发送。然后执行截断二进制退避算法，双方推迟不同的时间发送数据。&lt;/p&gt;
+&lt;p&gt;但现在的网络采用了星形结构来传输，所以不会出现信号在一条线上发生冲突的情况。&lt;/p&gt;
+&lt;h3 id=&#34;什么是-mac-地址&#34;&gt;什么是 MAC 地址&lt;/h3&gt;
+&lt;p&gt;MAC 地址又称为物理地址或硬件地址。每个网卡，路由器都有一个对应的 MAC 地址。&lt;/p&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>网络架构</title>
+                <link>https://marin-man.github.io/posts/network-based/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/network-based/</guid>
+                <pubDate>Sun, 20 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是-osi-七层模型&#34;&gt;什么是 OSI 七层模型&lt;/h3&gt;
+&lt;p&gt;OSI(Open System Interconnection Reference Model)，是一种概念模型，由国际标准化组织提出，一个试图使各种计算机在世界范围内互连为网络的标准架构。&lt;/p&gt;
+&lt;p&gt;七层模型为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;物理层：制定底层数据传输的标准，如机械特性，电器特性和功能特性，网线和网卡标准等。&lt;/li&gt;
+&lt;li&gt;数据链路层：定义数据的格式，如何传输，如何标识，主要为封装成帧，透明传输，差错检测。&lt;/li&gt;
+&lt;li&gt;网络层：定义 IP 编址，定义路由功能。&lt;/li&gt;
+&lt;li&gt;传输层：端到端传输数据的基本传输。&lt;/li&gt;
+&lt;li&gt;会话层：控制应用层序之间会话能力，如将不同软件数据分发给不同软件。&lt;/li&gt;
+&lt;li&gt;表示层：数据格式标识，基本压缩，加密功能等。&lt;/li&gt;
+&lt;li&gt;应用层：各种应用程序，包括 web 应用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每一层实现各自的功能和协议，并完成与相邻层的接口通信。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://b3logfile.com/file/2020/05/image-664dda43.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100&#34; alt=&#34;image.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;什么是五层模型&#34;&gt;什么是五层模型&lt;/h3&gt;
+&lt;p&gt;五层模型将网络分为物理层，数据链路层，网络层，应用层。&lt;/p&gt;
+&lt;h3 id=&#34;两者有什么关系呢&#34;&gt;两者有什么关系呢？&lt;/h3&gt;
+&lt;p&gt;OSI 七层协议是一个标准，而非实现，五层模型是一个实现的应用模型，五层模型由七层简化合并而来。&lt;/p&gt;
+&lt;h3 id=&#34;不同层的数据被称为什么&#34;&gt;不同层的数据被称为什么？&lt;/h3&gt;
+&lt;p&gt;在物理层时数据称为比特流，链路层时为帧，网络层时为数据报，数据链路层为字节流/字符流。&lt;/p&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>CAP 理论</title>
@@ -788,137 +929,6 @@ bitcount bittest 0 0  # 表示第一个字节（8位）0 的个数
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PFADD key element1 element2
 PFCOUNT key1 key2  # 查找基数的个数，若多个 key，交集
 &lt;/code&gt;&lt;/pre&gt;</description>
-                
-                
-                
-                    
-                    
-                    
-                        
-                        
-                        
-                            
-                                <category domain="https://marin-man.github.io/posts/">posts\</category>
-                            
-                        
-                    
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>Redis 数据过期</title>
-                <link>https://marin-man.github.io/posts/redis-data-exceed/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-data-exceed/</guid>
-                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
-                
-                    <author>marin-man@163.com (慢慢)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;p&gt;&lt;img src=&#34;https://marin-man.github.io/images/header-bg.jpg&#34; alt=&#34;header-bg.jpg&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;redis-如果设置键过期&#34;&gt;Redis 如果设置键过期？&lt;/h3&gt;
-&lt;p&gt;可以通过 expire 或 pexpire 命令，客户端可以以秒或毫秒的精度为数据库中的某个键设置生存时间。&lt;/p&gt;
-&lt;p&gt;与 expire 和 pexpire 命令类似，客户端通过 expireat 和 pexpireat 命令，以秒或毫秒精度给数据库中的某个键设置过期时间。&lt;/p&gt;
-&lt;h3 id=&#34;redis-有哪些过期删除策略&#34;&gt;Redis 有哪些过期删除策略？&lt;/h3&gt;
-&lt;p&gt;过期策略主要有三种：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;定时过期：每个设置过期时间的 key 都需要创建一个定时器，到过期时间就会立即清除。该策略可以立即清除过期的数据，对内存很友好，但会大量占用 CPU 资源，影响 Redis 的响应速度和吞吐量。&lt;/li&gt;
-&lt;li&gt;惰性删除：只有当访问一个 key 时，才去判断该 key 是否已经过期，过期则清除。此策略最大化地节省 CPU 资源，但对内存非常不友好。极端情况下可能出现大量过期的 key 没有被再次访问，从而不被清除，占用大量内存。&lt;/li&gt;
-&lt;li&gt;定期过期：对惰性删除进行优化，每个一段时间，会扫描 Redis 中所有的 key，相当于都访问一遍，访问时就会去判断此 key 是否过期。该策略是前两者的一个折中方案，通过调整定时扫描的时间间隔和每次扫描的耗时，可以在不同情况下使得 CPU 和内存资源达到最优的平衡效果。&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-                
-                
-                
-                    
-                    
-                    
-                        
-                        
-                        
-                            
-                                <category domain="https://marin-man.github.io/posts/">posts\</category>
-                            
-                        
-                    
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>Redis 高性能</title>
-                <link>https://marin-man.github.io/posts/redis-ha/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-ha/</guid>
-                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
-                
-                    <author>marin-man@163.com (慢慢)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h3 id=&#34;redis-有多快&#34;&gt;Redis 有多快？&lt;/h3&gt;
-&lt;p&gt;Redis 每秒读达到了 10&lt;sup&gt;6&lt;/sup&gt; 级别，写也达到了 8*10&lt;sup&gt;5&lt;/sup&gt; 级别。&lt;/p&gt;
-&lt;h3 id=&#34;redis-快的原因&#34;&gt;Redis 快的原因？&lt;/h3&gt;
-&lt;p&gt;Redis 是基于内存的，以键值对的形式，通过单线程模型和多路复用，并且还使用 pipeline 的管道机制。&lt;/p&gt;
-&lt;h3 id=&#34;什么是多路复用&#34;&gt;什么是多路复用？&lt;/h3&gt;
-&lt;p&gt;Redis 的底层通信也是基于 TCP/IP 协议的。所以每当客户端向服务端发起读/写请求，都必须建立连接。而当连接建立完后，Redis 并不是开启一个线程去处理客户端的请求，而是将其挂载文件符表上，然后使用 epoll 机制，每当有数据传到客户端时，都会通知主线程来进行处理，从而避免了线程创建、切换的开销，并且更简便的实现同步机制。&lt;/p&gt;
-&lt;h3 id=&#34;什么是-pipe-管道&#34;&gt;什么是 PIPE 管道？&lt;/h3&gt;
-&lt;p&gt;众所周知，Redis 是 C/S 架构，即客户端/服务器模型。&lt;/p&gt;
-&lt;p&gt;Redis 的执行命令过程为：发送命令 -&amp;gt; 命令在网络传输 -&amp;gt; 命令在服务器排队 -&amp;gt; 命令执行 -&amp;gt; 返回结果。&lt;/p&gt;
-&lt;p&gt;我们知道，CPU 的速度比网络的速度快得多，所以影响 Redis 性能的最大因素是网络。于是 Redis 为了减少网络传输的次数，会采用 pipeline 的批量处理机制，将多个无关命令打包一起，再发送出去，而不是一条条发送。&lt;/p&gt;
-&lt;h3 id=&#34;如何做内存上的优化&#34;&gt;如何做内存上的优化？&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;控制 key 的数量&lt;/li&gt;
-&lt;li&gt;缩减简直对象，降低 redis 内存使用最直接的方式就是缩减键和值的长度&lt;/li&gt;
-&lt;li&gt;编码优化，使用更好的数据类型&lt;/li&gt;
-&lt;/ul&gt;
-</description>
                 
                 
                 
