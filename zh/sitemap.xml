@@ -3,22 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://marin-man.github.io/categories/2022/</loc>
-    <lastmod>2022-02-28T17:53:42+08:00</lastmod>
+    <lastmod>2022-03-01T23:16:26+08:00</lastmod>
+  </url><url>
+    <loc>https://marin-man.github.io/algorithm/</loc>
+    <lastmod>2022-03-01T23:16:26+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/categories/</loc>
-    <lastmod>2022-02-28T17:53:42+08:00</lastmod>
-  </url><url>
-    <loc>https://marin-man.github.io/posts/network-ddos/</loc>
-    <lastmod>2022-02-28T17:53:42+08:00</lastmod>
-  </url><url>
-    <loc>https://marin-man.github.io/posts/</loc>
-    <lastmod>2022-02-28T17:53:42+08:00</lastmod>
+    <lastmod>2022-03-01T23:16:26+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/tags/</loc>
-    <lastmod>2022-02-28T17:53:42+08:00</lastmod>
+    <lastmod>2022-03-01T23:16:26+08:00</lastmod>
+  </url><url>
+    <loc>https://marin-man.github.io/algorithm/union-find/</loc>
+    <lastmod>2022-03-01T22:40:15+08:00</lastmod>
+  </url><url>
+    <loc>https://marin-man.github.io/algorithm/quick-pow/</loc>
+    <lastmod>2022-03-01T22:48:38+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/</loc>
-    <lastmod>2022-02-28T17:53:42+08:00</lastmod>
+    <lastmod>2022-03-01T23:16:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -29,6 +32,18 @@
                 hreflang="zh"
                 href="https://marin-man.github.io/"
                 />
+  </url><url>
+    <loc>https://marin-man.github.io/algorithm/matrix-quick-pow/</loc>
+    <lastmod>2022-03-01T23:16:26+08:00</lastmod>
+  </url><url>
+    <loc>https://marin-man.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2022-03-01T23:16:26+08:00</lastmod>
+  </url><url>
+    <loc>https://marin-man.github.io/posts/network-ddos/</loc>
+    <lastmod>2022-02-28T17:53:42+08:00</lastmod>
+  </url><url>
+    <loc>https://marin-man.github.io/posts/</loc>
+    <lastmod>2022-02-28T17:53:42+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/</loc>
     <lastmod>2022-02-28T17:53:42+08:00</lastmod>
