@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 04 Mar 2022 17:05:52 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 04 Mar 2022 17:17:54 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://marin-man.github.io/rss.xml" />
         
@@ -196,7 +196,7 @@
 &lt;li&gt;应用层：各种应用程序，包括 web 应用。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;每一层实现各自的功能和协议，并完成与相邻层的接口通信。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://b3logfile.com/file/2020/05/image-664dda43.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100&#34; alt=&#34;image.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../images/content/network.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;什么是五层模型&#34;&gt;什么是五层模型&lt;/h3&gt;
 &lt;p&gt;五层模型将网络分为物理层，数据链路层，网络层，应用层。&lt;/p&gt;
 &lt;h3 id=&#34;两者有什么关系呢&#34;&gt;两者有什么关系呢？&lt;/h3&gt;

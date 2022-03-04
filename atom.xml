@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">慢慢的个人博客</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2022-03-04T17:05:52&#43;08:00</updated>
+    <updated>2022-03-04T17:17:54&#43;08:00</updated>
     <id>https://marin-man.github.io/</id>
     <link rel="alternate" type="text/html" href="https://marin-man.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://marin-man.github.io/atom.xml" />
@@ -171,7 +171,7 @@
             <title type="text">网络架构</title>
             <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/network-based/" />
             <id>https://marin-man.github.io/posts/network-based/</id>
-            <updated>2022-02-20T20:15:06&#43;08:00</updated>
+            <updated>2022-03-04T17:16:01&#43;08:00</updated>
             <published>2022-02-20T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
@@ -193,7 +193,7 @@
 &lt;li&gt;应用层：各种应用程序，包括 web 应用。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;每一层实现各自的功能和协议，并完成与相邻层的接口通信。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://b3logfile.com/file/2020/05/image-664dda43.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100&#34; alt=&#34;image.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../images/content/network.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;什么是五层模型&#34;&gt;什么是五层模型&lt;/h3&gt;
 &lt;p&gt;五层模型将网络分为物理层，数据链路层，网络层，应用层。&lt;/p&gt;
 &lt;h3 id=&#34;两者有什么关系呢&#34;&gt;两者有什么关系呢？&lt;/h3&gt;
