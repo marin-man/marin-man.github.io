@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">慢慢的个人博客</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2022-03-05T14:44:32&#43;08:00</updated>
+    <updated>2022-03-18T10:05:48&#43;08:00</updated>
     <id>https://marin-man.github.io/</id>
     <link rel="alternate" type="text/html" href="https://marin-man.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://marin-man.github.io/atom.xml" />
@@ -16,6 +16,77 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.92.2">Hugo</generator>
+        <entry>
+            <title type="text">分布式事务</title>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/distributed-transaction/" />
+            <id>https://marin-man.github.io/posts/distributed-transaction/</id>
+            <updated>2022-03-13T17:33:04&#43;08:00</updated>
+            <published>2022-03-13T01:12:52&#43;08:00</published>
+            <author>
+                    <name>慢慢</name>
+                    <uri>https://marin-man.github.io/</uri>
+                    <email>marin-man@163.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">什么是事务 事务有四大特性：原子性、一致性、隔离性、持久性。 原子性：事务的指令要么都发生，要么都不发生 隔离性：不同的事务之间通过一定的策略来防止相互之间的干扰（有……</summary>
+            
+                <content type="html">&lt;h2 id=&#34;什么是事务&#34;&gt;什么是事务&lt;/h2&gt;
+&lt;p&gt;事务有四大特性：原子性、一致性、隔离性、持久性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;原子性：事务的指令要么都发生，要么都不发生&lt;/li&gt;
+&lt;li&gt;隔离性：不同的事务之间通过一定的策略来防止相互之间的干扰（有读未提交、读已提交、可重复读、串行化读四种）&lt;/li&gt;
+&lt;li&gt;一致性：指程序的执行要确保逻辑一致，例如 A 给 B 转 100，那么 A 一定要扣 100（不能只扣 50），B 一定要加 100（不能只加 50）&lt;/li&gt;
+&lt;li&gt;持久性：事务执行后的数据一定要持久到硬盘中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;什么是分布式事务&#34;&gt;什么是分布式事务&lt;/h2&gt;
+&lt;p&gt;分布式业务中，我们需要通过 RPC 去调用下游服务，使得整个服务即能解耦，又能完成业务场景。那么如何去保证自身调用多个下游服务后，每个下游服务都能成功或都回退掉，这就需要分布式事务来保证了。&lt;/p&gt;
+&lt;p&gt;常见的分布式事务有：2PC、3PC、TCC、本地消息表、MQ 事务消息、Sagas 事务模型等。&lt;/p&gt;
+&lt;h2 id=&#34;2pc&#34;&gt;2PC&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;参考：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1346890&#34;&gt;分布式事务数据库事务CAP定理BASE理论分布式事务案例&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+            
+            
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
+                        
+                    
+                
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://marin-man.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" term="分布式" label="分布式" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">DDos 攻击</title>
             <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/network-ddos/" />
@@ -789,94 +860,6 @@ sentinel auth-pass 主机名称 主机密码
 &lt;li&gt;释放 hash1 的空间。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;重映射的过长不是一次性的，因为这也会造成 redis 长时间阻塞，无法提供服务。它采用渐进式 rehash，每次处理客户端请求的时候，会先从 hash table1 中找到对应的桶，将桶里面的数据移动到 hash table2 中，这样就将 rehash 操作分散到多次请求中，避免耗时阻塞。&lt;/strong&gt;&lt;/p&gt;
-</content>
-            
-            
-            
-                
-                
-                
-                    
-                    
-                    
-                        
-                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
-                        
-                    
-                
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
-                            
-                        
-                    
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://marin-man.github.io/tags/redis/" term="Redis" label="Redis" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">Redis 存储</title>
-            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/redis-store/" />
-            <id>https://marin-man.github.io/posts/redis-store/</id>
-            <updated>2022-02-19T03:25:35&#43;08:00</updated>
-            <published>2022-02-19T01:12:52&#43;08:00</published>
-            <author>
-                    <name>慢慢</name>
-                    <uri>https://marin-man.github.io/</uri>
-                    <email>marin-man@163.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Redis 是如何持久化的？ Redis 有两种持久化方式： AOF：独立日志文件（主流方式），优先级较高，其是通过将命令写入缓存区，缓冲区再根据策略同步到硬盘，并且还会定期通过 fork() 子进……</summary>
-            
-                <content type="html">&lt;h3 id=&#34;redis-是如何持久化的&#34;&gt;Redis 是如何持久化的？&lt;/h3&gt;
-&lt;p&gt;Redis 有两种持久化方式：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;AOF：独立日志文件（主流方式），优先级较高，其是通过将命令写入缓存区，缓冲区再根据策略同步到硬盘，并且还会定期通过 fork() 子进程对 AOF 进行重写，优化存储空间。&lt;/li&gt;
-&lt;li&gt;RDB：采用数据快照的存储方式。通过 fork() 子进程，根据内存生成的临时快照，再存储到硬盘或对原有文件进行原子替换。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;AOF 和 RDB 的区别：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;AOF 文件比 RDB 更新频率高，优先使用 AOF 还原数据；&lt;/li&gt;
-&lt;li&gt;AOF 比 RDB 更安全也更大；&lt;/li&gt;
-&lt;li&gt;RDB 性能比 AOF 好；&lt;/li&gt;
-&lt;li&gt;如果两个都配置了，优先加载 AOF。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;什么是缓存击穿&#34;&gt;什么是缓存击穿？&lt;/h3&gt;
-&lt;p&gt;当缓存中的 key 失效时，且同时有很多请求打在 key 上，这个时候的这些请求都会访问到数据库，造成数据库压力变大。&lt;/p&gt;
-&lt;p&gt;解决方案：设置热点数据不过时，或采用锁（必要时是分布式锁）保证每个 key 只有一个线程去查询数据库。&lt;/p&gt;
-&lt;h3 id=&#34;什么是缓存穿透&#34;&gt;什么是缓存穿透？&lt;/h3&gt;
-&lt;p&gt;当很多请求都请求到一个更不不存在的数据时，由于缓存中也肯定没有此数据，所以所有请求都访问到了数据库。&lt;/p&gt;
-&lt;p&gt;解决方案：用空对象替代，或者采用布隆过滤器，记录下能找不到的值，下次请求时，如果没有就能直接得到。&lt;/p&gt;
-&lt;h3 id=&#34;什么是缓存雪崩&#34;&gt;什么是缓存雪崩？&lt;/h3&gt;
-&lt;p&gt;当缓存中大量的值同时失效，并且有很多请求都要请求这些值时，所有请求都会访问到数据库。&lt;/p&gt;
-&lt;p&gt;解决方案：通过缓存预热，搭建数据库集群分散压力，服务降级：直接不查数据库，返回默认值。&lt;/p&gt;
-&lt;h3 id=&#34;什么是布隆过滤器&#34;&gt;什么是布隆过滤器？&lt;/h3&gt;
-&lt;p&gt;布隆过滤器：用于大数据的排重，将每条数据不同 Hash 计算得到不同的指纹，将指纹映射到一个大的按位存储的空间。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;优点：空间和时间效率都很高。&lt;/li&gt;
-&lt;li&gt;缺点：随着存入的元素增加，误算率随之增大。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;使用范围：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;大数据去重：bitmap，Bloom Fiter&lt;/li&gt;
-&lt;li&gt;网络爬虫 Url 去重：BitSet + hash，Bloom Filter&lt;/li&gt;
-&lt;/ul&gt;
 </content>
             
             
