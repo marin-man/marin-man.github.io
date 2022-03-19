@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">慢慢的个人博客</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2022-03-18T10:05:48&#43;08:00</updated>
+    <updated>2022-03-20T03:36:41&#43;08:00</updated>
     <id>https://marin-man.github.io/</id>
     <link rel="alternate" type="text/html" href="https://marin-man.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://marin-man.github.io/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">分布式事务</title>
             <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/distributed-transaction/" />
             <id>https://marin-man.github.io/posts/distributed-transaction/</id>
-            <updated>2022-03-13T17:33:04&#43;08:00</updated>
+            <updated>2022-03-20T03:18:54&#43;08:00</updated>
             <published>2022-03-13T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
@@ -40,7 +40,35 @@
 &lt;h2 id=&#34;什么是分布式事务&#34;&gt;什么是分布式事务&lt;/h2&gt;
 &lt;p&gt;分布式业务中，我们需要通过 RPC 去调用下游服务，使得整个服务即能解耦，又能完成业务场景。那么如何去保证自身调用多个下游服务后，每个下游服务都能成功或都回退掉，这就需要分布式事务来保证了。&lt;/p&gt;
 &lt;p&gt;常见的分布式事务有：2PC、3PC、TCC、本地消息表、MQ 事务消息、Sagas 事务模型等。&lt;/p&gt;
-&lt;h2 id=&#34;2pc&#34;&gt;2PC&lt;/h2&gt;
+&lt;h2 id=&#34;2pc两阶段提交&#34;&gt;2PC（两阶段提交）&lt;/h2&gt;
+&lt;p&gt;两阶段提交使用 XA 协议，必须要依赖于数据库的事务，其原理如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一阶段：事务协调器要求每个涉及到事务的数据库预提交（precommit）此操作，并向协调器反馈是否可以提交&lt;/li&gt;
+&lt;li&gt;第二阶段：每个服务有返回可以提交，则协调器发送指令让所有服务提交，否则让所有服务回滚。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;优点：尽量保证数据的强一致性，代码编写也比较简单&lt;/p&gt;
+&lt;p&gt;缺点：依赖于数据库提供的事务方案，如果出现一些不基于数据库的功能，如短信发送等，则不能用此模型，同时其为了保证数据的一致性，牺牲了可用性。&lt;/p&gt;
+&lt;h2 id=&#34;3pc三阶段提交&#34;&gt;3PC（三阶段提交）&lt;/h2&gt;
+&lt;p&gt;三阶段提交和两阶段提交类似，只不过其添加了一层来判断各服务是否可用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一阶段：给各服务发送信号，查看各服务是否可用&lt;/li&gt;
+&lt;li&gt;第二阶段：跟 2PC 的第一阶段一样&lt;/li&gt;
+&lt;li&gt;第三阶段：跟 2PC 的第二阶段一样&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;优点：与 2PC 相比，先去判断各服务是否可用，从而避免了一些服务不可用，但其他服务还傻乎乎的去执行预提交指令，从而提高服务性能。&lt;/p&gt;
+&lt;p&gt;缺点：跟 2PC 一样。&lt;/p&gt;
+&lt;h2 id=&#34;tcc补偿事务&#34;&gt;TCC（补偿事务）&lt;/h2&gt;
+&lt;p&gt;TCC 核心思想：针对每个操作，都要注册一个与其对应的确认和补偿（撤销）操作，他分为三个阶段：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Try 阶段：对业务系统做检测以及资源预留&lt;/li&gt;
+&lt;li&gt;Confirm 阶段：对业务系统做确认提交，默认 Confirm 阶段是不会出错的（即 Try 成功，Confirm 成功），但也不能绝对保证不会出错&lt;/li&gt;
+&lt;li&gt;Cancel 阶段：在业务执行错误，需要回滚的状态下执行的业务取消，预留资源释放&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;举个例子，加入 Bob 要向 Smith 转账，思路大概是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;事务协调器调用远程接口，把 Smith 和 Bob 的账户冻结起来&lt;/li&gt;
+&lt;li&gt;在 Confirm 阶段，执行远程调用的转账操作，转账成功进行解冻&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;参考：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1346890&#34;&gt;分布式事务数据库事务CAP定理BASE理论分布式事务案例&lt;/a&gt;&lt;/li&gt;
