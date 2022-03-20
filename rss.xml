@@ -23,10 +23,118 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sun, 20 Mar 2022 03:36:41 &#43;0800</lastBuildDate>
+        <lastBuildDate>Sun, 20 Mar 2022 16:21:09 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://marin-man.github.io/rss.xml" />
         
+        
+            <item>
+                <title>图数据库</title>
+                <link>https://marin-man.github.io/posts/graph-database/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/graph-database/</guid>
+                <pubDate>Sun, 20 Mar 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;图数据库（Graph Database）是基于图论实现的一种新型 NoSQL 数据库。他的数据存储结构和数据的查询方式都是以图论为基础的。图论中图的基本元素为节点和边，在图数据库中对应的就是节点和关系。&lt;/p&gt;
+&lt;p&gt;在图数据库中，数据与数据之间的关系通过节点和关系构成一个图结构并在此结构上实现数据库的所有特性：对图数据对象进行创建、读取、更新、删除等操作，还有处理事务的能力和高可用性。&lt;/p&gt;
+&lt;p&gt;随着社交、电商、金融、零售、物联网等行业的快速发展，现实社会织起了了一张庞大而复杂的关系网，传统数据库很难处理关系运算。图数据库也随之应运而生。&lt;/p&gt;
+&lt;p&gt;图数据库有很多的使用场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;社交领域：Facebook, Twitter，Linkedin 用它来管理社交关系，实现好友推荐；&lt;/li&gt;
+&lt;li&gt;零售领域 ：eBay，沃尔玛使用它实现商品实时推荐，给买家更好的购物体验；&lt;/li&gt;
+&lt;li&gt;金融领域 ：摩根大通，花旗和瑞银等银行在用图数据库做风控处理；&lt;/li&gt;
+&lt;li&gt;电信领域 ：Verizon, Orange 和 AT&amp;amp;T 等电信公司依靠图数据库来管理网络，控制访问并支持客户 360；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;neo4j&#34;&gt;Neo4j&lt;/h2&gt;
+&lt;p&gt;Neo4j 是由 java 实现的开源 NoSQL 图书库。Neo4j 实现了专业数据库级别的图数据库模型的存储。&lt;/p&gt;
+&lt;p&gt;Neo4j 最初的设计动机是为了更好地描述实体之间地联系。现实生活中，每个实体都与周围地其他实体有着千丝万缕的关系，这些关系里存在着大量的潜在信息。但是传统关系型数据库更加注重刻画实体内部的属性，实体与实体之间的关系主要通过外键来实现。因此，在查询一个实体的关系时需要 join 操作，特别时深层次的关系查询需要大量的 join 操作，而 join 操作通常又非常耗时。随着现实世界中关系数据的急剧增加，导致关系型数据库已经主键地难以承载查询海量数据的深层次关系的操作。&lt;/p&gt;
+&lt;h3 id=&#34;1-neo4j-的数据类型&#34;&gt;1. Neo4j 的数据类型&lt;/h3&gt;
+&lt;p&gt;Neo4j 有两种数据类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;节点：节点类似于 E-R 图中的实体，每一个实体可以有零个或多个属性，这些属性以 key-value 的形式存在。属性没有特殊的类型要求，同时每个节点还具有相应的标签，用来区分不同类型的节点；&lt;/li&gt;
+&lt;li&gt;关系：关系也类似于 E-R 图中的边，一个关系有起始节点和终止节点（即边上连接的两个点），与节点一样，关系也能够有自己的属性和标签（指明这个是什么关系：朋友、亲戚等）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/content/neo4j.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;节点和关系分别采用固定长度存储，每个节点记录的长度为 9 字节，格式为：&lt;code&gt;Node:inUse+nextRelId+nextProId&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;inUse：1 表示该节点被正常使用，0 表示该节点被删除&lt;/li&gt;
+&lt;li&gt;nextRelId：该节点的下一个关系 ID&lt;/li&gt;
+&lt;li&gt;nextPropId：该节点的下一个属性 ID，属性 Id 通过链表的形式来关联，即有查询该节点下的所有属性，需要通过遍历下一指针的方式找出所有的属性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;关系的长度为 33 字节，格式为：&lt;code&gt;Relationship:inUse+firstNode+secondNode+relType+firstPrevRelId+firstNextRelId+secondPrevRelId+secondNextRelId+nextPropId&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;inUse：1 表示该节点被正常使用，0 表示该节点被删除&lt;/li&gt;
+&lt;li&gt;nextPropId：该节点的下一个属性 ID&lt;/li&gt;
+&lt;li&gt;relType：关系的类型&lt;/li&gt;
+&lt;li&gt;firstNode、secondNode：这个关系关联的两个节点，为起始节点和终止节点&lt;/li&gt;
+&lt;li&gt;firstPrevRelId、firstNextRelId：起始节点的前一个和后一个关系的 ID&lt;/li&gt;
+&lt;li&gt;secondPrevRelId、secondNextRelId：终止节点的前一个和后一个关系的 ID&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-neo4j-遍历方式&#34;&gt;2. Neo4j 遍历方式&lt;/h3&gt;
+&lt;p&gt;每个节点记录都包含一个指向该节点的第一个属性的指针和关系链中的第一个关系的指针。要读取一个节点的属性，从指向第一个属性的指针凯斯，遍历整个单向链表；要找到一个节点的关系，从指向的第一个关系开始，遍历整个双向链表，直到找到了感兴趣的关系&lt;/p&gt;
+&lt;p&gt;下面通过一个例子来说明 Neo4j 遍历关系和节点的详细过程。加入在 Neo4j 中存储了 A、B、C、D、E 5 个节点和 R1、R2、R3、R4、R5、R6、R7，7 个关系，它们之间的关系如下：
+&lt;img src=&#34;../../images/content/neo4j-1.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;假如遍历图中节点 B 的所有关系，只需要向 NODEB-NEXT 方向遍历，直到指向 NULL 为止，可以从下图中看出节点 B 的所有关系为 R1、R2、R3、R4、R5。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/content/neo4j-2.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;通过固定大小的存储记录和指针 ID，只要跟随指针就可以简单地实现遍历并且高速执行。要遍历一个节点到另一个节点的特定关系，在 Neo4j 中只需遍历几个指针，然后执行一些低成本的 ID 计算即可，这相较于全局索引的时间复杂度要低很多，这就是 Neo4j 实现高速遍历的秘密。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从一个给定节点定位关系链中第一个关系的位置，可以通过计算它在关系存储的偏移量来获得。跟获得节点存储位置的方法一样，使用关系 ID 乘以关系记录的固定大小即可找到关系在存储文件中的正确位置&lt;/li&gt;
+&lt;li&gt;在关系记录中，搜索第二个字段可以找到第二个节点的 ID，用节点记录大小乘以节点 ID 可以得到节点在存储中的正确位置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-neo4j-的存储优化&#34;&gt;3. Neo4j 的存储优化&lt;/h3&gt;
+&lt;p&gt;Neo4j 支持存储优化（压缩和内联存储属性值），对于某些短字符的属性可以直接存储在属性文件中。在实际操作中，像邮政编码、电话号码这样的短字符串属性就可以&lt;strong&gt;直接内联到属性存储文件，而不是单独地放在另一个动态存储区&lt;/strong&gt;，这就大幅减少 I/O 操作并且增大吞吐量，因为只有一个文件需要访问。&lt;/p&gt;
+&lt;p&gt;除了内联属性值，Neo4j 还可以对属性名称地空间严格维护，例如在社交网络中，有可能会有多个节点存在 first_name 和 last_name 这样的属性，如果将每个属性都逐字写入磁盘上就会造成存储浪费。因此，替代方案是属性名通过属性索引文件从属性存储中间接引用。&lt;strong&gt;属性索引允许所有具有相同名称的属性共享单个记录。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;即使现在的磁盘访问速度已经很快了，但是 CPU 访问磁盘仍然比 CPU 直接访问高速缓存要慢得多。因此，Neo4j 采用了缓存策略，保证那些经常访问的数据可以快速地被多次重复访问。Neo4j 高速缓存地页面置换算法是基于最不经常使用地页置换（LFU）。&lt;/p&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;《Neo4j 权威指南》-张帜&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jianshu.com/p/563eb4cde6dd?utm_campaign=haruki&#34;&gt;究竟什么是图数据库，它有哪些应用场景？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>分布式事务</title>
@@ -778,98 +886,6 @@ sentinel auth-pass 主机名称 主机密码
 &lt;p&gt;脑裂的解决方法：通过配置文件设置如果 Master 和 Slave 节点超过一定的时间无法联系，则 Master 拒绝写请求。&lt;/p&gt;
 &lt;h3 id=&#34;有什么方式可以实现数据一致呢&#34;&gt;有什么方式可以实现数据一致呢？&lt;/h3&gt;
 &lt;p&gt;由 CAP 理论得知，一致性和可用性并不能同时成立。为了达到数据的强一致性，我们必须先暂停下服务，等数据同步完再开启服务。以 RedLock （获取分布式锁）为例：一开始有 5 台 Master 节点（都是作为主节点），每当要获取锁时，需要通过轮询的方式从 5 台 Master 节点中获取锁（短暂的服务停顿，等数据同步），保证超过 1/2 的节点都能获取锁后才能继续执行，否则就会超时，获取锁失败。&lt;/p&gt;
-</description>
-                
-                
-                
-                    
-                    
-                    
-                        
-                        
-                        
-                            
-                                <category domain="https://marin-man.github.io/posts/">posts\</category>
-                            
-                        
-                    
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>Redis 基础</title>
-                <link>https://marin-man.github.io/posts/redis-based/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-based/</guid>
-                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
-                
-                    <author>marin-man@163.com (慢慢)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h3 id=&#34;什么是-redis&#34;&gt;什么是 Redis？&lt;/h3&gt;
-&lt;p&gt;Redis (Remote Dictionary Server 远程字典服务) 是一个开源的使用 ANSI C 语言编写，支持网络，可基于内存亦可持久化的日志型，key-value 数据库，提供多种语言的 API。&lt;/p&gt;
-&lt;h3 id=&#34;redis-有哪些常用功能&#34;&gt;Redis 有哪些常用功能？&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;数据缓存&lt;/li&gt;
-&lt;li&gt;数据持久化&lt;/li&gt;
-&lt;li&gt;支持事务&lt;/li&gt;
-&lt;li&gt;消息队列&lt;/li&gt;
-&lt;li&gt;分布式锁&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;小qredis-有哪些数据类型&#34;&gt;小Q：Redis 有哪些数据类型？&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;String：Redis 最基础的数据结构。&lt;/li&gt;
-&lt;li&gt;Hash：一种键值对的结构，其相对于字符串序列化结构更加直观，并且在更新操作上更加便捷。（底层是 ziplist 或 hashtable）&lt;/li&gt;
-&lt;li&gt;List：基于双向链表，可以充当栈和队列的角色。（底层是 ziplist 或 linkedlist）&lt;/li&gt;
-&lt;li&gt;Set：用来保证集合中不能有重复元素。（底层是 intset 或 hashtable）&lt;/li&gt;
-&lt;li&gt;zset：有序集合，类似于 treeSet，它保留了 set 不能有重复元素外，还将集合里的元素进行排序。（底层是 skiplist）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;小q什么是-ziplist&#34;&gt;小Q：什么是 ziplist？&lt;/h3&gt;
-&lt;p&gt;慢慢：ziplist 是由一系列特殊编码的，连续内存快组成的顺序存储结构，类似于数组。ziplist 在内存中是连续的，所以每次插入时，都会重新 malloc 空间，保证其连续性。一般情况下在数据量小的时候使用。&lt;/p&gt;
-&lt;h3 id=&#34;小qredis-有哪些使用场景&#34;&gt;小Q：Redis 有哪些使用场景？&lt;/h3&gt;
-&lt;p&gt;慢慢：redis 的应用很广泛。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;缓存：减轻 MYSQL 的查询压力，提升系统性能；&lt;/li&gt;
-&lt;li&gt;排行榜：利用 Redis 的 zset 实现；&lt;/li&gt;
-&lt;li&gt;计算器/限速器：利用 redis 中原子性的自增操作，我们可以统计类似用户点赞、用户访问数等。这类操作如果用 MYSQL，频繁的读写会带来相当大的压力，限速器比较典型的使用场景是限制某个用户访问某个 API 的频率，常用的有抢购时，防止用户疯狂点击开来不必要的压力；&lt;/li&gt;
-&lt;li&gt;好友关系：利用集合的一些命令，如交集，并集，差集等，可以方便实现一些共同好友，共同爱好之类的功能；&lt;/li&gt;
-&lt;li&gt;消息队列：除了 Redis 自身的发布/订阅模式，我们也可以利用 List 来实现一个队列机制。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;小qredis-如何解决-hash-冲突&#34;&gt;小Q：Redis 如何解决 hash 冲突？&lt;/h3&gt;
-&lt;p&gt;慢慢：Redis 采用链地址法解决 hash 冲突。即一个桶里面的元素使用链表保持。但当链表过长时就会导致性能变差。Redis 为了追求快，使用了两个全局哈希表，用于 rehash 操作。&lt;/p&gt;
-&lt;h3 id=&#34;小qrehash扩容-的具体操作&#34;&gt;小Q：rehash(扩容) 的具体操作&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;开始时默认使用 hash table1 保持键值对数据，hash table2 没有分配空间。&lt;/li&gt;
-&lt;li&gt;当数据越来越多，就会触发 rehash 操作。&lt;/li&gt;
-&lt;li&gt;给 hash table2 分配 hash table1 多一倍的空间。&lt;/li&gt;
-&lt;li&gt;将 hash1 的数据重映射到 hash2 中&lt;/li&gt;
-&lt;li&gt;释放 hash1 的空间。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;重映射的过长不是一次性的，因为这也会造成 redis 长时间阻塞，无法提供服务。它采用渐进式 rehash，每次处理客户端请求的时候，会先从 hash table1 中找到对应的桶，将桶里面的数据移动到 hash table2 中，这样就将 rehash 操作分散到多次请求中，避免耗时阻塞。&lt;/strong&gt;&lt;/p&gt;
 </description>
                 
                 
