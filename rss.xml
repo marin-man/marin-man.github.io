@@ -23,447 +23,10 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 30 Mar 2022 18:07:05 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 08 Apr 2022 14:48:24 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://marin-man.github.io/rss.xml" />
         
-        
-            <item>
-                <title>网易实习面经</title>
-                <link>https://marin-man.github.io/posts/interview-wangyi/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/posts/interview-wangyi/</guid>
-                <pubDate>Mon, 28 Mar 2022 01:12:52 &#43;0800</pubDate>
-                
-                    <author>marin-man@163.com (慢慢)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h2 id=&#34;网易互娱&#34;&gt;网易互娱&lt;/h2&gt;
-&lt;h3 id=&#34;1面-2022-03-23&#34;&gt;1面 (2022-03-23)&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;项目&lt;/li&gt;
-&lt;li&gt;用 Redis 做注册中心如何感知服务上线和下线&lt;/li&gt;
-&lt;li&gt;100 万请求同时从 Redis 取相同的 Key，如何优化&lt;/li&gt;
-&lt;li&gt;Redis 做分布式锁，获取锁时锁的状态改变后但响应消息丢失了，会造成什么问题，如何解决&lt;/li&gt;
-&lt;li&gt;Sleuth 的底层实现，信息采样的底层实现&lt;/li&gt;
-&lt;li&gt;文件上传漏洞攻击、如何防止&lt;/li&gt;
-&lt;li&gt;FastDFS 的架构实现&lt;/li&gt;
-&lt;li&gt;写一个文件备份的程序要考虑哪些&lt;/li&gt;
-&lt;li&gt;Linux 的常见命令&lt;/li&gt;
-&lt;li&gt;在不用 top 指令的情况下，如何通过写代码获取整台机器的负载情况&lt;/li&gt;
-&lt;li&gt;ThreadLocal&lt;/li&gt;
-&lt;li&gt;什么是 ORM 架构&lt;/li&gt;
-&lt;li&gt;为什么用 Mybatis，优点&lt;/li&gt;
-&lt;li&gt;多对多和一对多的表设计&lt;/li&gt;
-&lt;li&gt;Raft、Paxos&lt;/li&gt;
-&lt;li&gt;RPC 和 HTTP 的区别&lt;/li&gt;
-&lt;li&gt;服务端发送四段响应数据，如何保证这四段数据有序，不丢失。&lt;/li&gt;
-&lt;li&gt;负载均衡的实现&lt;/li&gt;
-&lt;li&gt;一致性哈希算法&lt;/li&gt;
-&lt;li&gt;多路复用、et 和 lt&lt;/li&gt;
-&lt;li&gt;docker 为什么能部署服务&lt;/li&gt;
-&lt;li&gt;docker 构建镜像的过程&lt;/li&gt;
-&lt;li&gt;聚簇索引和非聚簇索引，哪些采用了聚簇，哪些采用非聚簇&lt;/li&gt;
-&lt;li&gt;一段数据库代码，如何构建索引，为什么这么构建&lt;/li&gt;
-&lt;li&gt;什么是回表&lt;/li&gt;
-&lt;li&gt;如何快速的查询地址（模糊查询、倒排索引）&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-                
-                
-                
-                    
-                    
-                    
-                        
-                        
-                        
-                            
-                                <category domain="https://marin-man.github.io/posts/">posts\</category>
-                            
-                        
-                    
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/tags/%E9%9D%A2%E7%BB%8F/">面经</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>腾讯实习面经</title>
-                <link>https://marin-man.github.io/posts/interview-tencent/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/posts/interview-tencent/</guid>
-                <pubDate>Mon, 28 Mar 2022 01:12:52 &#43;0800</pubDate>
-                
-                    <author>marin-man@163.com (慢慢)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h2 id=&#34;北极光&#34;&gt;北极光&lt;/h2&gt;
-&lt;h3 id=&#34;1-面-2022-01-21&#34;&gt;1 面 (2022-01-21)&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;算法：
-&lt;ul&gt;
-&lt;li&gt;翻转链表&lt;/li&gt;
-&lt;li&gt;LRU&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;项目&lt;/li&gt;
-&lt;li&gt;redis 原子操作原理&lt;/li&gt;
-&lt;li&gt;mysql
-&lt;ul&gt;
-&lt;li&gt;执行引擎&lt;/li&gt;
-&lt;li&gt;Innodb 和 MySam 区别&lt;/li&gt;
-&lt;li&gt;聚簇索引和非聚簇索引的区别&lt;/li&gt;
-&lt;li&gt;行锁和表锁&lt;/li&gt;
-&lt;li&gt;mysql 会出现死锁吗，怎么检测死锁，怎么避免死锁&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FastDFS
-&lt;ul&gt;
-&lt;li&gt;如何实现&lt;/li&gt;
-&lt;li&gt;是否是一致性&lt;/li&gt;
-&lt;li&gt;负载均衡&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;RocketMQ
-&lt;ul&gt;
-&lt;li&gt;MQ 作用，RocketMQ 怎么实现&lt;/li&gt;
-&lt;li&gt;MQ 是否是消息安全的，如何实现&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;悲观锁和乐观锁&lt;/li&gt;
-&lt;li&gt;Synchronized 实现，锁升级&lt;/li&gt;
-&lt;li&gt;分布式一致性算法（Paxos、raft、zab）&lt;/li&gt;
-&lt;li&gt;多路复用（select、poll、epoll），et 和 lt 区别&lt;/li&gt;
-&lt;li&gt;redis 主从，gossip 协议，cluster，redlock&lt;/li&gt;
-&lt;li&gt;tcp
-&lt;ul&gt;
-&lt;li&gt;优点&lt;/li&gt;
-&lt;li&gt;如何保证可靠&lt;/li&gt;
-&lt;li&gt;什么时候需要重传&lt;/li&gt;
-&lt;li&gt;窗口的大小如何协商&lt;/li&gt;
-&lt;li&gt;三次握手和四次回收&lt;/li&gt;
-&lt;li&gt;msl 时间是多长&lt;/li&gt;
-&lt;li&gt;如何避免 time_wait 过多，过多如何解决&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;进程、线程、协程的区别&lt;/li&gt;
-&lt;li&gt;协程实现和线程的区别&lt;/li&gt;
-&lt;li&gt;虚函数&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;云架构&#34;&gt;云架构&lt;/h2&gt;
-&lt;h3 id=&#34;1面-2022-03-14&#34;&gt;1面 (2022-03-14)&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;Redis 可以用来做什么&lt;/li&gt;
-&lt;li&gt;单点登录&lt;/li&gt;
-&lt;li&gt;怎么防止 MQ 挂掉服务还可用&lt;/li&gt;
-&lt;li&gt;Raft 算法原理&lt;/li&gt;
-&lt;li&gt;Raft 怎么选主，冲突解决&lt;/li&gt;
-&lt;li&gt;多路复用&lt;/li&gt;
-&lt;li&gt;负载均衡实现&lt;/li&gt;
-&lt;li&gt;UTXO 模型&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;2面-2022-03-18&#34;&gt;2面 (2022-03-18)&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;项目架构&lt;/li&gt;
-&lt;li&gt;三次握手&lt;/li&gt;
-&lt;li&gt;网络四层模型&lt;/li&gt;
-&lt;li&gt;应用层有哪些协议&lt;/li&gt;
-&lt;li&gt;这次通话用到哪些协议&lt;/li&gt;
-&lt;li&gt;KCP 协议&lt;/li&gt;
-&lt;li&gt;路由选择协议 ，OSPF&lt;/li&gt;
-&lt;li&gt;DDOS 攻击&lt;/li&gt;
-&lt;li&gt;Sync 攻击&lt;/li&gt;
-&lt;li&gt;输入一个域名后经历的协议&lt;/li&gt;
-&lt;li&gt;排序算法&lt;/li&gt;
-&lt;li&gt;稳定性为什么重要&lt;/li&gt;
-&lt;li&gt;top 指令，前五行有哪些指标&lt;/li&gt;
-&lt;li&gt;什么是运营开发&lt;/li&gt;
-&lt;li&gt;是否考研&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-                
-                
-                
-                    
-                    
-                    
-                        
-                        
-                        
-                            
-                                <category domain="https://marin-man.github.io/posts/">posts\</category>
-                            
-                        
-                    
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/tags/%E9%9D%A2%E7%BB%8F/">面经</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>蚂蚁实习面经</title>
-                <link>https://marin-man.github.io/posts/interview-ali/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/posts/interview-ali/</guid>
-                <pubDate>Mon, 28 Mar 2022 01:12:52 &#43;0800</pubDate>
-                
-                    <author>marin-man@163.com (慢慢)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h2 id=&#34;1面-2022-03-09&#34;&gt;1面 (2022-03-09)&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;ACID&lt;/li&gt;
-&lt;li&gt;char 和 varchar，varchar(100) 和 varchar(1000)&lt;/li&gt;
-&lt;li&gt;索引设计思路&lt;/li&gt;
-&lt;li&gt;最左原则&lt;/li&gt;
-&lt;li&gt;OSI 七层模型 和 TCP/IP 四层模型&lt;/li&gt;
-&lt;li&gt;三次握手和四次挥手&lt;/li&gt;
-&lt;li&gt;为什么不能两次握手&lt;/li&gt;
-&lt;li&gt;为什么不能三次挥手&lt;/li&gt;
-&lt;li&gt;输入 url 的请求全过程&lt;/li&gt;
-&lt;li&gt;Http 响应码&lt;/li&gt;
-&lt;li&gt;Https 协议&lt;/li&gt;
-&lt;li&gt;CAP&lt;/li&gt;
-&lt;li&gt;Java 线程的状态&lt;/li&gt;
-&lt;li&gt;Hashmap&lt;/li&gt;
-&lt;li&gt;什么是线程安全&lt;/li&gt;
-&lt;li&gt;创建多个线程的方式&lt;/li&gt;
-&lt;li&gt;线程池的工作流程&lt;/li&gt;
-&lt;li&gt;Java 内存结构&lt;/li&gt;
-&lt;li&gt;Threadlocal&lt;/li&gt;
-&lt;li&gt;Java 继承几个父类，实现几个接口&lt;/li&gt;
-&lt;li&gt;Session 和 Cookie 的区别&lt;/li&gt;
-&lt;li&gt;IOC 和 AOP&lt;/li&gt;
-&lt;li&gt;BIO、NIO、AIO&lt;/li&gt;
-&lt;li&gt;为什么想去找实习&lt;/li&gt;
-&lt;li&gt;在实习的时候主要负责什么东西&lt;/li&gt;
-&lt;li&gt;在团队中是什么角色&lt;/li&gt;
-&lt;li&gt;团队是怎么分工的&lt;/li&gt;
-&lt;li&gt;在合作过程中有没有陷入困难&lt;/li&gt;
-&lt;li&gt;除了技术上，对你自身有什么成长&lt;/li&gt;
-&lt;li&gt;如果团队有成员退出，你会怎么处理&lt;/li&gt;
-&lt;li&gt;你在团队是偏执行还是偏决策&lt;/li&gt;
-&lt;li&gt;为什么会把自己逼得那么紧&lt;/li&gt;
-&lt;li&gt;什么原因让你有主动性去推进项目&lt;/li&gt;
-&lt;li&gt;怎么跟团队里的人沟通&lt;/li&gt;
-&lt;li&gt;你的交流别人的反馈，都会接收你的观点吗&lt;/li&gt;
-&lt;li&gt;有出现别人质疑你的观点吗，然后如何解决&lt;/li&gt;
-&lt;li&gt;如果到新的领域，你会怎么去学习&lt;/li&gt;
-&lt;li&gt;在团队中有遇到冲突吗，如何解决&lt;/li&gt;
-&lt;li&gt;你在大学生涯中遇到的最大困难，（除了技术上的）&lt;/li&gt;
-&lt;li&gt;同学如何评价你的优缺点&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;2-面-2022-03-12&#34;&gt;2 面 (2022-03-12)&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;ArrayList、LinkedList、vector&lt;/li&gt;
-&lt;li&gt;Hashmap、concurrentmap&lt;/li&gt;
-&lt;li&gt;乐观锁和悲观锁&lt;/li&gt;
-&lt;li&gt;什么样的场景适合乐观锁和悲观锁&lt;/li&gt;
-&lt;li&gt;死锁，避免死锁&lt;/li&gt;
-&lt;li&gt;i++ 是否是线程安全&lt;/li&gt;
-&lt;li&gt;线程池执行逻辑&lt;/li&gt;
-&lt;li&gt;分布式事务，TCC，confirm 超时怎么处理&lt;/li&gt;
-&lt;li&gt;数据库事务&lt;/li&gt;
-&lt;li&gt;内存管理机制&lt;/li&gt;
-&lt;li&gt;CAP 和 BASE 理论&lt;/li&gt;
-&lt;li&gt;BASE 理论的应用场景&lt;/li&gt;
-&lt;li&gt;一致性哈希算法&lt;/li&gt;
-&lt;li&gt;普通哈希和哈希环的差异&lt;/li&gt;
-&lt;li&gt;500 M 内存，10 G 文件，统计前 100 个出现次数最多的单词&lt;/li&gt;
-&lt;li&gt;出现连接重置的情况，背后有什么网络工作原理&lt;/li&gt;
-&lt;li&gt;域名污染&lt;/li&gt;
-&lt;li&gt;RocketMQ 宕机了导致消息发送不出去&lt;/li&gt;
-&lt;li&gt;Eureka 为什么保证可用性&lt;/li&gt;
-&lt;li&gt;Paxos 算法和 Raft 算法&lt;/li&gt;
-&lt;li&gt;Raft 怎么选主&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;3-面-2022-03-14&#34;&gt;3 面 (2022-03-14)&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;Apache Dolphinscheduler 简介&lt;/li&gt;
-&lt;li&gt;怎么评价你的功能的影响力和价值&lt;/li&gt;
-&lt;li&gt;怎么去接触这些项目，怎么规划自己的时间&lt;/li&gt;
-&lt;li&gt;你的代码量有多少&lt;/li&gt;
-&lt;li&gt;平时怎么学习&lt;/li&gt;
-&lt;li&gt;哪个项目最有压力，怎么解决&lt;/li&gt;
-&lt;li&gt;优点、缺点&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;hr-面-2022-03-22&#34;&gt;hr 面 (2022-03-22)&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;是否考虑读研&lt;/li&gt;
-&lt;li&gt;为什么考研比较卷&lt;/li&gt;
-&lt;li&gt;为找工作做了那些准备&lt;/li&gt;
-&lt;li&gt;如何学习的&lt;/li&gt;
-&lt;li&gt;如果给小白推荐的话，你推荐哪些视频，书籍，博客&lt;/li&gt;
-&lt;li&gt;美团的博客和阿里博客的区别&lt;/li&gt;
-&lt;li&gt;哪个学习经历让影响你最深&lt;/li&gt;
-&lt;li&gt;视频的哪一个内容让你印象深刻&lt;/li&gt;
-&lt;li&gt;是否在实践中用到了你看视频看到的这种技术&lt;/li&gt;
-&lt;li&gt;项目介绍&lt;/li&gt;
-&lt;li&gt;项目的目标，你是怎么去实现&lt;/li&gt;
-&lt;li&gt;项目的挑战&lt;/li&gt;
-&lt;li&gt;项目遇到的最大困难&lt;/li&gt;
-&lt;li&gt;描述一下自己&lt;/li&gt;
-&lt;li&gt;有面了多少家&lt;/li&gt;
-&lt;li&gt;为什么不打算读研&lt;/li&gt;
-&lt;li&gt;家庭情况&lt;/li&gt;
-&lt;li&gt;在工作中除了技能的提升，还想提升哪些方面的能力&lt;/li&gt;
-&lt;li&gt;你现在在提升这些能力上做了哪些努力&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-                
-                
-                
-                    
-                    
-                    
-                        
-                        
-                        
-                            
-                                <category domain="https://marin-man.github.io/posts/">posts\</category>
-                            
-                        
-                    
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/tags/%E9%9D%A2%E7%BB%8F/">面经</category>
-                                
-                            
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>顺丰实习面经</title>
-                <link>https://marin-man.github.io/posts/interview-shunfen/</link>
-                <guid isPermaLink="true">https://marin-man.github.io/posts/interview-shunfen/</guid>
-                <pubDate>Mon, 28 Mar 2022 01:12:52 &#43;0800</pubDate>
-                
-                    <author>marin-man@163.com (慢慢)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description>&lt;h2 id=&#34;顺丰科技&#34;&gt;顺丰科技&lt;/h2&gt;
-&lt;h3 id=&#34;1-面-2022-01-22&#34;&gt;1 面 (2022-01-22)&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;项目&lt;/li&gt;
-&lt;li&gt;FastDFS，如何保证性能和高可用&lt;/li&gt;
-&lt;li&gt;怎么学习新知识&lt;/li&gt;
-&lt;li&gt;接口如何测试&lt;/li&gt;
-&lt;li&gt;跨域问题&lt;/li&gt;
-&lt;li&gt;Redis 如何实现分布式锁&lt;/li&gt;
-&lt;li&gt;并发有哪些案例，如何解决&lt;/li&gt;
-&lt;li&gt;RocketMQ 如何保证消息不丢失，如何实现幂等&lt;/li&gt;
-&lt;li&gt;Restful&lt;/li&gt;
-&lt;li&gt;vue 了解多少&lt;/li&gt;
-&lt;li&gt;springcloud 是什么&lt;/li&gt;
-&lt;li&gt;服务治理&lt;/li&gt;
-&lt;li&gt;软件开发模式：敏捷开发，迭代开发&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-                
-                
-                
-                    
-                    
-                    
-                        
-                        
-                        
-                            
-                                <category domain="https://marin-man.github.io/posts/">posts\</category>
-                            
-                        
-                    
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://marin-man.github.io/tags/%E9%9D%A2%E7%BB%8F/">面经</category>
-                                
-                            
-                        
-                    
-                
-            </item>
         
             <item>
                 <title>图数据库</title>
@@ -958,6 +521,407 @@
                                 
                                 
                                     <category domain="https://marin-man.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Redis Cluster 集群</title>
+                <link>https://marin-man.github.io/posts/redis-cluster/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-cluster/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是-cluster-集群&#34;&gt;什么是 Cluster 集群？&lt;/h3&gt;
+&lt;p&gt;Cluster 集群是通过搭建多个主从节点，每对主从节点存储不同的数据，从而扩大存储容量，解决单线程写的瓶颈，增大吞吐量。&lt;/p&gt;
+&lt;p&gt;在不考虑哨兵的情况下，Cluster 至少需要三个 master 节点，每个 master 节点至少需要一个 slave。&lt;/p&gt;
+&lt;h3 id=&#34;cluster-的优缺点有哪些&#34;&gt;Cluster 的优缺点有哪些？&lt;/h3&gt;
+&lt;p&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无中心架构；&lt;/li&gt;
+&lt;li&gt;数据按照 slot 存储分布在多个节点，节点间数据共享，可动态调整数据分布；&lt;/li&gt;
+&lt;li&gt;可扩展：可线性扩展，动态删除节点。&lt;/li&gt;
+&lt;li&gt;高可用：部分节点不可用时，集群仍然可用，并可以通过增加 slave，哨兵等做为数据副本，实现故障自动转移；&lt;/li&gt;
+&lt;li&gt;降低运维成本，提高系统的扩展性和可用性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可能不支持多个 key 的混合计算。例如两个 key 分布在不同节点上，就很难只用 redis 对其求交集等。&lt;/li&gt;
+&lt;li&gt;分库扩容可能比较复杂。&lt;/li&gt;
+&lt;li&gt;client 实现复杂，需要实现 smart client，先得到 key 的具体位置，并且也要定时更新。
+数据通过异步复制，不保证数据的强一致性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;如何搭建-cluster-集群&#34;&gt;如何搭建 Cluster 集群？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;所有的节点的 redis.conf 文件都添加 &lt;code&gt;cluster-enabled yes&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;启动所有节点，同时选择一个节点输入命令 &lt;code&gt;redis-cli --cluster create 节点1IP:端口 节点2IP:端口 …… --cluster-replicas 1&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;如何去得知-key-存储在哪个节点分区&#34;&gt;如何去得知 Key 存储在哪个节点（分区）？&lt;/h3&gt;
+&lt;p&gt;现在有三种常用的分区方法：节点取余分区，一致性哈希分区，虚拟槽分区。&lt;/p&gt;
+&lt;h4 id=&#34;1-节点取余分区&#34;&gt;1. 节点取余分区&lt;/h4&gt;
+&lt;p&gt;对每个 key 进行取余，并根据余数放到不同的分区中。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：计算简单&lt;/li&gt;
+&lt;li&gt;缺点：当要扩容时，需要把所有数据重新取余一遍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-一致性哈希分区&#34;&gt;2. 一致性哈希分区&lt;/h4&gt;
+&lt;p&gt;运用哈希环（创建一个大小为 2&lt;sup&gt;32&lt;/sup&gt;-1 的环形数组），每个节点都选择数组中的一个点。当添加 key 时，把 key 也放到数组上面，同时根据顺时针的方式，找到离得最近的节点，存到这个节点里。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：增加或减少节点很容易：当增加节点时，在数组中选择一个位置，并且逆时针将与上一个节点之间的数据都转移到此节点上。&lt;/li&gt;
+&lt;li&gt;缺点：数组初始时需要很大，也可以采用链地址法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-虚拟槽分区&#34;&gt;3. 虚拟槽分区&lt;/h4&gt;
+&lt;p&gt;预设虚拟槽，槽的大小比节点的大小小得多（即一个节点上有多个虚拟槽），将数据映射到虚拟槽上，将虚拟槽映射到节点上。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：这是 redis 默认的分区方式，扩容或缩容时是以槽为单位，可以自身控制扩容、缩容需要的代价&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Redis 主从集群</title>
+                <link>https://marin-man.github.io/posts/redis-master/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-master/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是集群&#34;&gt;什么是集群&lt;/h3&gt;
+&lt;p&gt;为了系统的可靠性或扩大系统资源，我们一般会通过多台机器来共享资源、分担费用、共用信道设备及服务等。&lt;/p&gt;
+&lt;h3 id=&#34;redis-有哪几种集群模式&#34;&gt;Redis 有哪几种集群模式&lt;/h3&gt;
+&lt;p&gt;Redis 场景的集群模式有：主从模式，哨兵模式，cluster 模式。&lt;/p&gt;
+&lt;h3 id=&#34;什么是主从集群&#34;&gt;什么是主从集群&lt;/h3&gt;
+&lt;p&gt;通过搭建多台 redis 主机，两者间存储相同的数据，从而分散单主机下的请求压力。&lt;/p&gt;
+&lt;p&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;高可靠性：一方面采用主从机架构，当主机宕机时，能手动将从机顶替主机，防止系统崩溃。另一方面，多台机器都会进行相应的数据持久化操作，从而备份多份数据。&lt;/li&gt;
+&lt;li&gt;读写分离策略：从节点可以扩展主库节点的读能力，有效应对大并发量的读操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;故障恢复发杂：因为没有哨兵去检测主机从机之间的状态并处理故障转移，所以我们得要去开发监控程序，当主机宕机时能及时通知我们并手动去切换主从节点。&lt;/li&gt;
+&lt;li&gt;主库的写能力收到单机的限制。&lt;/li&gt;
+&lt;li&gt;系统的存储能力收到单机的限制。&lt;/li&gt;
+&lt;li&gt;主从同步时是通过网络进行传输，难免会出现一些错误，即使有了很多的检错手段，但还是会出现个节点间数据不一致的问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;怎么实现主从复制&#34;&gt;怎么实现主从复制&lt;/h3&gt;
+&lt;h4 id=&#34;理论部分&#34;&gt;理论部分&lt;/h4&gt;
+&lt;p&gt;主从复制有两个阶段：初始化阶段和运行阶段。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;初始化阶段：
+&lt;ul&gt;
+&lt;li&gt;从服务器启动；&lt;/li&gt;
+&lt;li&gt;从服务器连接到主机，发送 SYNC 命令；&lt;/li&gt;
+&lt;li&gt;主服务器收到 SYNC 命令后，开始执行 BGSAVE 命令，保持当前快照并生成 RDB 文件，同时在此过程中用缓存区记录下这段时间的执行命令，防止数据丢失；&lt;/li&gt;
+&lt;li&gt;主服务器执行完 BGSAVE 后，向从服务器发送快照文件，并且也在缓存区记录下这个时期执行的命令；&lt;/li&gt;
+&lt;li&gt;从服务器收到快照文件后，丢失所有旧数据，重写载入收到的快照；&lt;/li&gt;
+&lt;li&gt;主服务器快照发送完毕后旧向从服务器发送缓存区里记录下的命令；&lt;/li&gt;
+&lt;li&gt;从服务器完成快照的输入，开始接收命令请求，执行来自主服务器缓冲区的写命令。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;运行阶段：
+&lt;ul&gt;
+&lt;li&gt;主服务器每执行一个命令，就会向从服务器发送相同的命令，这个也叫做增量更新。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;实操部分&#34;&gt;实操部分&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span class=&#34;l&#34;&gt;// 主机 `redis.conf` 文件&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;role&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;master    // 角色&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;connected_slaves&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;     &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;// 从服务器的个数 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span class=&#34;l&#34;&gt;// 从机 `redis.conf` 文件&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;role&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;slave&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;replicaof 主机ip 主机port&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;如果传输的过程中数据丢失了redis-会怎样保证数据的可靠性&#34;&gt;如果传输的过程中数据丢失了，Redis 会怎样保证数据的可靠性？&lt;/h3&gt;
+&lt;p&gt;从 Redis2.8 开始，就支持了主从复制的断点续传。master 和 slave 都保存一个 replica offset，里面记录了当前数据的偏移量。slave 会定期的向 master 发送此偏移量，并和自己的偏移量比较，从而知道了 slave 是否还差一些数据，并将数据发送过去。&lt;/p&gt;
+&lt;p&gt;同理，当传输过程中数据丢失时，slave 也只保存了丢失前的偏移量，等一段时间后会自动跟 master 比较当前的偏移量。&lt;/p&gt;
+&lt;h3 id=&#34;在主从模式下明明一个键过期了为什么还可能会读到&#34;&gt;在主从模式下，明明一个键过期了，为什么还可能会读到？&lt;/h3&gt;
+&lt;p&gt;因为 Redis 的从库是无法主从区删除已过期的 key。它的实现策略是通过主库去判断该 key 是否过期，若过期，则删除并且向 Slave 发出删除 key 的指令。又由于 Redis 的主库键过期是采用惰性删除的策略（前文有讲），所以，当读从库时，并不会触发过期判断的策略，从而不删除键。&lt;/p&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;p&gt;编写一段程序，定期通过 Scan 扫库。扫库的作用是访问 master 里所有的 key，这样就会触发所有 key 的过期检测，从而删除过期的 key。但这样也会极大降低性能。
+使用 Redis3.2 以上的版本，因为其新增了一个特性来解决这个问题。增加了 key 是否过期以及对主从库的判断，如果 key 已过期，当前访问的Master则返回 null；当前访问的是从库，且执行的是只读命令也返回 null。源码如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8zMTMzMjA5LTQ3YTNmMzI0NWI5Y2VkMzM_aW1hZ2VNb2dyMi9hdXRvLW9yaWVudC9zdHJpcHxpbWFnZVZpZXcyLzIvdy82NDAvZm9ybWF0L3dlYnA?x-oss-process=image/format,png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Redis 事务</title>
+                <link>https://marin-man.github.io/posts/redis-transtation/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-transtation/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是事务&#34;&gt;什么是事务？&lt;/h3&gt;
+&lt;p&gt;事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。事务有四个非常重要的特点：ACID。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A(原子性)：原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。&lt;/li&gt;
+&lt;li&gt;C(一致性)：事务前后数据的完整性必须保持一致。&lt;/li&gt;
+&lt;li&gt;I(隔离性)：多个事务并发执行时，一个事务的执行不应影响其他事务的执行。&lt;/li&gt;
+&lt;li&gt;D(持久性)：持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;reids-事务的概念&#34;&gt;Reids 事务的概念&lt;/h3&gt;
+&lt;p&gt;Redis 事务的本质是通过 MULTI, EXEC, WATCH 等一组命令的集合。Redis 事务的执行过程为：开启事务 -&amp;gt; 命令队列 -&amp;gt; 序列化 -&amp;gt; 串行执行。&lt;/p&gt;
+&lt;p&gt;串行执行即若出错，则后面停止，前面的并没有进行回滚。所以 Redis 默认是不支持事务（没有原子性）操作的。&lt;/p&gt;
+&lt;h3 id=&#34;为什么-redis-不支持回滚操作呢&#34;&gt;为什么 Redis 不支持回滚操作呢？&lt;/h3&gt;
+&lt;p&gt;Redis 运行指令是单线程的，同时 Redis 保证了一个事务的所有指令有序执行，即不会插入其他的语句，保证了事务的原子性。所以不会出现不同进行同时修改的问题，所以在程序员不写错代码的情况下是不会出错的，不需要回滚机制。&lt;/p&gt;
+&lt;h3 id=&#34;redis-能保证隔离性吗&#34;&gt;Redis 能保证隔离性吗？&lt;/h3&gt;
+&lt;p&gt;慢慢：由于 Redis 是单进程程序，并且它保证在执行事务时不会对事务进行终端，所以不会产生别的线程干扰事务执行的情况，所以保证隔离性。&lt;/p&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Redis 哨兵集群</title>
+                <link>https://marin-man.github.io/posts/redis-sentinel/</link>
+                <guid isPermaLink="true">https://marin-man.github.io/posts/redis-sentinel/</guid>
+                <pubDate>Sat, 19 Feb 2022 01:12:52 &#43;0800</pubDate>
+                
+                    <author>marin-man@163.com (慢慢)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description>&lt;h3 id=&#34;什么是哨兵&#34;&gt;什么是哨兵？&lt;/h3&gt;
+&lt;p&gt;我们知道，在主从集群的基础上，如果主机宕机的话，我们就得要手动去将从机升级为主机，使系统正常运行。而哨兵就是为了代替我们人的存在，它也是一个独立的进程，不做任何具体的业务，只是来监视主从机的运行状况，并在出现故障时自动处理。&lt;/p&gt;
+&lt;h3 id=&#34;为什么要有哨兵集群呢&#34;&gt;为什么要有哨兵集群呢？&lt;/h3&gt;
+&lt;p&gt;一个哨兵的情况下，如果哨兵和主机都挂了，那么整个系统就不可用了。为了系统更加高可用，避免出现哨兵宕机，主节点同时宕机而使系统崩溃的情况。&lt;/p&gt;
+&lt;h3 id=&#34;哨兵是怎么工作的&#34;&gt;哨兵是怎么工作的？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;每个哨兵都会定时向它所知的 master，slave 以及其他的哨兵发送一条 ping 命令；&lt;/li&gt;
+&lt;li&gt;每个节点收到 ping 命令后都会回复 pong；&lt;/li&gt;
+&lt;li&gt;如果一个节点距离最后一次回复 pong 的时间超过了 down-after-milliseconds 所规定的值，那么这个实例就会被当前的哨兵标记为主观下线；&lt;/li&gt;
+&lt;li&gt;如果一个 master 被标记为主观下线，则哨兵就会以更加短的时间发送信息给 master 以确保真正下线；&lt;/li&gt;
+&lt;li&gt;当有了足够数量的哨兵在指定的时间范围内确认 master 的确进入了主观下线状态，则 master 就会转为客观下线状态；&lt;/li&gt;
+&lt;li&gt;当 Master 被所有哨兵标记为客观下线，哨兵向所有的 Slave 发送 INFO 命令，重新选举新的 master；&lt;/li&gt;
+&lt;li&gt;如果没有足够数量的哨兵同意 master 已下线，并且 master 重新向哨兵发送 ping 回复命令，master 的主观下线状态就会被移除。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哨兵集群部署简单；&lt;/li&gt;
+&lt;li&gt;能够解决 redis 主从模式下的高可用切换问题；&lt;/li&gt;
+&lt;li&gt;方便实现 redis 数据节点的线性扩展，轻松突破 reids 单线程瓶颈；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;相对于主从模式要更复杂；&lt;/li&gt;
+&lt;li&gt;开启进程会消耗一定的资源；&lt;/li&gt;
+&lt;li&gt;哨兵主要针对 redis 主节点的高可用切换，对 redis 的数据节点做失败判断，分为主观下线和客观线性，并不执行故障转移；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;redis-是如何选举主节点的&#34;&gt;Redis 是如何选举主节点的？&lt;/h3&gt;
+&lt;p&gt;Redis 选举主节点需要两个步骤，第一个步从哨兵节点中选择一个 Leader，第二步是让这个 leader 在执行故障转移操作。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;选举 Leader：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哨兵发现 master 节点下线，便把他标记为主观下线，并通知其他节点也对此 master 进行检查。&lt;/li&gt;
+&lt;li&gt;哨兵多次判断此 master 为主观下线后，就向其他哨兵广播一条信息，请求同意自己作为 Leader。其他节点收到信息后，如果在此之前没有发送过同意，就能够发送同意（即每个哨兵只能同意一个节点）。&lt;/li&gt;
+&lt;li&gt;当某个节点收到的同意数量超过一半时，就升级为 leader，否则再进行一轮选举。（这种选举算法为 Raft 算法）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;故障转移&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Leader 选举完成后就执行故障转移操作：每个 slave 节点都将自己的优先级，offest，runid 发送给 Leader，Leader 根据这三者的顺序选举出最大的节点，将其升级为 master 节点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;具体实践&#34;&gt;具体实践&lt;/h3&gt;
+&lt;p&gt;在配置好主从的情况下，配置哨兵节点：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;// sentinel.conf
+sentinel monitor 主机名称 主机ip 主机端口 监听个数
+sentinel auth-pass 主机名称 主机密码
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;虽然我们在 sentinel 的配置文件中只配置了主节点，没有配置从节点，但哨兵会去主节点中获取从节点的信息，从而实现整个 Redis 的监控。&lt;/p&gt;
+&lt;h3 id=&#34;为什么哨兵集群必须部署两个以上的节点呢&#34;&gt;为什么哨兵集群必须部署两个以上的节点呢？&lt;/h3&gt;
+&lt;p&gt;假设只有两个哨兵节点，如果 Master 和哨兵1 都宕机了，此时哨兵2知道 Master 宕机，对其进行主观下线，并且想升级为 Leader，但没有其他节点响应，所以 Master 就一直不被切换。&lt;/p&gt;
+&lt;h3 id=&#34;在哨兵模式下还会不会出现数据丢失的问题&#34;&gt;在哨兵模式下，还会不会出现数据丢失的问题？&lt;/h3&gt;
+&lt;p&gt;哨兵只是为了保证在 Master 挂掉的时候能快速选举出新的 Master，从而保证服务的高可用；并不会处理数据同步间出现的问题。&lt;/p&gt;
+&lt;p&gt;数据丢失主要有两方面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;异步复制导致数据丢失：由于 Master -&amp;gt; Slave 的复制是异步的，如果 Master 还没复制数据到 Slave 就宕机了，并且哨兵把 Slave 选举为 Master，那么这部分数据就丢失了。&lt;/li&gt;
+&lt;li&gt;脑裂导致数据丢失：当某个 Master 突然脱离了正常网络（不是宕机，可能是部分网络瘫痪），并且哨兵集群认为它宕机了，重新选举 Master。但这个时候旧 Master 还能顺利的接收客户端发送的数据，而哨兵此时维护新 Master。当旧 Master 网络回复后，则会同步新 Master 的数据，导致数据丢失。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;脑裂的解决方法：通过配置文件设置如果 Master 和 Slave 节点超过一定的时间无法联系，则 Master 拒绝写请求。&lt;/p&gt;
+&lt;h3 id=&#34;有什么方式可以实现数据一致呢&#34;&gt;有什么方式可以实现数据一致呢？&lt;/h3&gt;
+&lt;p&gt;由 CAP 理论得知，一致性和可用性并不能同时成立。为了达到数据的强一致性，我们必须先暂停下服务，等数据同步完再开启服务。以 RedLock （获取分布式锁）为例：一开始有 5 台 Master 节点（都是作为主节点），每当要获取锁时，需要通过轮询的方式从 5 台 Master 节点中获取锁（短暂的服务停顿，等数据同步），保证超过 1/2 的节点都能获取锁后才能继续执行，否则就会超时，获取锁失败。&lt;/p&gt;
+</description>
+                
+                
+                
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                                <category domain="https://marin-man.github.io/posts/">posts\</category>
+                            
+                        
+                    
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/categories/2022/">2022</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://marin-man.github.io/tags/redis/">Redis</category>
                                 
                             
                         
