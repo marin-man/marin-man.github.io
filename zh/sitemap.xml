@@ -3,25 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://marin-man.github.io/categories/2022/</loc>
-    <lastmod>2022-05-05T10:37:25+08:00</lastmod>
+    <lastmod>2022-05-07T15:50:21+08:00</lastmod>
+  </url><url>
+    <loc>https://marin-man.github.io/algorithm/</loc>
+    <lastmod>2022-05-07T15:36:12+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/categories/</loc>
-    <lastmod>2022-05-05T10:37:25+08:00</lastmod>
+    <lastmod>2022-05-07T15:50:21+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/tags/io%E6%A8%A1%E5%9E%8B/</loc>
-    <lastmod>2022-05-05T10:37:25+08:00</lastmod>
-  </url><url>
-    <loc>https://marin-man.github.io/posts/nio/</loc>
-    <lastmod>2022-05-05T10:37:25+08:00</lastmod>
+    <lastmod>2022-05-07T15:50:21+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/posts/</loc>
-    <lastmod>2022-05-05T10:37:25+08:00</lastmod>
+    <lastmod>2022-05-07T15:50:21+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/tags/</loc>
-    <lastmod>2022-05-05T10:37:25+08:00</lastmod>
+    <lastmod>2022-05-07T15:50:21+08:00</lastmod>
+  </url><url>
+    <loc>https://marin-man.github.io/posts/multiplexing/</loc>
+    <lastmod>2022-05-07T15:50:21+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/</loc>
-    <lastmod>2022-05-05T10:37:25+08:00</lastmod>
+    <lastmod>2022-05-07T15:50:21+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -32,6 +35,15 @@
                 hreflang="zh"
                 href="https://marin-man.github.io/"
                 />
+  </url><url>
+    <loc>https://marin-man.github.io/algorithm/minimum-genetic-mutation/</loc>
+    <lastmod>2022-05-07T15:36:12+08:00</lastmod>
+  </url><url>
+    <loc>https://marin-man.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2022-05-07T15:36:12+08:00</lastmod>
+  </url><url>
+    <loc>https://marin-man.github.io/posts/nio/</loc>
+    <lastmod>2022-05-05T10:37:25+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/posts/enhance-bio/</loc>
     <lastmod>2022-05-05T10:36:47+08:00</lastmod>
@@ -48,17 +60,11 @@
     <loc>https://marin-man.github.io/tags/%E9%9D%A2%E7%BB%8F/</loc>
     <lastmod>2022-04-22T10:28:51+08:00</lastmod>
   </url><url>
-    <loc>https://marin-man.github.io/algorithm/</loc>
-    <lastmod>2022-04-12T14:56:11+08:00</lastmod>
-  </url><url>
     <loc>https://marin-man.github.io/algorithm/find-all-duplicates-in-an-array/</loc>
     <lastmod>2022-04-12T14:56:11+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/algorithm/rand10-to-rand7/</loc>
     <lastmod>2022-04-12T11:39:46+08:00</lastmod>
-  </url><url>
-    <loc>https://marin-man.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2022-04-12T14:56:11+08:00</lastmod>
   </url><url>
     <loc>https://marin-man.github.io/algorithm/different-ways-to-add-parentheses/</loc>
     <lastmod>2022-04-11T16:51:47+08:00</lastmod>
