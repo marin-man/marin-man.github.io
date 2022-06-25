@@ -4,23 +4,256 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">慢慢的个人博客</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2022-05-22T10:13:28&#43;08:00</updated>
-    <id>https:marin-man.github.io/</id>
-    <link rel="alternate" type="text/html" href="https:marin-man.github.io/" />
-    <link rel="self" type="application/atom&#43;xml" href="https:marin-man.github.io/atom.xml" />
+    <updated>2022-06-25T23:27:52&#43;08:00</updated>
+    <id>https://marin-man.github.io/</id>
+    <link rel="alternate" type="text/html" href="https://marin-man.github.io/" />
+    <link rel="self" type="application/atom&#43;xml" href="https://marin-man.github.io/atom.xml" />
     <author>
             <name>慢慢</name>
-            <uri>https:marin-man.github.io/</uri>
+            <uri>https://marin-man.github.io/</uri>
             
                 <email>marin-man@163.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.92.2">Hugo</generator>
         <entry>
+            <title type="text">动态链接</title>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/dynamical-linking-library/" />
+            <id>https://marin-man.github.io/posts/dynamical-linking-library/</id>
+            <updated>2022-06-25T23:24:03&#43;08:00</updated>
+            <published>2022-06-23T01:12:52&#43;08:00</published>
+            <author>
+                    <name>慢慢</name>
+                    <uri>https://marin-man.github.io/</uri>
+                    <email>marin-man@163.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">North of the south the choice of a person long trip Can put down the shadown, put down the fireworks Everything was cool make a cloud, to June. 静态链接简述 静态链接是由链接器在链接时将库/模块的内容加入到可执行程序中。静态链接使得不同的程序开发者和……</summary>
+            
+                <content type="html">&lt;p color=&#34;yellow&#34; style=&#34;text-align:center&#34;&gt;
+&lt;em&gt;North of the south&lt;br&gt;
+the choice of a person long trip&lt;br&gt;
+Can put down the shadown, put down the fireworks&lt;br&gt;
+Everything was cool&lt;br&gt;
+make a cloud, to June.
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;静态链接简述&#34;&gt;静态链接简述&lt;/h2&gt;
+&lt;p&gt;静态链接是由链接器在链接时将库/模块的内容加入到可执行程序中。静态链接使得不同的程序开发者和部门能够相对独立开发和测试自己的程序模块，从某种意义上来讲大大促进了程序开发的效率，原先限制程序的规模也随之扩大。但是慢慢地，静态链接的诸多缺点也暴露出来，比如浪费内存和磁盘空间，模块更新困难等问题。
+想象一下每个程序内部除了都保留 &lt;code&gt;print()&lt;/code&gt;，&lt;code&gt;scanf()&lt;/code&gt; 等公用函数外，还引用了很多的其他库函数。在现代的程序中，一个普通程序可能用到 1MB 的静态库，那么如果我们的机器中运行 100 个同样的程序，就要重复近 99 MB 的内存，高达 99% 的资源浪费率。&lt;/p&gt;
+&lt;p&gt;空间浪费是静态链接的一个问题，另一个问题是静态链接对程序的更新、部署和发布也带来很多的麻烦。如果一个程序中有任何模块更新，那么整个程序就必须重新链接，应该更新的模块（规模变大）可能导致源程序后续链接的地址混乱覆盖。&lt;/p&gt;
+&lt;h2 id=&#34;动态链接&#34;&gt;动态链接&lt;/h2&gt;
+&lt;h3 id=&#34;1-基本原理&#34;&gt;1. 基本原理&lt;/h3&gt;
+&lt;p&gt;要解决空间浪费和更新困难的办法就是把程序的模块相互分割开来，不再将他们静态地链接在一起，而是等到程序运行时才进行链接，这就是动态链接的基本思想。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;程序从源码到运行经过：预处理、编译、汇编、链接、运行这些阶段；&lt;/li&gt;
+&lt;li&gt;假设我们在汇编后有 &lt;code&gt;Programe1.o&lt;/code&gt;、&lt;code&gt;Programe2.o&lt;/code&gt;、&lt;code&gt;lib.o&lt;/code&gt; 三个目标文件，&lt;code&gt;Programe1&lt;/code&gt; 和 &lt;code&gt;Programe2&lt;/code&gt; 都引用到了 &lt;code&gt;lib&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;执行 &lt;code&gt;Programe1&lt;/code&gt; 时，在连接阶段，动态链接器读取 &lt;code&gt;Programe1.o&lt;/code&gt; 生成可执行文件，同时对于需要被链接的模块 &lt;code&gt;lib&lt;/code&gt; 通过符号的方式代替，并不真正链接。&lt;/li&gt;
+&lt;li&gt;在运行 &lt;code&gt;Programe1&lt;/code&gt; 时，发现需要需要引用 &lt;code&gt;lib&lt;/code&gt;，会先判断内存中是否有载入此模块，没有则载入，再通过符号解析和重定位指向真实的 &lt;code&gt;lib&lt;/code&gt; 地址。&lt;/li&gt;
+&lt;li&gt;执行 &lt;code&gt;Programe2&lt;/code&gt; 也同理，只不过 lib 已经载入内存了，并不需要重新载入，直接复用此模块。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当我们要升级程序库或共享模块时，只要将旧的目标文件覆盖掉，同时重启程序（用到热加载时可以不用重启），不需要再链接为可执行文件，新版本的目标文件就被自动装载到内存中并且链接起来，完成程序升级。&lt;/p&gt;
+&lt;p&gt;动态链接还有一个特点就是程序在运行时可以动态地选择加载各种程序模块，这个优点后来被人们用来制作插件。比如某个公司开发了某个产品，它按照一定地规则指
+定好程序的接口，其他开发者就可以按照这种接口来编写符合要求的动态链接文件，该产品就可以动态地载入各种由第三方开发的模块，在程序运行时动态地链接，实现程序功能的扩展。&lt;/p&gt;
+&lt;h3 id=&#34;2-基本实现&#34;&gt;2. 基本实现&lt;/h3&gt;
+&lt;p&gt;动态链接涉及运行时的链接及多个文件的装载，必须有操作系统的支持，因为动态链接的情况下，进程的虚拟地址空间的分布、存储管理、内存共享、进程线程等机制要比静态链接更为复杂。在 Linux 系统中，动态链接文件被称为动态共享对象（DSO，Dynamic Shared Objects），一般以 &lt;code&gt;.so&lt;/code&gt; 为扩展名，在 Windows 中，被称为动态链接库（DLL，Dynamical Linking Library），一般以 &lt;code&gt;.ddl&lt;/code&gt; 为扩展名。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gcc -shared -o lib.so lib.c
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;当链接器将 &lt;code&gt;Programe1.o&lt;/code&gt; 链接为可执行文件时，发现需要引用 &lt;code&gt;lib&lt;/code&gt; 模块，同时通过 &lt;code&gt;lib.so&lt;/code&gt; 知道这个模块是一个动态模块。当调用 &lt;code&gt;lib.foo()&lt;/code&gt; 函数时，会将其标为一个动态链接的符号，而不是真正载入模块和函数。&lt;/p&gt;
+&lt;p&gt;对于全局变量，假设 &lt;code&gt;lib&lt;/code&gt; 中定义一个全局变量，&lt;code&gt;Programe1&lt;/code&gt; 引用到这个变量。当链接器执行 &lt;code&gt;Programe1.o&lt;/code&gt; 时发现了这个全局变量，但由于链接器未能链接其他的模块，并无法根据上下文判断此变量是在哪个模块中。为了能够让链接过程正常进行，链接器发现此种情况后，就在 &lt;code&gt;.bss&lt;/code&gt; 段中创建这个变量的副本，这样，就在链接阶段把全局变量的托管权就交给 &lt;code&gt;.bss&lt;/code&gt;，所有的模块都是通过 &lt;code&gt;.bss&lt;/code&gt; 来管理这一个变量的副本。&lt;/p&gt;
+&lt;h3 id=&#34;3-延迟绑定lazy-binding&#34;&gt;3. 延迟绑定（Lazy Binding）&lt;/h3&gt;
+&lt;p&gt;动态链接比静态链接要灵活得多，但它是以牺牲一部分性能为代价的。动态链接比较慢的原因有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于全局和静态的数据访问都需要进行 GOT 定位，然后间接寻址；&lt;/li&gt;
+&lt;li&gt;对于模块间的调用也要先 GOT 定位，再进行间接跳转；&lt;/li&gt;
+&lt;li&gt;在程序运行时，动态链接器要先寻找并装载所需的共享对象，然后进行符号查找及重定位的工作，这使得程序启动时非常的缓慢。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为了减少程序启动时的缓慢问题，动态链接提供了延迟绑定功能。在一个程序运行过程中，可能有很多函数在程序执行完都不会用到，比如一些错误处理函数或者一些用户很少用到的功能模块等。如果一开始就把所有函数都链接好实际上是一种浪费。所以延迟绑定的基本思想就是当函数第一次用到时才进行绑定（符号查找、重定位等）。所以程序开始执行时，模块间的函数调用都没有进行绑定，大大提高了程序的启动速度。&lt;/p&gt;
+&lt;h3 id=&#34;4-gotglobal-offset-table&#34;&gt;4. GOT（Global Offset Table）&lt;/h3&gt;
+&lt;p&gt;在动态链接下，模块间（全局、静态）的数据访问比模块内部（局部）的数据访问稍微麻烦。因为在链接阶段，主模块并不会链接共享模块，故很难确定一些变量是在哪些模块中被定义的。于是需要借助 .bss 段，在里面维护一个全局偏移表（GOT），当程序运行时知道变量的地址后，才将 GOT 的符号与真实地址进行绑定。当要访问这些变量时，也需要通过 GOT 来间接获取目标地址。&lt;/p&gt;
+&lt;p&gt;参考文献：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://baike.baidu.com/item/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/4142691?fr=aladdin&#34;&gt;百度百科：静态链接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;《程序员的自我修养——链接、装载与库》&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+            
+            
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
+                        
+                    
+                
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://marin-man.github.io/tags/%E5%AE%89%E5%85%A8/" term="安全" label="安全" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">DDoS 攻击与防范</title>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/ddos/" />
+            <id>https://marin-man.github.io/posts/ddos/</id>
+            <updated>2022-06-25T23:10:39&#43;08:00</updated>
+            <published>2022-06-19T01:12:52&#43;08:00</published>
+            <author>
+                    <name>慢慢</name>
+                    <uri>https://marin-man.github.io/</uri>
+                    <email>marin-man@163.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Criticism is like a homing pigeon Will eventually return to the original place Therefore, we intend to correct and condemn those who Can defend themselves And will eventually condemn us DDoS 攻击与防御 什么是 DDoS 分布式拒绝服务攻击（Distributed Denial of Service），是指处于不同位置……</summary>
+            
+                <content type="html">&lt;p color=&#34;yellow&#34; style=&#34;text-align:center&#34;&gt;
+&lt;em&gt;Criticism is like a homing pigeon&lt;br&gt;
+Will eventually return to the original place&lt;br&gt;
+Therefore, we intend to correct and condemn those who&lt;br&gt;
+Can defend themselves&lt;br&gt;
+And will eventually condemn us
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ddos-攻击与防御&#34;&gt;DDoS 攻击与防御&lt;/h2&gt;
+&lt;h3 id=&#34;什么是-ddos&#34;&gt;什么是 DDoS&lt;/h3&gt;
+&lt;p&gt;分布式拒绝服务攻击（Distributed Denial of Service），是指处于不同位置的多个攻击者同时向一个或数个目标发动攻击。由于攻击的发出点是分布在不同地方的，这类攻击称为分布式拒绝服务攻击。
+DDoS 是一种基于 DoS 的特殊形式的拒绝服务攻击。单一的 DoS 攻击一般是采用一对一方式，利用网络协议和操作系统的缺陷，采用欺骗和伪装的策略来进行网络攻击，使网站服务器充斥大量要求回复的信息，消耗网络带宽或系统资源，导致网络或系统不胜负荷以至于瘫痪而停止提供正常的网络服务。与 DoS 相比，DDos 借助数百上千台攻击机形成集群，发起的规模更大，更难防御的一种进攻行为。&lt;/p&gt;
+&lt;h2 id=&#34;常见的-ddos-攻击&#34;&gt;常见的 DDoS 攻击&lt;/h2&gt;
+&lt;h3 id=&#34;1-icmp-flood&#34;&gt;1. ICMP Flood&lt;/h3&gt;
+&lt;p&gt;ICMP 用于在 IP 主机，路由器之间传递控制消息（网络是否连通，主机是否可达，路由是否可用等）。ICMP 虽然不传递用户数据，但是对于用户数据的传递起着重要的作用。ICMP Flood 通过对目标系统发送海量的数据报，就可以令目标主机瘫痪，形成洪泛攻击。&lt;/p&gt;
+&lt;h3 id=&#34;2-udp-flood&#34;&gt;2. UDP Flood&lt;/h3&gt;
+&lt;p&gt;UDP 协议是一种无连接的协议，在 UDP Flood 中，攻击者通常发送大量伪造 IP 地址的 UDP 报去冲击 DNS 服务器，Radius 认证服务器，流媒体视频服务器等，造成服务不可用。
+上述的两种是比较传统的流量型攻击，技术含量较低，以占满网络带宽使得正常用户无法得到服务为攻击方式，攻击效果通常依赖于攻击者本身的网络性能，而且容易被查找攻击源头。&lt;/p&gt;
+&lt;h3 id=&#34;3-ntp-flood&#34;&gt;3. NTP Flood&lt;/h3&gt;
+&lt;p&gt;NTP 是标准的基于 UDP 协议的网络时间同步协议。由于 UDP 无连接的特性，NTP 服务器并不能保证收到报文的源 IP 的正确性。所以，攻击者通过将 IP 报文的源 IP 地址换为靶机的 IP 地址，并向 NTP 服务器发送大量的时间同步报文，这样，NTP 服务器的响应报文就会达到靶机上，沾满靶机网络段的带宽资源，同时也很难去追溯攻击源头。&lt;/p&gt;
+&lt;h3 id=&#34;4-syn-flood&#34;&gt;4. SYN Flood&lt;/h3&gt;
+&lt;p&gt;SYN Flood 是一种利用 TCP 协议缺陷，发送大量伪造的 TCP 连接请求，从而使目标服务器资源耗尽的攻击方式。如果客户端只发起第一次握手，而不响应服务端的第二次握手，那么这条连接就处于半连接状态，服务端会维持这条连接一段时间（SYN Timeout）并不断地重试。但攻击者大量的模拟这种情况，就会沾满整个服务端的连接符号表，并消耗大量的 CPU 资源进行重试操作。而对于 SNY Flood 的防御目前有两种常见的方式，一种是算短 SYN Timeout，另一种是设置 SYN Cookie，并开辟一个数组存放 Cookie，单连接没有真正建立时，不去占用连接符号表。&lt;/p&gt;
+&lt;h3 id=&#34;5-dns-query-flood&#34;&gt;5. DNS Query Flood&lt;/h3&gt;
+&lt;p&gt;DNS Query Flood 通过操纵大量的傀儡机，向本网段的域名服务器发送大量域名解析请求，通常这些请求解析的域名是随机生成或网络上根本不存在的域名，由于本地域名服务器无法找到对应的结果，就会通过层层上次给更高级的域名服务器，引起连锁反应，导致本网段内的域名解析服务瘫痪，但一般最多只会瘫痪一小段网络。&lt;/p&gt;
+&lt;h3 id=&#34;6-hashdos&#34;&gt;6. HashDos&lt;/h3&gt;
+&lt;p&gt;HashDos 是一种新型的，基于 Hash 碰撞形成的攻击。随着现在 RESTful 风格的不断普及，json 格式作为数据传输的格式愈发成为主流。但是 json 反序列化为对象时，底层是通过 hash 算法来将字段与属性，属性值进行一一对应的。所以，一旦攻击者知道了我们序列化方式，构造出一段有严重哈希碰撞的 json 数据，就会使我们服务端序列化的复杂度从 O(1) 暴增到 O(n)。&lt;/p&gt;
+&lt;h2 id=&#34;ddos-攻击的防御&#34;&gt;DDos 攻击的防御&lt;/h2&gt;
+&lt;p&gt;DDos 的防御主要有两种，一种是针对流量带宽，一种是针对服务端资源。流量带宽一般需要通过运营商采用 ISP 黑洞，近源清洗等策略，在源头（即攻击者所在的网段）进行拦截，而不是等到所有的细流汇聚成猛水时才进行拦截。
+而对于服务端的资源，则是当下 DDos 的重灾区，也是攻防双方斗智斗勇的体现。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第一回合：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;防：在报文头中设置一些特征字段，如果服务端接收的请求报头中没有此特征字段，则视为恶意请求，直接过滤。&lt;/li&gt;
+&lt;li&gt;攻：通过收集正常用户的请求报文进行重放，或者对报文格式进行分析，得到特征字段。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;第二回合：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;防：拦截短期内大量重复的 IP。&lt;/li&gt;
+&lt;li&gt;攻：随机化伪造报文的源 IP。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;第三回合：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;防：因为 IP 地址大约有 62 亿个，但国内的 IP 地址只有几千万个，于是我们可以根据网段过滤一些非法 IP。&lt;/li&gt;
+&lt;li&gt;攻：先进行一波随机化 IP 的攻击，得到攻击的结果，再分析出可用的网段，利用这些网段进行攻击。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;第四回合：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;防：通过指纹学习算法（在报文中增加设备指纹信息，例如设备号，操作系统，浏览器类型等），拦截短时间内相似指纹的请求。&lt;/li&gt;
+&lt;li&gt;攻：对报文进行分析，将报文的所有字段（包含指纹字段）都进行随机化伪造。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;第五回合：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;防：利用安全水印技术，客户端和服务端协商好一套签名算法，客户端生成签名，服务端验证签名，同时增加一些时间戳参数，保证攻击方重放无效。&lt;/li&gt;
+&lt;li&gt;攻：通过反编译获取签名算法，伪造签名，但实现难度很大。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;参考文献：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://baijiahao.baidu.com/s?id=1730171186727755874&amp;amp;wfr=spider&amp;amp;for=pc&#34;&gt;什么是 DDoS 攻击&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://baike.c114.com.cn/view.asp?id=13699-450B7A7E&#34;&gt;Syn flood 通信百科&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+            
+            
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
+                        
+                    
+                
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://marin-man.github.io/tags/%E5%AE%89%E5%85%A8/" term="安全" label="安全" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">多路复用</title>
-            <link rel="alternate" type="text/html" href="https:marin-man.github.io/posts/multiplexing/" />
-            <id>https:marin-man.github.io/posts/multiplexing/</id>
-            <updated>2022-05-14T13:21:37&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/multiplexing/" />
+            <id>https://marin-man.github.io/posts/multiplexing/</id>
+            <updated>2022-06-22T23:37:24&#43;08:00</updated>
             <published>2022-05-07T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
@@ -196,7 +429,7 @@
                     
                     
                         
-                            <category scheme="https:marin-man.github.io/posts/" term="posts\" label="posts\" />
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
                         
                     
                 
@@ -209,7 +442,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
                             
                         
                     
@@ -219,7 +452,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/tags/io%E6%A8%A1%E5%9E%8B/" term="IO模型" label="IO模型" />
+                                <category scheme="https://marin-man.github.io/tags/io%E6%A8%A1%E5%9E%8B/" term="IO模型" label="IO模型" />
                             
                         
                     
@@ -229,9 +462,9 @@
     
         <entry>
             <title type="text">NIO</title>
-            <link rel="alternate" type="text/html" href="https:marin-man.github.io/posts/nio/" />
-            <id>https:marin-man.github.io/posts/nio/</id>
-            <updated>2022-05-14T13:21:37&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/nio/" />
+            <id>https://marin-man.github.io/posts/nio/</id>
+            <updated>2022-06-22T23:37:24&#43;08:00</updated>
             <published>2022-05-05T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
@@ -386,7 +619,7 @@
                     
                     
                         
-                            <category scheme="https:marin-man.github.io/posts/" term="posts\" label="posts\" />
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
                         
                     
                 
@@ -399,7 +632,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
                             
                         
                     
@@ -409,7 +642,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/tags/io%E6%A8%A1%E5%9E%8B/" term="IO模型" label="IO模型" />
+                                <category scheme="https://marin-man.github.io/tags/io%E6%A8%A1%E5%9E%8B/" term="IO模型" label="IO模型" />
                             
                         
                     
@@ -419,9 +652,9 @@
     
         <entry>
             <title type="text">改造 BIO</title>
-            <link rel="alternate" type="text/html" href="https:marin-man.github.io/posts/enhance-bio/" />
-            <id>https:marin-man.github.io/posts/enhance-bio/</id>
-            <updated>2022-05-14T13:21:37&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/enhance-bio/" />
+            <id>https://marin-man.github.io/posts/enhance-bio/</id>
+            <updated>2022-06-22T23:37:24&#43;08:00</updated>
             <published>2022-05-04T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
@@ -703,7 +936,7 @@
                     
                     
                         
-                            <category scheme="https:marin-man.github.io/posts/" term="posts\" label="posts\" />
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
                         
                     
                 
@@ -716,7 +949,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
                             
                         
                     
@@ -726,7 +959,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/tags/io%E6%A8%A1%E5%9E%8B/" term="IO模型" label="IO模型" />
+                                <category scheme="https://marin-man.github.io/tags/io%E6%A8%A1%E5%9E%8B/" term="IO模型" label="IO模型" />
                             
                         
                     
@@ -736,9 +969,9 @@
     
         <entry>
             <title type="text">传统 BIO</title>
-            <link rel="alternate" type="text/html" href="https:marin-man.github.io/posts/esay-bio/" />
-            <id>https:marin-man.github.io/posts/esay-bio/</id>
-            <updated>2022-05-14T13:21:37&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/esay-bio/" />
+            <id>https://marin-man.github.io/posts/esay-bio/</id>
+            <updated>2022-06-22T23:37:24&#43;08:00</updated>
             <published>2022-05-03T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
@@ -985,7 +1218,7 @@
                     
                     
                         
-                            <category scheme="https:marin-man.github.io/posts/" term="posts\" label="posts\" />
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
                         
                     
                 
@@ -998,7 +1231,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
                             
                         
                     
@@ -1008,7 +1241,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/tags/io%E6%A8%A1%E5%9E%8B/" term="IO模型" label="IO模型" />
+                                <category scheme="https://marin-man.github.io/tags/io%E6%A8%A1%E5%9E%8B/" term="IO模型" label="IO模型" />
                             
                         
                     
@@ -1018,9 +1251,9 @@
     
         <entry>
             <title type="text">图数据库</title>
-            <link rel="alternate" type="text/html" href="https:marin-man.github.io/posts/graph-database/" />
-            <id>https:marin-man.github.io/posts/graph-database/</id>
-            <updated>2022-05-14T13:21:37&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/graph-database/" />
+            <id>https://marin-man.github.io/posts/graph-database/</id>
+            <updated>2022-06-22T23:37:24&#43;08:00</updated>
             <published>2022-03-20T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
@@ -1097,7 +1330,7 @@
                     
                     
                         
-                            <category scheme="https:marin-man.github.io/posts/" term="posts\" label="posts\" />
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
                         
                     
                 
@@ -1110,7 +1343,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
                             
                         
                     
@@ -1120,7 +1353,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/" term="图数据库" label="图数据库" />
+                                <category scheme="https://marin-man.github.io/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/" term="图数据库" label="图数据库" />
                             
                         
                     
@@ -1130,9 +1363,9 @@
     
         <entry>
             <title type="text">分布式事务</title>
-            <link rel="alternate" type="text/html" href="https:marin-man.github.io/posts/distributed-transaction/" />
-            <id>https:marin-man.github.io/posts/distributed-transaction/</id>
-            <updated>2022-05-14T13:21:37&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/distributed-transaction/" />
+            <id>https://marin-man.github.io/posts/distributed-transaction/</id>
+            <updated>2022-06-22T23:37:24&#43;08:00</updated>
             <published>2022-03-13T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
@@ -1196,7 +1429,7 @@
                     
                     
                         
-                            <category scheme="https:marin-man.github.io/posts/" term="posts\" label="posts\" />
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
                         
                     
                 
@@ -1209,7 +1442,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
                             
                         
                     
@@ -1219,7 +1452,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" term="分布式" label="分布式" />
+                                <category scheme="https://marin-man.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" term="分布式" label="分布式" />
                             
                         
                     
@@ -1229,9 +1462,9 @@
     
         <entry>
             <title type="text">DDos 攻击</title>
-            <link rel="alternate" type="text/html" href="https:marin-man.github.io/posts/network-ddos/" />
-            <id>https:marin-man.github.io/posts/network-ddos/</id>
-            <updated>2022-05-14T13:21:37&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/network-ddos/" />
+            <id>https://marin-man.github.io/posts/network-ddos/</id>
+            <updated>2022-06-22T23:37:24&#43;08:00</updated>
             <published>2022-02-28T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
@@ -1275,7 +1508,7 @@
                     
                     
                         
-                            <category scheme="https:marin-man.github.io/posts/" term="posts\" label="posts\" />
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
                         
                     
                 
@@ -1288,7 +1521,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
                             
                         
                     
@@ -1298,7 +1531,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" term="网络攻防" label="网络攻防" />
+                                <category scheme="https://marin-man.github.io/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" term="网络攻防" label="网络攻防" />
                             
                         
                     
@@ -1308,9 +1541,9 @@
     
         <entry>
             <title type="text">数据链路层</title>
-            <link rel="alternate" type="text/html" href="https:marin-man.github.io/posts/network-link-layer/" />
-            <id>https:marin-man.github.io/posts/network-link-layer/</id>
-            <updated>2022-05-14T13:21:37&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/network-link-layer/" />
+            <id>https://marin-man.github.io/posts/network-link-layer/</id>
+            <updated>2022-06-22T23:37:24&#43;08:00</updated>
             <published>2022-02-20T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
@@ -1347,7 +1580,7 @@
                     
                     
                         
-                            <category scheme="https:marin-man.github.io/posts/" term="posts\" label="posts\" />
+                            <category scheme="https://marin-man.github.io/posts/" term="posts\" label="posts\" />
                         
                     
                 
@@ -1360,7 +1593,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
                             
                         
                     
@@ -1370,163 +1603,7 @@
                             
                             
                             
-                                <category scheme="https:marin-man.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" term="计算机网络" label="计算机网络" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">网络架构</title>
-            <link rel="alternate" type="text/html" href="https:marin-man.github.io/posts/network-based/" />
-            <id>https:marin-man.github.io/posts/network-based/</id>
-            <updated>2022-05-14T13:21:37&#43;08:00</updated>
-            <published>2022-02-20T01:12:52&#43;08:00</published>
-            <author>
-                    <name>慢慢</name>
-                    <uri>https://marin-man.github.io/</uri>
-                    <email>marin-man@163.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">什么是 OSI 七层模型 OSI(Open System Interconnection Reference Model)，是一种概念模型，由国际标准化组织提出，一个试图使各种计算机在世界范围内互连为网络的标准架构。 七层模型为： 物理层：制定底层数……</summary>
-            
-                <content type="html">&lt;h3 id=&#34;什么是-osi-七层模型&#34;&gt;什么是 OSI 七层模型&lt;/h3&gt;
-&lt;p&gt;OSI(Open System Interconnection Reference Model)，是一种概念模型，由国际标准化组织提出，一个试图使各种计算机在世界范围内互连为网络的标准架构。&lt;/p&gt;
-&lt;p&gt;七层模型为：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;物理层：制定底层数据传输的标准，如机械特性，电器特性和功能特性，网线和网卡标准等。&lt;/li&gt;
-&lt;li&gt;数据链路层：定义数据的格式，如何传输，如何标识，主要为封装成帧，透明传输，差错检测。&lt;/li&gt;
-&lt;li&gt;网络层：定义 IP 编址，定义路由功能。&lt;/li&gt;
-&lt;li&gt;传输层：端到端传输数据的基本传输。&lt;/li&gt;
-&lt;li&gt;会话层：控制应用层序之间会话能力，如将不同软件数据分发给不同软件。&lt;/li&gt;
-&lt;li&gt;表示层：数据格式标识，基本压缩，加密功能等。&lt;/li&gt;
-&lt;li&gt;应用层：各种应用程序，包括 web 应用。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;每一层实现各自的功能和协议，并完成与相邻层的接口通信。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;../../../images/content/network.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;什么是五层模型&#34;&gt;什么是五层模型&lt;/h3&gt;
-&lt;p&gt;五层模型将网络分为物理层，数据链路层，网络层，应用层。&lt;/p&gt;
-&lt;h3 id=&#34;两者有什么关系呢&#34;&gt;两者有什么关系呢？&lt;/h3&gt;
-&lt;p&gt;OSI 七层协议是一个标准，而非实现，五层模型是一个实现的应用模型，五层模型由七层简化合并而来。&lt;/p&gt;
-&lt;h3 id=&#34;不同层的数据被称为什么&#34;&gt;不同层的数据被称为什么？&lt;/h3&gt;
-&lt;p&gt;在物理层时数据称为比特流，链路层时为帧，网络层时为数据报，数据链路层为字节流/字符流。&lt;/p&gt;
-</content>
-            
-            
-            
-                
-                
-                
-                    
-                    
-                    
-                        
-                            <category scheme="https:marin-man.github.io/posts/" term="posts\" label="posts\" />
-                        
-                    
-                
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https:marin-man.github.io/categories/2022/" term="2022" label="2022" />
-                            
-                        
-                    
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https:marin-man.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" term="计算机网络" label="计算机网络" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">CAP 理论</title>
-            <link rel="alternate" type="text/html" href="https:marin-man.github.io/posts/distribute-cap/" />
-            <id>https:marin-man.github.io/posts/distribute-cap/</id>
-            <updated>2022-05-14T13:21:37&#43;08:00</updated>
-            <published>2022-02-19T01:12:52&#43;08:00</published>
-            <author>
-                    <name>慢慢</name>
-                    <uri>https://marin-man.github.io/</uri>
-                    <email>marin-man@163.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">什么是 CAP 理论 CAP 原则指的是一个分布式系统中，Consistency(一致性)，Avaliablity(可用性)，Partition tolerance(分区容错性)……</summary>
-            
-                <content type="html">&lt;h3 id=&#34;什么是-cap-理论&#34;&gt;什么是 CAP 理论&lt;/h3&gt;
-&lt;p&gt;CAP 原则指的是一个分布式系统中，Consistency(一致性)，Avaliablity(可用性)，Partition tolerance(分区容错性)，三者不可兼得。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;一致性：在分布式环境下，一致性是指数据在多个副本之间能否保持一致的特性。&lt;/li&gt;
-&lt;li&gt;可用性：可用性是指系统提供的服务必须一直处于可用的状态，对于用户的每一个操作请求总是能够在有限的时间内返回结果。&lt;/li&gt;
-&lt;li&gt;分区容错性：分区容错性约束了一个分布式系统具有如下特性：分布式系统在遇到任何网络分区故障的时候，仍然需要能够保证对外提供满足一致性和可用性的服务，除非是整个网络环境都发生了故障。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;为什么三者不能同时满足&#34;&gt;为什么三者不能同时满足&lt;/h3&gt;
-&lt;p&gt;假设现在有两台服务器，一台跑 A 服务和数据库 V1，一台跑服务 B 和数据库 V2，V1 和 V2 是同步的。在满足分区容错性下，A 或 B 一台宕机都不会影响到其他服务的执行。但当 V1 和 V2 的通信断开时，数据库就不能同步。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;牺牲一致性：A 用 v1 的数据库，B 用 v2 的数据库，两者都没有同步&lt;/li&gt;
-&lt;li&gt;牺牲可用性：禁止 A 和 B 正常服务，直到两种能同步才开启服务。&lt;/li&gt;
-&lt;li&gt;牺牲分区容错性：如果不用分区容错性，则整个系统可以不用分布式来搭建，能保证强一致性和可用性，但如果机器挂了，整个服务也崩了。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;什么是-base-理论&#34;&gt;什么是 BASE 理论&lt;/h3&gt;
-&lt;p&gt;BASE 就是 Basically Available(基本可用)，Soft state(软状态)，Eventually consistent(最终一致性)，是对 CAP 中一致性和可用性权衡的结果。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;基本可用：指分布式在出现不可预知故障的时候，允许损失部分可用性。
-&lt;ul&gt;
-&lt;li&gt;响应时间上的损失：一个在线搜索引擎需要 0.5s 内返回给用户相应的查询结果，但由于出现异常（比如系统部分机房发送端点或断网故障）查询结果的响应时间增加到了 1~2s&lt;/li&gt;
-&lt;li&gt;功能上的损失：在购物高峰时，为了保证购物系统的稳定性，部分消费者可能会被引导到一个降级页面。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;软状态：指允许系统中的数据存在中间状态，并认为该中间状态的存在不会影响系统的整体可用性。
-最终一致性：系统中的所有数据副本，在经过一段时间的同步后，最终能够到达一个一致的状态。&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-            
-            
-            
-                
-                
-                
-                    
-                    
-                    
-                        
-                            <category scheme="https:marin-man.github.io/posts/" term="posts\" label="posts\" />
-                        
-                    
-                
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https:marin-man.github.io/categories/2022/" term="2022" label="2022" />
-                            
-                        
-                    
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https:marin-man.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" term="分布式" label="分布式" />
+                                <category scheme="https://marin-man.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" term="计算机网络" label="计算机网络" />
                             
                         
                     
