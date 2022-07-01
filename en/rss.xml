@@ -10,7 +10,7 @@
         <title>慢慢的个人博客</title>
         <link>https://marin-man.github.io/en/</link>
         <description>Blog of manman in English.</description>
-        <generator>Hugo 0.92.2 https://gohugo.io/</generator>
+        <generator>Hugo 0.101.0 https://gohugo.io/</generator>
         
             <language>en-US</language>
         
@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Sat, 25 Jun 2022 23:27:52 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 01 Jul 2022 08:50:01 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://marin-man.github.io/en/rss.xml" />
         
