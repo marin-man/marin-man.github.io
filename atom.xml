@@ -2,9 +2,9 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-    <title type="text">慢慢的个人博客</title>
+    <title type="text">慢慢的博客</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2022-07-01T08:50:01&#43;08:00</updated>
+    <updated>2022-07-01T09:13:45&#43;08:00</updated>
     <id>https://marin-man.github.io/</id>
     <link rel="alternate" type="text/html" href="https://marin-man.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://marin-man.github.io/atom.xml" />
@@ -17,19 +17,144 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.101.0">Hugo</generator>
         <entry>
+            <title type="text">CDN 详解</title>
+            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/cdn/" />
+            <id>https://marin-man.github.io/posts/cdn/</id>
+            <updated>2022-07-01T09:03:26&#43;08:00</updated>
+            <published>2022-06-30T01:12:52&#43;08:00</published>
+            <author>
+                    <name>慢慢</name>
+                    <uri>https://marin-man.github.io/</uri>
+                    <email>marin-man@163.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">To see a world in a grain of sand And a heaven in a wild flower Hold infinity in the palm of your hand And eternity in an hour 1. 什么是 CDN CDN（Content Delivery Network）内容分发网络。CDN依靠部署在各地的边缘服务器，通过……</summary>
+            
+                <content type="html">&lt;p color=&#34;yellow&#34; style=&#34;text-align:center&#34;&gt;
+&lt;em&gt;To see a world in a grain of sand&lt;br&gt;
+And a heaven in a wild flower&lt;br&gt;
+Hold infinity in the palm of your hand&lt;br&gt;
+And eternity in an hour
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;1-什么是-cdn&#34;&gt;1. 什么是 CDN&lt;/h2&gt;
+&lt;p&gt;CDN（Content Delivery Network）内容分发网络。CDN依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取内容，降低网络延迟，提高访问速度。简单来讲，CDN是用来进行加速的，它可以让用户更快获得所需的数据。&lt;/p&gt;
+&lt;p&gt;CDN 的主要功能；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网站加速：解决因分布、带宽、服务器性能等带来的访问延迟问题，适用于站点加速、点播、直播等场景。使用户可就近取得所需内容，解决 Internet 网络拥挤的状况，提高用户访问网站的响应速度和成功率。&lt;/li&gt;
+&lt;li&gt;网站防护：分布式集群架构，避免单机故障。隐藏数据所在主机 IP，加速防护，镜像节点，自动切换，就近访问等超强防 CC DDoS 攻击能力。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-cdn-访问过程&#34;&gt;2. CDN 访问过程&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/content/cdn.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;假设通过CDN加速的域名为www.a.com，接入CDN网络，开始使用加速服务后，当用户发起HTTP请求时，处理流程如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当用户向 &lt;a href=&#34;https://www.a.com&#34;&gt;www.a.com&lt;/a&gt; 下的指定资源发起请求时，首先向 LDNS（本地DNS）发起域名解析请求。&lt;/li&gt;
+&lt;li&gt;LDNS检查缓存中是否有www.a.com的 IP 地址记录。如果有，则直接返回给用户；如果没有，则向授权 DNS（root DNS）查询。&lt;/li&gt;
+&lt;li&gt;当授权DNS解析www.a.com时，返回域名CNAME &lt;a href=&#34;https://www.a.tbcdn.com&#34;&gt;www.a.tbcdn.com&lt;/a&gt;对应IP地址。&lt;/li&gt;
+&lt;li&gt;域名解析请求发送至 CDN 调度系统，并为请求分配最佳节点 IP 地址。&lt;/li&gt;
+&lt;li&gt;LDNS获取 DNS 返回的解析 IP 地址。&lt;/li&gt;
+&lt;li&gt;用户获取解析 IP 地址。&lt;/li&gt;
+&lt;li&gt;用户向获取的 IP 地址发起对该资源的访问请求。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-cdn-网络架构&#34;&gt;3. CDN 网络架构&lt;/h2&gt;
+&lt;p&gt;CDN 网络架构主要有两部分：中心节点、边缘节点。其中中心节点由 CDN 网管中心与 DNS 重定向解析中心组成，负责全局负载均衡；边缘节点是 CDN 分发的载体，由 Cache 与负载均衡器组成。&lt;/p&gt;
+&lt;h3 id=&#34;31-中心节点&#34;&gt;3.1 中心节点&lt;/h3&gt;
+&lt;p&gt;当用户访问 CDN 服务的网站时，全局负载均衡 DNS 负责域名解析，通过一组预先定义好的策略将与用户最相近的节点 IP 地址提供给用户，用户通过这个 IP 进行资源的请求。同时，全局负载均衡 DNS 还与全球 CDN 节点保持通信，确保请求可以分配到可用的节点（起到负载均衡的作用）&lt;/p&gt;
+&lt;h3 id=&#34;32-cdn-节点&#34;&gt;3.2 CDN 节点&lt;/h3&gt;
+&lt;p&gt;每个 CDN 节点由两部分组成：负载均衡设备和高速缓存服务器（Cache）。&lt;/p&gt;
+&lt;p&gt;负载均衡设备负责每个节点中各个 Cache 的负载均衡，保证节点的工作效率；同时负载均衡设备还负责收集节点与周围环境的信息，保持与全局负载 DNS 的通信。&lt;/p&gt;
+&lt;p&gt;Cache 负责存储客户网站的大量信息，就像一个靠近用户的网站服务器一样响应本地用户的访问请求。理论上，最简单的 CDN 网络有一个负责全局负载均衡的 DNS 和各节点一台 Cache，即可运行。DNS 支持根据源 IP 地址解析成不同的 IP 地址，实现就近访问。&lt;/p&gt;
+&lt;h2 id=&#34;4-cdn-核心技术&#34;&gt;4. CDN 核心技术&lt;/h2&gt;
+&lt;h3 id=&#34;41-内容路由&#34;&gt;4.1 内容路由&lt;/h3&gt;
+&lt;p&gt;CDN 负载均衡系统将用户的请求导向整个 CDN 网络中的最佳节点，它的准确性和效率性决定了 CDN 的性能和效率。&lt;/p&gt;
+&lt;p&gt;通常将负载均衡分为两个层次：全局负载均衡和本地负载均衡。从用户请求发起到最终请求到 CDN 节点过程中，请求从整个网络范围定向到最近区域主要由全局负载均衡控制；定向到最近区域后，需要将请求达到最合适的 CDN 节点，就由本地负载均衡控制。&lt;/p&gt;
+&lt;p&gt;在整个过程中，CDN 节点的负载情况，健康状况以及支持的媒体格式等运行状态都是本地负载均衡进行检测。本地负载均衡选择合适的节点时，会动态获取 Cache 的运行状态，再更加状态进行挑选。获取 Cache 状态有两种方式：主动探测（ping）和协议交互。&lt;/p&gt;
+&lt;h3 id=&#34;42-内容分发&#34;&gt;4.2 内容分发&lt;/h3&gt;
+&lt;p&gt;当源站内容发生改变，需要同步到 CDN 的 Cache 中。这个过程目前有两种实现方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Push：主动分发。将内容从源站分发到 Cache 节点。协议采用 HTTP/FTP 等，通过 Push 方式分发的内容一般都是高热内容。&lt;/li&gt;
+&lt;li&gt;Pull：被动拉取。一般时用户再请求边缘 Cache 时发现资源不再或者边缘定时从源站中拉取资源，并保持到 Cache 中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;43-内容管理&#34;&gt;4.3 内容管理&lt;/h3&gt;
+&lt;p&gt;内容管理主要为 Cache 内的内容管理，主要是为了提高内容服务的效率与提高存储利用率。主要包括本地内容索引，本地内容拷贝以及本地内容访问状态信息等。通过本地内容管理，可以将内容的管理从原来的 Cache 设备一级，提高到 CDN 节点一级，从而大大增加了 CDN 的可扩展性和综合能力。（将整个 CDN 节点作为一个虚拟 Cache 池，通过内容管理决定存储到哪台物理机，是否备份等）&lt;/p&gt;
+&lt;h2 id=&#34;5-流媒体-cdn&#34;&gt;5. 流媒体 CDN&lt;/h2&gt;
+&lt;p&gt;流媒体业务是一种对实时性、连续性、时序性要求非常高的业务，无论从带宽消耗还是质量保障上来说，对 best-effort（最大努力交付） 的 IP 网络都是不小的冲击。在点播、直播中，常用的互联网协议有：RTP、RTCP、RTSP、RTMP、HTTP Streaming 协议等。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RTP（Real-time Transport Protocol）：是用于 Internet 上针对多媒体数据流的一种传输协议，RTP 被定义为在一对一或一对多的传输情况下工作，其目的是提供时间信息和实现流同步。RTP 通常使用 UDP 来传送数据，但也可以在 TCP 或 ATM 等其他协议上工作。当应用程序开启一个 RTP 会话时将使用两个端口，一个给 RTP，一个给 RTCP。RTP 本身并不能为顺序传输数据报提供可靠的传输机制，也不提供流量控制和拥塞控制，它依靠 RTCP 提供这些服务。通常 RTP 算法并不作为一个单独的网络层实现，而是作为应用程序的代码。&lt;/li&gt;
+&lt;li&gt;RTCP（Real-time Transport Control Protocol）：和 RTP 一起提供流量控制和拥塞控制。在 RTP 会话期，各参与者周期性地传送 RTCP 包，RTCP 包中含有已发送地数据包的数量，丢失的数据报的数量等统计资料，因此，服务器可以利用这些信息动态地改变传输速率，甚至改变有效载荷类型。RTP 和 RTCP 配合使用特别适合传送网络上的实时数据。&lt;/li&gt;
+&lt;li&gt;RTSP（Real-time Streaming Protocol）：由 Real Networks 和 Netscape 共同提出的。该协议定义了一对多的应用程序如何有效通过 IP 网络传输多媒体数据。RTSP 在体系结构上位于 RTP 和 RTCP 之上。它使用 TCP 或 RTP 完成数据传输。&lt;/li&gt;
+&lt;li&gt;HTTP Streaming 首先会将视频数据在服务器上进行编码，然后将编码后的数据进行更细粒度的分片，再把每个分片通过 HTTP 协议传输到客户端。HTTP Streaming 的客户端需要对视频文件的每个分片都发出一个 HTTP 请求，这样，在视频播放速度低于下载速度的情况下，客户端可以灵活控制 HTTP 请求的发出速度，从而保证用户在中途退出不会出现下载浪费。另外，采用分片的特点，HTTP Streaming 还可以实现媒体播放过程中的码率切换（码率自适应），结合网络带宽资源等，给用户提供更好的体验。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因为流媒体文件传输带宽需求高，而且往往需要维持 TCP 长连接，所以一旦 CDN 回源比例过高，源站服务器 I/O 将不堪负荷。所以在流媒体 CDN 中更考虑 CDN 调度的命中率。为了进一步提高命中率，流媒体 CDN 普遍采用了 PUSH 方式的内容分发策略。同时，与 Web CDN 中心——边缘的两级架构不同，流媒体 CDN 通常是中心——区域——边缘的三级架构，主要是防止流媒体回源造成服务器崩溃的情况。&lt;/p&gt;
+&lt;p&gt;参考文献：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://baike.baidu.com/item/CDN/420951?fr=aladdin&#34;&gt;百度百科——CDN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://baijiahao.baidu.com/s?id=1721098433786504052&amp;amp;wfr=spider&amp;amp;for=pc&#34;&gt;什么是CDN？CDN和DNS有哪些关系和区别？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zhihu.com/question/36514327&#34;&gt;CDN 是什么？使用 CDN 有什么优势？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/qq_23018459/article/details/124406582&#34;&gt;流媒体协议介绍&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+            
+            
+            
+                
+                
+                
+                    
+                    
+                    
+                        
+                            <category scheme="https://marin-man.github.io/posts/" term="posts" label="posts" />
+                        
+                    
+                
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://marin-man.github.io/tags/%E7%BD%91%E7%BB%9C/" term="网络" label="网络" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">跨域问题</title>
             <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/cors/" />
             <id>https://marin-man.github.io/posts/cors/</id>
-            <updated>2022-07-01T08:43:26&#43;08:00</updated>
+            <updated>2022-07-01T09:01:42&#43;08:00</updated>
             <published>2022-06-27T01:12:52&#43;08:00</published>
             <author>
                     <name>慢慢</name>
                     <uri>https://marin-man.github.io/</uri>
                     <email>marin-man@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">跨域问题 1. CSRF CSRF(Cross-site request forgery)，跨域请求伪造，攻击者通过伪造用户的浏览器的请求，向访问一个用户自己曾经认证访问过的网站发送出去，使目标网站接收并误以为是用户的……</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">Rain is falling all around it falls on field and tree it rains on the umbrella here And on the ships at sea 跨域问题 1. CSRF CSRF(Cross-site request forgery)，跨域请求伪造，攻击者通过伪造用户的浏览器的请求，向访问一个用户自己曾经认证访问过……</summary>
             
-                <content type="html">&lt;h2 id=&#34;跨域问题&#34;&gt;跨域问题&lt;/h2&gt;
+                <content type="html">&lt;p color=&#34;yellow&#34; style=&#34;text-align:center&#34;&gt;
+&lt;em&gt;Rain is falling all around&lt;br&gt;
+it falls on field and tree&lt;br&gt;
+it rains on the umbrella here&lt;br&gt;
+And on the ships at sea
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;跨域问题&#34;&gt;跨域问题&lt;/h2&gt;
 &lt;h3 id=&#34;1-csrf&#34;&gt;1. CSRF&lt;/h3&gt;
 &lt;p&gt;CSRF(Cross-site request forgery)，跨域请求伪造，攻击者通过伪造用户的浏览器的请求，向访问一个用户自己曾经认证访问过的网站发送出去，使目标网站接收并误以为是用户的真实操作而去执行命令。常用于盗取账号、转账、发送虚假消息等。攻击者利用网站对请求的验证漏洞而实现这样的攻击行为，网站能够确认请求来源于用户的浏览器，却不能验证请求是否源于用户的真实意愿下的操作行为。&lt;/p&gt;
 &lt;p&gt;一个经典的案例：用户 A 在邮箱中收到了一封匿名邮件，里面带了一个链接。当用户点击这个链接时，链接就会以参数的形式把邮箱网站的认证凭据（Cookie)发送给了攻击者网站。于是，攻击者网站成功拿到凭证后就能冒充用户给其他人发生邮件。&lt;/p&gt;
@@ -83,7 +208,7 @@
                             
                             
                             
-                                <category scheme="https://marin-man.github.io/tags/%E5%AE%89%E5%85%A8/" term="安全" label="安全" />
+                                <category scheme="https://marin-man.github.io/tags/%E7%BD%91%E7%BB%9C/" term="网络" label="网络" />
                             
                         
                     
@@ -1428,85 +1553,6 @@ DDoS 是一种基于 DoS 的特殊形式的拒绝服务攻击。单一的 DoS �
         </entry>
     
         <entry>
-            <title type="text">DDos 攻击</title>
-            <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/network-ddos/" />
-            <id>https://marin-man.github.io/posts/network-ddos/</id>
-            <updated>2022-06-23T09:14:26&#43;08:00</updated>
-            <published>2022-02-28T01:12:52&#43;08:00</published>
-            <author>
-                    <name>慢慢</name>
-                    <uri>https://marin-man.github.io/</uri>
-                    <email>marin-man@163.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">什么是 DDos 攻击 DDos 攻击就是利用网络上被攻陷的电脑作为肉鸡，然后通过一定方式组合成数量庞大的讲师网络，采用一对多的方式进行控制，向目标系统提出服务请求。 有哪些常见的 DDos……</summary>
-            
-                <content type="html">&lt;h2 id=&#34;什么是-ddos-攻击&#34;&gt;什么是 DDos 攻击&lt;/h2&gt;
-&lt;p&gt;DDos 攻击就是利用网络上被攻陷的电脑作为肉鸡，然后通过一定方式组合成数量庞大的讲师网络，采用一对多的方式进行控制，向目标系统提出服务请求。&lt;/p&gt;
-&lt;h2 id=&#34;有哪些常见的-ddos-攻击&#34;&gt;有哪些常见的 DDos 攻击&lt;/h2&gt;
-&lt;p&gt;ICMP Flood、UDP Flood、NTF Flood、SYN Flood、CC Flood、DNS Query Flood、HashDos 等。&lt;/p&gt;
-&lt;h3 id=&#34;1-imcp-flood&#34;&gt;1. IMCP Flood&lt;/h3&gt;
-&lt;p&gt;CMP 用于在 IP 主机，路由器之间传递控制消息，控制消息是指网络通不通，主机是否可达，路由是否可用等网络本身的消息，虽然并不传输用户数据，但是对于用户数据的传递起着重要的作用。通过对目标系统发送海量数据报，就可以令目标主机瘫痪，如果大量发送，就成了洪水攻击。&lt;/p&gt;
-&lt;h3 id=&#34;2-udp-flood&#34;&gt;2. UDP Flood&lt;/h3&gt;
-&lt;p&gt;UDP 协议是一种无连接的服务，在 UDP Flood 中，攻击者通常发送大量伪造 IP 地址的小 UDP 包冲击 DNS 服务器或 Radius 认证服务器，流媒体视频服务器。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;del&gt;上述传统的流量型攻击方式技术含量较低，伤人一千，自损八百，攻击效果通常依赖受控主机本身的网络性能，而且容易被查到攻击源头，单独使用的情况已不常见。&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;3-ntp-flood&#34;&gt;3. NTP Flood&lt;/h3&gt;
-&lt;p&gt;NTP 是标准的基于 UDP 协议传输的网络时间同步协议，由于 UDP 协议的无连接性，方便伪造地址。攻击者使用特殊的数据报，也就是 IP 地址指向作为反射器的服务器，源 IP 地址被伪造成攻击目标的 IP，反射器收到数据包时就被骗了，会将响应数据发送给被攻击对象，耗尽目标网络的带宽资源。一般的 NTP 服务器都有很大的带宽，攻击者可能只需要 1Mbps 的上传带宽欺骗 NTP 服务器，就可以给目标服务器带来几百上千 Mbps 的攻击流量。&lt;/p&gt;
-&lt;h3 id=&#34;4-syn-flood&#34;&gt;4. SYN Flood&lt;/h3&gt;
-&lt;p&gt;这是一种利用 TCP 协议缺陷，发送大量伪造 TCP 连接请求，从而使得被攻击方资源耗尽的攻击。建立 TCP 连接需要三次握手。SYN Flood 就是用户向服务器发送报文后突然司机或掉线，那么服务器在发出应答报文后就无法收到客户端的确认，这时服务器一般会重试并等待一段时间后再丢弃这个未完成的连接。一个用户出现异常导致服务器的一个线程等待一会并不是大问题，但恶意攻击者大量模拟这种情况，服务器为了维护数以千计的半连接而消耗非常多的资源。&lt;/p&gt;
-&lt;p&gt;解决方法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;封 ip：通过布隆过滤器，封掉短时间内大量相同的 ip&lt;/li&gt;
-&lt;li&gt;减少服务端握手时的等待时间&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;5-cc-攻击&#34;&gt;5. CC 攻击&lt;/h3&gt;
-&lt;p&gt;CC 攻击是目前应用层攻击的主要手段之一，借助代理服务器生成指向目标系统的合法请求，实现伪装和 DDos。我们都有这样的体验，访问一个静态页面，即使人多也不需要太长时间，但如果在高峰访问论坛，贴吧，就很慢了，因为服务器需要到数据库中判断访问者是否有读帖，发言等权限。&lt;/p&gt;
-&lt;h3 id=&#34;6-dns-query-flood&#34;&gt;6. DNS Query Flood&lt;/h3&gt;
-&lt;p&gt;DNS Query Flood 采用的方式是操控大量傀儡机，向域名服务器发送大量的域名解析请求。通常攻击者请求解析的域名是随机生成或网络上根本不存在的域名，由于再本地无法找到对应的结果，服务器必须递归查询上传域名服务器，引起连锁反应。解析过程给服务器带来很大的负载，每秒钟服务解析请求超过一定的数量就会造成 DNS 服务器解析域名超时，从而导致一个网络中域名解析服务的崩塌。&lt;/p&gt;
-&lt;h3 id=&#34;7-hashdos&#34;&gt;7. HashDos&lt;/h3&gt;
-&lt;p&gt;Hash 碰撞攻击。随着 RESTful 风格的普及，我们默认会使用 json 格式作为数据传递的方式。但 json 转字符串的对象默认会存储在 Hash Table，而 Hash Table 很容易被碰撞攻击。&lt;/p&gt;
-</content>
-            
-            
-            
-                
-                
-                
-                    
-                    
-                    
-                        
-                            <category scheme="https://marin-man.github.io/posts/" term="posts" label="posts" />
-                        
-                    
-                
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://marin-man.github.io/categories/2022/" term="2022" label="2022" />
-                            
-                        
-                    
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://marin-man.github.io/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" term="网络攻防" label="网络攻防" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        <entry>
             <title type="text">数据链路层</title>
             <link rel="alternate" type="text/html" href="https://marin-man.github.io/posts/network-link-layer/" />
             <id>https://marin-man.github.io/posts/network-link-layer/</id>
@@ -1570,7 +1616,7 @@ DDoS 是一种基于 DoS 的特殊形式的拒绝服务攻击。单一的 DoS �
                             
                             
                             
-                                <category scheme="https://marin-man.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" term="计算机网络" label="计算机网络" />
+                                <category scheme="https://marin-man.github.io/tags/%E7%BD%91%E7%BB%9C/" term="网络" label="网络" />
                             
                         
                     

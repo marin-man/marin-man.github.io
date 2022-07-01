@@ -7,7 +7,7 @@
 
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>慢慢的个人博客</title>
+        <title>慢慢的博客</title>
         <link>https://marin-man.github.io/en/</link>
         <description>Blog of manman in English.</description>
         <generator>Hugo 0.101.0 https://gohugo.io/</generator>
@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Fri, 01 Jul 2022 08:50:01 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 01 Jul 2022 09:13:45 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://marin-man.github.io/en/rss.xml" />
         
